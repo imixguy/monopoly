@@ -1125,7 +1125,7 @@
       <workItem from="1486578730562" duration="2289000" />
       <workItem from="1499277096505" duration="2797000" />
       <workItem from="1499281474715" duration="665000" />
-      <workItem from="1499282255206" duration="379000" />
+      <workItem from="1499282255206" duration="957000" />
     </task>
     <task id="LOCAL-00001" summary="'modified_file_gitignore'&#10;">
       <created>1416214315080</created>
@@ -1243,7 +1243,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1733395000" />
+    <option name="totallyTimeSpent" value="1733973000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1266,7 +1266,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
