@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: rw.ktc.cms:node:0.1.6-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/rw/ktc/cms/node/0.1.6-SNAPSHOT/node-0.1.6-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/rw/ktc/cms/node/0.1.6-SNAPSHOT/node-0.1.6-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/rw/ktc/cms/node/0.1.6-SNAPSHOT/node-0.1.6-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

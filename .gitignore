@@ -7,10 +7,10 @@ logs/
 *.ear
 
 #idea 
-.idea/
+
 .git/
 out/
-*.iml
+
 
 # eclipse stuff
 .settings
