@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.3.3 (28250 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+<way id='13868844' visible='false'><tag k='gauge' value='1520'/>
+<tag k='railway' value='rail'/>
+<member type='nd' ref='119310096'/>
+<member type='nd' ref='130203486'/>
+<member type='nd' ref='130203487'/>
+<member type='nd' ref='130203488'/>
+<member type='nd' ref='130203489'/>
+<member type='nd' ref='130203490'/>
+<member type='nd' ref='130203491'/>
+<member type='nd' ref='130203492'/>
+<member type='nd' ref='130203493'/>
+<member type='nd' ref='130203494'/>
+<member type='nd' ref='130203495'/>
+<member type='nd' ref='130203496'/>
+<member type='nd' ref='130203497'/>
+<member type='nd' ref='130203498'/>
+<member type='nd' ref='130203499'/>
+<member type='nd' ref='130203500'/>
+<member type='nd' ref='130203502'/>
+<member type='nd' ref='130203503'/>
+<member type='nd' ref='1381971304'/>
+<member type='nd' ref='3116285856'/>
+<member type='nd' ref='130203505'/>
+<member type='nd' ref='130203506'/>
+<member type='nd' ref='130203507'/>
+<member type='nd' ref='130203509'/>
+<member type='nd' ref='130203510'/>
+<member type='nd' ref='251815003'/>
+<member type='nd' ref='2781514579'/>
+<member type='nd' ref='2781514582'/>
+<member type='nd' ref='2781514589'/>
+<member type='nd' ref='2781514610'/>
+<member type='nd' ref='2781514580'/>
+<member type='nd' ref='2781514611'/>
+<member type='nd' ref='251815005'/>
+<member type='nd' ref='2781514612'/>
+<member type='nd' ref='2781514609'/>
+<member type='nd' ref='2781514653'/>
+<member type='nd' ref='2781514338'/>
+<member type='nd' ref='2781514604'/>
+<member type='nd' ref='2781514345'/>
+<member type='nd' ref='2779578194'/>
+<member type='nd' ref='251815007'/>
+<member type='nd' ref='2781514341'/>
+<member type='nd' ref='2779578331'/>
+<member type='nd' ref='2779578314'/>
+<member type='nd' ref='2779578177'/>
+<member type='nd' ref='2781514329'/>
+<member type='nd' ref='251815042'/>
+<member type='nd' ref='2779578327'/>
+<member type='nd' ref='2779578337'/>
+<member type='nd' ref='2779578204'/>
+<member type='nd' ref='2779578184'/>
+<member type='nd' ref='251815044'/>
+<member type='nd' ref='2659070273'/>
+</way>
+<node id='119310096' visible='false' lat='55.4504115' lon='28.7075708'></node>
+<node id='130203486' visible='false' lat='55.4495976' lon='28.7017772'></node>
+<node id='130203487' visible='false' lat='55.4493549' lon='28.6979072'></node>
+<node id='130203488' visible='false' lat='55.4493415' lon='28.6953105'></node>
+<node id='130203489' visible='false' lat='55.449613' lon='28.6905568'></node>
+<node id='130203490' visible='false' lat='55.4500173' lon='28.6874768'></node>
+<node id='130203491' visible='false' lat='55.4507961' lon='28.6835286'></node>
+<node id='130203492' visible='false' lat='55.4513803' lon='28.6809537'></node>
+<node id='130203493' visible='false' lat='55.4522238' lon='28.6769777'></node>
+<node id='130203494' visible='false' lat='55.4531325' lon='28.6735723'></node>
+<node id='130203495' visible='false' lat='55.4542033' lon='28.670654'></node>
+<node id='130203496' visible='false' lat='55.4575128' lon='28.6627576'></node>
+<node id='130203497' visible='false' lat='55.4607248' lon='28.6564061'></node>
+<node id='130203498' visible='false' lat='55.4627686' lon='28.6522863'></node>
+<node id='130203499' visible='false' lat='55.4655372' lon='28.6471436'></node>
+<node id='130203500' visible='false' lat='55.4682928' lon='28.6417126'></node>
+<node id='130203502' visible='false' lat='55.4726821' lon='28.633039'></node>
+<node id='130203503' visible='false' lat='55.4752774' lon='28.6280917'></node>
+<node id='1381971304' visible='false' lat='55.4777257' lon='28.6231566'>
+<tag k='crossing:light' value='yes'/>
+<tag k='gauge' value='1520'/>
+<tag k='railway' value='level_crossing'/>
+</node>
+<node id='3116285856' visible='false' lat='55.4787554' lon='28.6206789'></node>
+<node id='130203505' visible='false' lat='55.4796372' lon='28.6180835'></node>
+<node id='130203506' visible='false' lat='55.4804417' lon='28.6151234'></node>
+<node id='130203507' visible='false' lat='55.4813002' lon='28.6106664'></node>
+<node id='130203509' visible='false' lat='55.4825142' lon='28.6038771'></node>
+<node id='130203510' visible='false' lat='55.4835091' lon='28.5984616'></node>
+<node id='251815003' visible='false' lat='55.4840513' lon='28.5960178'></node>
+<node id='2781514579' visible='false' lat='55.4844667' lon='28.5946682'></node>
+<node id='2781514582' visible='false' lat='55.4848419' lon='28.5937384'></node>
+<node id='2781514589' visible='false' lat='55.4851423' lon='28.5930899'></node>
+<node id='2781514610' visible='false' lat='55.4855801' lon='28.5922596'></node>
+<node id='2781514580' visible='false' lat='55.4859164' lon='28.5916986'></node>
+<node id='2781514611' visible='false' lat='55.48649' lon='28.590605'></node>
+<node id='251815005' visible='false' lat='55.4873273' lon='28.58897'></node>
+<node id='2781514612' visible='false' lat='55.4876902' lon='28.5882866'></node>
+<node id='2781514609' visible='false' lat='55.4883157' lon='28.5871806'></node>
+<node id='2781514653' visible='false' lat='55.489551' lon='28.5854326'></node>
+<node id='2781514338' visible='false' lat='55.4917962' lon='28.582469'></node>
+<node id='2781514604' visible='false' lat='55.4927364' lon='28.5808912'></node>
+<node id='2781514345' visible='false' lat='55.4937395' lon='28.5795538'></node>
+<node id='2779578194' visible='false' lat='55.4939499' lon='28.5793015'></node>
+<node id='251815007' visible='false' lat='55.4944625' lon='28.5786299'><tag k='name:be' value='Наваполацк'/>
+</node>
+<node id='2781514341' visible='false' lat='55.4949122' lon='28.5780913'></node>
+<node id='2779578331' visible='false' lat='55.4951422' lon='28.5778159'></node>
+<node id='2779578314' visible='false' lat='55.4953332' lon='28.5775358'></node>
+<node id='2779578177' visible='false' lat='55.4954822' lon='28.5773786'></node>
+<node id='2781514329' visible='false' lat='55.495762' lon='28.5771024'></node>
+<node id='251815042' visible='false' lat='55.4988815' lon='28.5729929'></node>
+<node id='2779578327' visible='false' lat='55.5022252' lon='28.5686114'></node>
+<node id='2779578337' visible='false' lat='55.5026083' lon='28.568165'></node>
+<node id='2779578204' visible='false' lat='55.5029589' lon='28.5677564'></node>
+<node id='2779578184' visible='false' lat='55.5032836' lon='28.5672963'></node>
+<node id='251815044' visible='false' lat='55.5039864' lon='28.5663662'></node>
+<node id='2659070273' visible='false' lat='55.5044016' lon='28.5658245'><tag k='FIXME' value='rail'/>
+<tag k='gauge' value='1520'/>
+<tag k='name' value='Новополоцк'/>
+<tag k='railway' value='station'/>
+</node>
+<way id='13872215' visible='false'><tag k='railway' value='rail'/>
+<tag k='usage' value='main'/>
+<member type='nd' ref='247895796'/>
+<member type='nd' ref='3332718539'/>
+<member type='nd' ref='3332718540'/>
+<member type='nd' ref='247897669'/>
+<member type='nd' ref='3332718541'/>
+<member type='nd' ref='3332718543'/>
+<member type='nd' ref='3332718544'/>
+<member type='nd' ref='247897699'/>
+<member type='nd' ref='1359792013'/>
+</way>
+<node id='247895796' visible='false' lat='55.1417786' lon='27.2106718'></node>
+<node id='3332718539' visible='false' lat='55.1421431' lon='27.2124215'></node>
+<node id='3332718540' visible='false' lat='55.1424023' lon='27.2133158'></node>
+<node id='247897669' visible='false' lat='55.1427489' lon='27.2139369'></node>
+<node id='3332718541' visible='false' lat='55.1432639' lon='27.21444'></node>
+<node id='3332718543' visible='false' lat='55.1437714' lon='27.2147211'></node>
+<node id='3332718544' visible='false' lat='55.1442825' lon='27.2149063'></node>
+<node id='247897699' visible='false' lat='55.1447283' lon='27.214921'></node>
+<node id='1359792013' visible='false' lat='55.1459112' lon='27.2145466'></node>
+<way id='18450364' visible='false'><tag k='gauge' value='1520'/>
+<tag k='railway' value='rail'/>
+<tag k='usage' value='main'/>
+<member type='nd' ref='119178094'/>
+<member type='nd' ref='2938440939'/>
+<member type='nd' ref='119178092'/>
+<member type='nd' ref='119178090'/>
+<member type='nd' ref='119142187'/>
+<member type='nd' ref='119142186'/>
+<member type='nd' ref='119142185'/>
+<member type='nd' ref='119142183'/>
+<member type='nd' ref='194292068'/>
+<member type='nd' ref='119142181'/>
+<member type='nd' ref='119142180'/>
+<member type='nd' ref='119142178'/>
+<member type='nd' ref='119142177'/>
+<member type='nd' ref='2083803120'/>
+<member type='nd' ref='119142175'/>
+<member type='nd' ref='2083803124'/>
+<member type='nd' ref='119142174'/>
+<member type='nd' ref='119142173'/>
+<member type='nd' ref='119142172'/>
+<member type='nd' ref='119142171'/>
+<member type='nd' ref='119142169'/>
+<member type='nd' ref='119142168'/>
+<member type='nd' ref='119142167'/>
+<member type='nd' ref='119142165'/>
+<member type='nd' ref='119142164'/>
+<member type='nd' ref='146618973'/>
+<member type='nd' ref='119142162'/>
+<member type='nd' ref='119142161'/>
+<member type='nd' ref='119142159'/>
+<member type='nd' ref='443836512'/>
+<member type='nd' ref='119142158'/>
+<member type='nd' ref='257605575'/>
+<member type='nd' ref='119142156'/>
+<member type='nd' ref='119142155'/>
+<member type='nd' ref='2356853926'/>
+<member type='nd' ref='119142153'/>
+<member type='nd' ref='119142152'/>
+<member type='nd' ref='119142151'/>
+<member type='nd' ref='432618638'/>
+<member type='nd' ref='119142150'/>
+<member type='nd' ref='393329817'/>
+<member type='nd' ref='393329819'/>
+<member type='nd' ref='119142148'/>
+<member type='nd' ref='393329822'/>
+<member type='nd' ref='393329824'/>
+<member type='nd' ref='393329826'/>
+<member type='nd' ref='119142145'/>
+<member type='nd' ref='393329828'/>
+<member type='nd' ref='119142144'/>
+<member type='nd' ref='393329830'/>
+<member type='nd' ref='393329834'/>
+<member type='nd' ref='393329836'/>
+<member type='nd' ref='119142143'/>
+<member type='nd' ref='393329838'/>
+<member type='nd' ref='393329839'/>
+<member type='nd' ref='119142142'/>
+<member type='nd' ref='386120424'/>
+<member type='nd' ref='393329840'/>
+<member type='nd' ref='119142141'/>
+<member type='nd' ref='393329841'/>
+<member type='nd' ref='185614111'/>
+<member type='nd' ref='257605576'/>
+<member type='nd' ref='115340285'/>
+</way>
+<node id='119178094' visible='false' lat='55.8446696' lon='27.6373373'></node>
+<node id='2938440939' visible='false' lat='55.8454265' lon='27.6332584'></node>
+<node id='119178092' visible='false' lat='55.8467258' lon='27.630132'></node>
+<node id='119178090' visible='false' lat='55.8666297' lon='27.5849974'></node>
+<node id='119142187' visible='false' lat='55.8670628' lon='27.5835284'></node>
+<node id='119142186' visible='false' lat='55.8732258' lon='27.5567546'></node>
+<node id='119142185' visible='false' lat='55.8739963' lon='27.5495448'></node>
+<node id='119142183' visible='false' lat='55.8759176' lon='27.5422756'></node>
+<node id='194292068' visible='false' lat='55.876387' lon='27.5412706'><tag k='name' value='Indra'/>
+<tag k='name:ru' value='Индра'/>
+<tag k='railway' value='station'/>
+</node>
+<node id='119142181' visible='false' lat='55.8796197' lon='27.5347506'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='119142180' visible='false' lat='55.8812185' lon='27.5323787'></node>
+<node id='119142178' visible='false' lat='55.8914235' lon='27.5227657'></node>
+<node id='119142177' visible='false' lat='55.8950816' lon='27.5190509'></node>
+<node id='2083803120' visible='false' lat='55.8966524' lon='27.5160089'></node>
+<node id='119142175' visible='false' lat='55.8982091' lon='27.5101017'></node>
+<node id='2083803124' visible='false' lat='55.9001011' lon='27.5058967'></node>
+<node id='119142174' visible='false' lat='55.9022798' lon='27.5019615'></node>
+<node id='119142173' visible='false' lat='55.9073034' lon='27.4898067'></node>
+<node id='119142172' visible='false' lat='55.9115369' lon='27.478992'></node>
+<node id='119142171' visible='false' lat='55.9136535' lon='27.4702373'></node>
+<node id='119142169' visible='false' lat='55.9142307' lon='27.4630275'></node>
+<node id='119142168' visible='false' lat='55.9136535' lon='27.4553027'></node>
+<node id='119142167' visible='false' lat='55.9122104' lon='27.4441448'></node>
+<node id='119142165' visible='false' lat='55.9123066' lon='27.4384799'></node>
+<node id='119142164' visible='false' lat='55.9143269' lon='27.4115291'></node>
+<node id='146618973' visible='false' lat='55.9154674' lon='27.4017047'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='119142162' visible='false' lat='55.9161548' lon='27.3888698'></node>
+<node id='119142161' visible='false' lat='55.9192331' lon='27.350246'></node>
+<node id='119142159' visible='false' lat='55.9206302' lon='27.3346276'></node>
+<node id='443836512' visible='false' lat='55.921048' lon='27.3285892'></node>
+<node id='119142158' visible='false' lat='55.9209913' lon='27.3227282'></node>
+<node id='257605575' visible='false' lat='55.9199762' lon='27.3142514'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='119142156' visible='false' lat='55.9197818' lon='27.3106569'></node>
+<node id='119142155' visible='false' lat='55.9196638' lon='27.2936388'></node>
+<node id='2356853926' visible='false' lat='55.9199301' lon='27.2912878'></node>
+<node id='119142153' visible='false' lat='55.9213493' lon='27.2787555'></node>
+<node id='119142152' visible='false' lat='55.9214972' lon='27.2681654'></node>
+<node id='119142151' visible='false' lat='55.9218302' lon='27.241756'></node>
+<node id='432618638' visible='false' lat='55.9218974' lon='27.2364456'></node>
+<node id='119142150' visible='false' lat='55.9222149' lon='27.2113719'></node>
+<node id='393329817' visible='false' lat='55.9224153' lon='27.2006357'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='393329819' visible='false' lat='55.9224733' lon='27.1964734'></node>
+<node id='119142148' visible='false' lat='55.9226958' lon='27.1917068'></node>
+<node id='393329822' visible='false' lat='55.9227529' lon='27.1897793'></node>
+<node id='393329824' visible='false' lat='55.9226527' lon='27.1879622'></node>
+<node id='393329826' visible='false' lat='55.9223995' lon='27.1860133'></node>
+<node id='119142145' visible='false' lat='55.9220294' lon='27.1841176'></node>
+<node id='393329828' visible='false' lat='55.9215976' lon='27.1827369'></node>
+<node id='119142144' visible='false' lat='55.9207493' lon='27.1804625'></node>
+<node id='393329830' visible='false' lat='55.9202101' lon='27.178905'></node>
+<node id='393329834' visible='false' lat='55.9198619' lon='27.1772479'></node>
+<node id='393329836' visible='false' lat='55.9190125' lon='27.1721262'></node>
+<node id='119142143' visible='false' lat='55.9188061' lon='27.1705397'></node>
+<node id='393329838' visible='false' lat='55.9187223' lon='27.1688968'></node>
+<node id='393329839' visible='false' lat='55.9187276' lon='27.167268'></node>
+<node id='119142142' visible='false' lat='55.9189681' lon='27.1645975'></node>
+<node id='386120424' visible='false' lat='55.919172' lon='27.1634675'><tag k='bicycle' value='yes'/>
+<tag k='crossing' value='unmarked'/>
+<tag k='railway' value='crossing'/>
+</node>
+<node id='393329840' visible='false' lat='55.9197353' lon='27.1612236'></node>
+<node id='119142141' visible='false' lat='55.9206982' lon='27.1584531'></node>
+<node id='393329841' visible='false' lat='55.9216662' lon='27.155857'></node>
+<node id='185614111' visible='false' lat='55.9253312' lon='27.1455632'><tag k='name' value='Kraslava'/>
+<tag k='name:lt' value='Kraslava'/>
+<tag k='name:ru' value='Краслава'/>
+<tag k='railway' value='station'/>
+</node>
+<node id='257605576' visible='false' lat='55.9267822' lon='27.1414077'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='115340285' visible='false' lat='55.9302112' lon='27.1313389'></node>
+<way id='21143577' visible='false'><tag k='electrified' value='contact_line'/>
+<tag k='frequency' value='50'/>
+<tag k='railway' value='rail'/>
+<tag k='tracks' value='1'/>
+<tag k='usage' value='branch'/>
+<tag k='voltage' value='25000'/>
+<member type='nd' ref='2894498629'/>
+<member type='nd' ref='2894498628'/>
+<member type='nd' ref='2894498627'/>
+<member type='nd' ref='2894498626'/>
+<member type='nd' ref='2894498625'/>
+<member type='nd' ref='2894498624'/>
+<member type='nd' ref='2894498623'/>
+<member type='nd' ref='2894498622'/>
+<member type='nd' ref='2894498621'/>
+<member type='nd' ref='2894498620'/>
+<member type='nd' ref='2894498619'/>
+<member type='nd' ref='2894498618'/>
+<member type='nd' ref='294205033'/>
+<member type='nd' ref='243215365'/>
+<member type='nd' ref='227433204'/>
+</way>
+<node id='2894498629' visible='false' lat='53.9501908' lon='27.317915'><tag k='railway' value='switch'/>
+</node>
+<node id='2894498628' visible='false' lat='53.9498098' lon='27.3182955'></node>
+<node id='2894498627' visible='false' lat='53.9495115' lon='27.3186388'></node>
+<node id='2894498626' visible='false' lat='53.9492179' lon='27.3189553'></node>
+<node id='2894498625' visible='false' lat='53.9488584' lon='27.3194189'></node>
+<node id='2894498624' visible='false' lat='53.9478103' lon='27.3207117'></node>
+<node id='2894498623' visible='false' lat='53.9472917' lon='27.3213834'></node>
+<node id='2894498622' visible='false' lat='53.9462581' lon='27.3227144'></node>
+<node id='2894498621' visible='false' lat='53.945239' lon='27.3239961'></node>
+<node id='2894498620' visible='false' lat='53.9441328' lon='27.3256044'></node>
+<node id='2894498619' visible='false' lat='53.9429903' lon='27.3275517'></node>
+<node id='2894498618' visible='false' lat='53.9421706' lon='27.3289566'></node>
+<node id='294205033' visible='false' lat='53.9418515' lon='27.3294681'></node>
+<node id='243215365' visible='false' lat='53.9411456' lon='27.3303708'></node>
+<node id='227433204' visible='false' lat='53.9399382' lon='27.3308686'></node>
+<way id='22374813' visible='false'><tag k='gauge' value='1520'/>
+<tag k='railway' value='rail'/>
+<tag k='usage' value='main'/>
+<member type='nd' ref='240470995'/>
+<member type='nd' ref='119310083'/>
+</way>
+<node id='240470995' visible='false' lat='55.4804722' lon='28.800383'></node>
+<node id='119310083' visible='false' lat='55.4814733' lon='28.800575'></node>
+<way id='22374814' visible='false'><tag k='bridge' value='yes'/>
+<tag k='gauge' value='1520'/>
+<tag k='layer' value='1'/>
+<tag k='railway' value='rail'/>
+<tag k='usage' value='main'/>
+<member type='nd' ref='240470994'/>
+<member type='nd' ref='240470995'/>
+</way>
+<node id='240470994' visible='false' lat='55.4783027' lon='28.7999014'></node>
+<node id='240470995' visible='false' lat='55.4804722' lon='28.800383'></node>
+<way id='22616356' visible='false'><tag k='railway' value='rail'/>
+<member type='nd' ref='371316113'/>
+<member type='nd' ref='431528098'/>
+<member type='nd' ref='243243076'/>
+<member type='nd' ref='303591815'/>
+<member type='nd' ref='303591817'/>
+<member type='nd' ref='303591818'/>
+<member type='nd' ref='243243077'/>
+<member type='nd' ref='250334245'/>
+<member type='nd' ref='250334246'/>
+<member type='nd' ref='250334247'/>
+<member type='nd' ref='243243079'/>
+<member type='nd' ref='2405671097'/>
+<member type='nd' ref='2405671094'/>
+<member type='nd' ref='2405671092'/>
+<member type='nd' ref='243243080'/>
+<member type='nd' ref='431528474'/>
+<member type='nd' ref='243243081'/>
+<member type='nd' ref='276615131'/>
+<member type='nd' ref='243243082'/>
+<member type='nd' ref='2405684871'/>
+<member type='nd' ref='1793744591'/>
+<member type='nd' ref='303592895'/>
+<member type='nd' ref='303593083'/>
+<member type='nd' ref='243243085'/>
+<member type='nd' ref='303593090'/>
+<member type='nd' ref='243243086'/>
+<member type='nd' ref='303593095'/>
+<member type='nd' ref='243243087'/>
+<member type='nd' ref='243243088'/>
+<member type='nd' ref='243243089'/>
+<member type='nd' ref='417639384'/>
+<member type='nd' ref='417639381'/>
+<member type='nd' ref='417639380'/>
+<member type='nd' ref='243243090'/>
+<member type='nd' ref='1624526537'/>
+<member type='nd' ref='914250412'/>
+<member type='nd' ref='1624526533'/>
+<member type='nd' ref='2743091113'/>
+<member type='nd' ref='2743091118'/>
+<member type='nd' ref='2743067037'/>
+</way>
+<node id='371316113' visible='false' lat='53.904174' lon='27.6363311'></node>
+<node id='431528098' visible='false' lat='53.9036996' lon='27.6354094'></node>
+<node id='243243076' visible='false' lat='53.9036586' lon='27.6353297'></node>
+<node id='303591815' visible='false' lat='53.9028963' lon='27.6338021'></node>
+<node id='303591817' visible='false' lat='53.9025777' lon='27.63333'></node>
+<node id='303591818' visible='false' lat='53.9018624' lon='27.6325998'></node>
+<node id='243243077' visible='false' lat='53.9011935' lon='27.6323088'></node>
+<node id='250334245' visible='false' lat='53.9006397' lon='27.6322398'></node>
+<node id='250334246' visible='false' lat='53.9002857' lon='27.6323084'></node>
+<node id='250334247' visible='false' lat='53.8995777' lon='27.6326003'></node>
+<node id='243243079' visible='false' lat='53.8991643' lon='27.6329523'></node>
+<node id='2405671097' visible='false' lat='53.8987426' lon='27.6333367'></node>
+<node id='2405671094' visible='false' lat='53.8987052' lon='27.6333708'></node>
+<node id='2405671092' visible='false' lat='53.8986743' lon='27.633399'></node>
+<node id='243243080' visible='false' lat='53.8947475' lon='27.6369786'></node>
+<node id='431528474' visible='false' lat='53.8922598' lon='27.6389487'></node>
+<node id='243243081' visible='false' lat='53.8916701' lon='27.6392089'></node>
+<node id='276615131' visible='false' lat='53.8897517' lon='27.6398617'></node>
+<node id='243243082' visible='false' lat='53.8857858' lon='27.641441'></node>
+<node id='2405684871' visible='false' lat='53.8845231' lon='27.6421142'></node>
+<node id='1793744591' visible='false' lat='53.8844159' lon='27.6421648'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='303592895' visible='false' lat='53.8843092' lon='27.6422288'></node>
+<node id='303593083' visible='false' lat='53.8820421' lon='27.642986'></node>
+<node id='243243085' visible='false' lat='53.8814754' lon='27.6429774'></node>
+<node id='303593090' visible='false' lat='53.8804737' lon='27.6427199'></node>
+<node id='243243086' visible='false' lat='53.8795714' lon='27.6431585'></node>
+<node id='303593095' visible='false' lat='53.8789862' lon='27.6436125'></node>
+<node id='243243087' visible='false' lat='53.8784802' lon='27.6442734'></node>
+<node id='243243088' visible='false' lat='53.8773546' lon='27.6460499'></node>
+<node id='243243089' visible='false' lat='53.8759681' lon='27.6465305'></node>
+<node id='417639384' visible='false' lat='53.8755737' lon='27.6465766'></node>
+<node id='417639381' visible='false' lat='53.8749199' lon='27.6466829'></node>
+<node id='417639380' visible='false' lat='53.8742288' lon='27.6467323'></node>
+<node id='243243090' visible='false' lat='53.8728359' lon='27.6468567'></node>
+<node id='1624526537' visible='false' lat='53.8710509' lon='27.6469144'></node>
+<node id='914250412' visible='false' lat='53.8707581' lon='27.6469239'></node>
+<node id='1624526533' visible='false' lat='53.8703969' lon='27.6469356'></node>
+<node id='2743091113' visible='false' lat='53.8703412' lon='27.6469389'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='2743091118' visible='false' lat='53.8703033' lon='27.6469387'><tag k='railway' value='level_crossing'/>
+</node>
+<node id='2743067037' visible='false' lat='53.8702053' lon='27.6469381'></node>
+<way id='23035798' visible='false'><tag k='railway' value='rail'/>
+<member type='nd' ref='248520350'/>
+<member type='nd' ref='243243092'/>
+<member type='nd' ref='242557090'/>
+<member type='nd' ref='320400342'/>
+<member type='nd' ref='242557091'/>
+<member type='nd' ref='242557092'/>
+<member type='nd' ref='242557093'/>
+<member type='nd' ref='242557107'/>
+<member type='nd' ref='242557108'/>
+<member type='nd' ref='242557109'/>
+<member type='nd' ref='2838209603'/>
+<member type='nd' ref='242557110'/>
+<member type='nd' ref='2609786349'/>
+<member type='nd' ref='2609786342'/>
+<member type='nd' ref='242557111'/>
+<member type='nd' ref='2609786343'/>
+<member type='nd' ref='2609786348'/>
+<member type='nd' ref='242557112'/>
+<member type='nd' ref='242557113'/>
+<member type='nd' ref='2609786346'/>
+<member type='nd' ref='242557114'/>
+<member type='nd' ref='2609786345'/>
+<member type='nd' ref='2609786341'/>
+<member type='nd' ref='1785420827'/>
+</way>
+<node id='248520350' visible='false' lat='53.8683921' lon='27.6473447'></node>
+<node id='243243092' visible='false' lat='53.8679872' lon='27.6473984'></node>
+<node id='242557090' visible='false' lat='53.8668694' lon='27.6474294'></node>
+<node id='320400342' visible='false' lat='53.8666324' lon='27.6473536'></node>
+<node id='242557091' visible='false' lat='53.8617012' lon='27.6457761'></node>
+<node id='242557092' visible='false' lat='53.8612456' lon='27.6455787'></node>
+<node id='242557093' visible='false' lat='53.8598182' lon='27.6444629'></node>
+<node id='242557107' visible='false' lat='53.8593221' lon='27.643905'></node>
+<node id='242557108' visible='false' lat='53.8584818' lon='27.6421026'></node>
+<node id='242557109' visible='false' lat='53.857925' lon='27.6410554'></node>
+<node id='2838209603' visible='false' lat='53.8571855' lon='27.6404654'></node>
+<node id='242557110' visible='false' lat='53.8568923' lon='27.6402315'></node>
+<node id='2609786349' visible='false' lat='53.8566263' lon='27.6401838'></node>
+<node id='2609786342' visible='false' lat='53.8563698' lon='27.6401699'></node>
+<node id='242557111' visible='false' lat='53.8560588' lon='27.640194'></node>
+<node id='2609786343' visible='false' lat='53.8556516' lon='27.6403083'></node>
+<node id='2609786348' visible='false' lat='53.8553493' lon='27.640433'></node>
+<node id='242557112' visible='false' lat='53.8550139' lon='27.6406741'></node>
+<node id='242557113' visible='false' lat='53.854666' lon='27.6410746'></node>
+<node id='2609786346' visible='false' lat='53.8543837' lon='27.6415222'></node>
+<node id='242557114' visible='false' lat='53.854096' lon='27.6421072'></node>
+<node id='2609786345' visible='false' lat='53.8538219' lon='27.6427233'></node>
+<node id='2609786341' visible='false' lat='53.8535645' lon='27.6434583'></node>
+<node id='1785420827' visible='false' lat='53.8534123' lon='27.6441091'></node>
+<way id='23082569' visible='false'><tag k='electrified' value='no'/>
+<tag k='gauge' value='1520'/>
+<tag k='railway' value='rail'/>
+<tag k='usage' value='main'/>
+<member type='nd' ref='251817885'/>
+<member type='nd' ref='2968624735'/>
+<member type='nd' ref='2968624725'/>
+<member type='nd' ref='119298125'/>
+<member type='nd' ref='251550202'/>
+<member type='nd' ref='119298126'/>
+<member type='nd' ref='119298127'/>
+<member type='nd' ref='1565450566'/>
+<member type='nd' ref='3124677131'/>
+<member type='nd' ref='251821541'/>
+<member type='nd' ref='119298129'/>
+<member type='nd' ref='119298131'/>
+<member type='nd' ref='119298133'/>
+<member type='nd' ref='119298135'/>
+<member type='nd' ref='119298137'/>
+<member type='nd' ref='119298138'/>
+<member type='nd' ref='119298140'/>
+<member type='nd' ref='1565450733'/>
+<member type='nd' ref='119303544'/>
+<member type='nd' ref='3212320546'/>
+<member type='nd' ref='3212320544'/>
+<member type='nd' ref='1565450680'/>
+<member type='nd' ref='2284161344'/>
+<member type='nd' ref='2284161343'/>
+<member type='nd' ref='119303545'/>
+<member type='nd' ref='2284161341'/>
+<member type='nd' ref='2284161340'/>
+<member type='nd' ref='119303546'/>
+<member type='nd' ref='1169464309'/>
+<member type='nd' ref='1565450668'/>
+</way>
+
+</osm>

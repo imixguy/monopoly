@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <context:component-scan base-package="by.nulay.changer.vk"/>
+    <context:component-scan base-package="by.nulay.changer.films"/>
+    <context:component-scan base-package="by.nulay.changer.task"/>
+    <!--<context:component-scan base-package="rw.gcktc.cms.menu"/>-->
+    <!--<context:component-scan base-package="rw.gcktc.cms.material"/>-->
+
+    <!--<mvc:view-controller path="/admin/content/addpage.html" view-name="addPage"/>-->
+
+    <!--Список хибернет маппингов для модуля vkchange-->
+
+    <security:http pattern="/changer/*" auto-config="true" use-expressions="true" once-per-request="false">
+        <security:intercept-url pattern="/*" requires-channel="https"/>
+    </security:http>
+
+    <bean id="listHibPackageServChange"  class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>by.nulay.changer.vk</value>
+                <value>by.nulay.changer.films</value>
+                <value>by.nulay.changer.task</value>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

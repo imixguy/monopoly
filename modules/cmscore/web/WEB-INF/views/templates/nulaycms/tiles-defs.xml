@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+    <definition  name="public" template="/WEB-INF/views/templates/nulaycms/rootpage.jsp">
+        <put-attribute name="titleKey" value="programm.defaultkey" />
+        <put-attribute name="header" value="/WEB-INF/views/templates/nulaycms/header.jsp" />
+        <put-attribute name="navigation" value="/WEB-INF/views/templates/nulaycms/navigation.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/templates/nulaycms/footer.jsp" />
+    </definition>
+
+    <definition name="firstPageShablon" template="/WEB-INF/views/firstPage.jsp">
+        <put-attribute name="titleKey" value="programm.firstPage" />
+    </definition>
+
+    <definition extends="firstPageShablon" name="firstPage">
+
+    </definition>
+
+    <definition extends="public" name="startPage">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/startPage.jsp"/>
+    </definition>
+
+    <definition extends="public" name="userRegistration">
+        <put-attribute name="titleKey" value="programm.usernewregistr" />
+        <put-attribute name="content" value="/WEB-INF/views/root/userRegistration.jsp"/>
+    </definition>
+
+    <definition extends="public" name="cabinetUser">
+        <put-attribute name="titleKey" value="programm.cabinetuser" />
+        <put-attribute name="content" value="/WEB-INF/views/root/cabinetUser.jsp"/>
+    </definition>
+
+    <definition extends="public" name="login">
+        <put-attribute name="titleKey" value="programm.cabinetuser" />
+        <put-attribute name="content" value="/WEB-INF/views/root/login.jsp"/>
+    </definition>
+
+    <definition extends="public" name="jsppage">
+        <put-attribute name="content" value="/WEB-INF/views/centerJSPView.jsp"/>
+    </definition>
+
+    <definition extends="public" name="contentpage">
+        <put-attribute name="content" value="/WEB-INF/views/centerContView.jsp"/>
+    </definition>
+
+    <definition extends="public" name="defpage">
+        <put-attribute name="content" value="/WEB-INF/views/centerTilesView.jsp"/>
+    </definition>
+
+
+    <!--<definition extends="public" name="infoTrain">-->
+    <!--<put-attribute name="title" value="Информация о поезде" />-->
+    <!--<put-attribute name="content" value="/views/infoTrain.jsp"/>-->
+    <!--</definition>-->
+
+    <!--<definition extends="public" name="stationModeling">-->
+    <!--<put-attribute name="title" value="Информация о станциях" />-->
+    <!--<put-attribute name="content" value="/views/stationModeling.jsp"/>-->
+    <!--</definition>-->
+    <!--<definition template="tiles-defs-admincontent.xml"/>-->
+</tiles-definitions>

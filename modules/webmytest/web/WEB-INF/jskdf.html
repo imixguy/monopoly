@@ -1,0 +1,105 @@
+<script type="text/javascript">
+    function savePrice(el,price,opt_price,old_price,hot_offers,description,purchase){
+        $.ajax({
+            url: '/catalog/manager/changeDataShop',
+            data:{"method":"savePrice","id_goods":jQuery(el).attr('idgoods'),"price":price,"opt_price":opt_price,"old_price":old_price,"hot_offers":hot_offers,"description":description,"purchase":purchase,"id_shop":jQuery(el).attr('idshop')},
+            asunc:true,
+            success:function(data){
+                data=jQuery.parseJSON(data);
+                if(data.save=='complete'){
+                    jQuery(el).addClass("saveComplete");
+                    var infoG=$(el).parent('div').next('div .infoG');
+                    infoG.attr('price',price);
+                    infoG.attr('purchase',purchase);
+                    infoG.attr('description',description);
+                    infoG.attr('opt_price',opt_price);
+                    infoG.attr('old_price',old_price);
+                    infoG.attr('hot_offers',hot_offers);
+                    infoG.text('pur:'+purchase+'; opt:'+opt_price+'; old:'+old_price+'; hot:'+hot_offers+';');
+                }else alert('Oшибка сохранения данных.');
+            }
+        })
+    }
+
+    function changeActEl(el){
+        activeElGoods=el.value;
+        if(jQuery(el).hasClass("saveComplete"))jQuery(el).removeClass("saveComplete");
+        jQuery(el).focusout(function(){
+            jQuery(this).unbind('focusout');
+            if(this.value==0) this.value='';
+            if(isNaN(this.value)){alert('Здесь может быть только число'); this.value=activeElGoods; return;}
+            if(this.value!='' && (parseInt(this.value)>1000000000)){alert('Очень сомневаюсь что за такую сумму это кто нибудь купит.'); this.value=activeElGoods; return;}
+            var re=/\.+/;
+            if(re.test(this.value)){alert('дробные числа отстой');this.value=activeElGoods;return;}
+            if(activeElGoods==this.value){return;}
+            var infoG=$(this).parent('div').next('.infoG');
+            savePrice(this,this.value,infoG.attr('opt_price'),infoG.attr('old_price'),infoG.attr('hot_offers'),infoG.attr('description'),infoG.attr('purchase'));
+        });
+    }
+    function clearPrice(el){
+        el=jQuery(el).prev()[0];
+        if(el.value!=''){el.value='';}
+        savePrice(el,null,null,null,0,null,null);
+    }
+    var selElK=null;
+    function openRedactPrice(el){
+        var elk=$(el).prev('input');
+        selElK=elk;
+        $('.windEditPr .inputVidgoods').val(elk.attr('idgoods'));
+        $('.windEditPr .inputVidshop').val(elk.attr('idshop'));
+        var infoG=$(el).parent('div').next('.infoG');
+        $('.windEditPr .inputVPr').val(infoG.attr('price'));
+        $('.windEditPr .inputVpurchase').val(infoG.attr('purchase'));
+        $('.windEditPr .inputVDiscr').val(infoG.attr('description'));
+        $('.windEditPr .inputVOpt_Pr').val(infoG.attr('opt_price'));
+        $('.windEditPr .inputVOld_Pr').val(infoG.attr('old_price'));
+        $('.windEditPr .inputVhot_offers').prop('checked', infoG.attr('hot_offers')=='1');
+        jQuery(selElK).removeClass("saveComplete");
+        $('.windEditPr').dialog("open");
+    }
+
+    function repPrV(res){
+        res=res.replaceAll('pr',$('.inputVPr').val());
+        res=res.replaceAll('opt',$('.inputVOpt_Pr').val());
+        res=res.replaceAll('old',$('.inputVOld_Pr').val());
+        res=res.replaceAll('pur',$('.inputVpurchase').val());
+        return res;
+    }
+
+    $('.butPrRefPr').click(function(){
+        if($('.inputVFp').val()!=''){
+            res=repPrV($('.inputVFp').val());
+            $('.inputVPr').val(eval(res));
+        }
+        if($('.inputVFo').val()!=''){
+            res=repPrV($('.inputVFo').val());
+            $('.inputVOld_Pr').val(eval(res));
+        }
+        if($('.inputVFopt').val()!=''){
+            res=repPrV($('.inputVFopt').val());
+            $('.inputVOpt_Pr').val(eval(res));
+        }
+    });
+    $('.windEditPr').dialog({
+        autoOpen: false,
+        width: 600,
+        buttons: {
+            "Ok": function() {
+                savePrice(selElK,$('.windEditPr .inputVOld_Pr').val(),(($('.windEditPr .inputVhot_offers').prop('checked')==true)?1:0),$('.windEditPr .inputVDiscr').val(),$('.windEditPr .inputVpurchase').val());
+                $(this).dialog("close");
+            },
+            "Cancel": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+</script>
+<?php }?>
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery('.owl-item').mouseover(function() {
+            $(this).addClass('select_element').mouseout(function() { $(this).removeClass('select_element'); });
+        });
+    });
+</script>

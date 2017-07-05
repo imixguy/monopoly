@@ -1,0 +1,150 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<div class="col1">
+    <div id="main-content">
+
+        <div class="navigation">
+            <div class="alignleft">«Потоки в Java. Часть 3.</div>
+            <div class="alignright">Разборки с репозиториями JBoss Maven»</div>
+            <div class="clear"></div>
+        </div>
+
+
+        <!-- post -->
+        <div class="post-884 post type-post status-publish format-standard hentry category-web-razrabotka tag-webxml tag-bezopasnost" id="post-884">
+            <h2 class="post-title">Семь настроек безопасности в web.xml</h2>
+            <div class="post-content clearfix">
+                <p>Существует множество статей о том, как настроить аутентификацию и авторизацию в дескрипторе развертывания web.xml. Вместо того, чтобы еще раз рассказывать о том, как настраивать роли, защищать web-ресурсы и устанавливать различные типы аутентификации, давайте рассмотрим некоторые распространенные ошибки в настройках безопасности в файле web.xml.</p>
+                <p>Эта статья является переводом статьи Seven Security (Mis)Configurations in Java web.xml Files.</p>
+                <p><span id="more-884"></span></p>
+                <ol>
+                    <li>
+                        <h2>Не настроены страницы ошибок</h2>
+                        <p>По умолчанию web-приложения на Java отправляют подробные сообщения об ошибках прямо в браузер. В этих сообщениях фигурируют версии серверов, трассировка стека, в некоторых случаях в стэк-трэйсах запечатлеваются куски Java-кода. Эта информация является настоящей находкой для хакеров, которые собирают информацию о потенциальной жертве. </p>
+                        <p>К счастью, настроить web.xml так, чтобы вместо стандартных страниц со стек-трейсом выводились указанные пользователем страницы, очень легко. Если использовать приведенную ниже конфигурацию, то при возникновении ошибки с кодом 500, будет показана “хорошая” страница. Таким же образом можно настроить отображение страниц ошибок для других кодов состояний HTTP (например, 404).</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;error-page<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;error-code<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>500<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/error-code<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;location<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>/path/to/error.jsp<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/location<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/error-page<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>Кроме того, в web.xml необходимо запретить выдачу страниц со стек-трейсом, с помощью тега exception-type. Вместо этой страницы должна отображаться указанная пользователем. Как видно из примера, мы указываем тип исключения Throwable. Throwable &ndash; это базовый класс для всех исключений и ошибок в Java, поэтому такая настройка гарантирует нам, что ни один стек трей не отправится пользователю.</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;error-page<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;exception-type<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>java.lang.Throwable<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/exception-type<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;location<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>/path/to/error.jsp<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/location<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/error-page<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>Однако, ваш код может отобразить стек-трейс если вы написали что-то вроде этого:</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="java"><span style="color: #339933;">&lt;%</span>
+<span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">{</span>
+  <span style="color: #003399;">String</span> s <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+  s.<span style="color: #006633;">length</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span> <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">(</span><span style="color: #003399;">Exception</span> e<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+  <span style="color: #666666; font-style: italic;">// don't do this!</span>
+  e.<span style="color: #006633;">printStackTrace</span><span style="color: #009900;">(</span><span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">PrintWriter</span><span style="color: #009900;">(</span>out<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+<span style="color: #339933;">%&gt;</span></pre></div></div>
+
+                        <p>Не забывайте использовать “правильное” логгирование в дополнение к правильной настройке дескриптора развертывания web.xml.
+                        </p></li>
+                    <li>
+                        <h2>Обход аутентификации и авторизации</h2>
+                        <p>Следующий код показывает как установить web-based контроль доступа так, чтобы все, что находится в каталоге secure было доступно только для пользователей с ролью admin.</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;security-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;web-resource-collection<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;web-resource-name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>secure<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/web-resource-name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;url-pattern<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>/secure/*<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/url-pattern<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;http-method<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>GET<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/http-method<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;http-method<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>POST<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/http-method<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/web-resource-collection<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;auth-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;role-name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>admin<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/role-name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/auth-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/security-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>Обычно считается, что если есть такая конфигурация, разрешены только GET и POST запросы, однако, это не так. По умолчанию, любой метод является допустимым и приведенная выше конфигурация не ограничивает обращение к ресурсам с помощью методов, отличных от GET и POST. В данной конфигурации говорится лишь что если обращение к ресурсу выполняется с помощью GET или POST, необходимо чтобы пользователь был авторизован. Arshan Dabirsiaghi в своей  статье описывает эту проблему и приводит примеры того, как используя HTTP-метод HEAD или даже полностью поддельные методы TEST или JUNK, которые не перечислены в конфигурации web.xml, обойти аутентификацию и авторизацию.</p>
+                        <p>К счастью, решение этой проблемы очень простое. Просто удалите все элементы http-method из web.xml, тогда настройки будут должным образом применены ко всем запросам.
+                        </p></li>
+                    <li>
+                        <h2>Не настроен SSL</h2>
+                        <p>SSL должен использоваться везде, где осуществляется передача конфиденциальных данных. Конечно, вы можете настроить SSL на веб-сервере и успокоиться на этом, но вы также можете настроить SSL на уровне веб-приложения как только соответствующие SSL-ключи будут установлены на сервере приложений. Это очень просто.</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;security-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  ...
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;user-data-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;transport-guarantee<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>CONFIDENTIAL<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/transport-guarantee<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/user-data-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/security-constraint<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                    </li>
+                    <li>
+                        <h2>Отказ от использования флага secure</h2>
+                        <p>Множество сайтов используют SSL для аутентификации, а затем переходят в не-SSL режим и все общение с сайтом происходит по незащищенному протоколу. Это делает сессионные куки (такие как JSESSIONID) уязвимыми для атаки “захват сессии” (session hijacking). Чтобы этого избежать, куки можно создавать с флагом secure, который гарантирует, что браузер не будет передавать указанные куки по не-SSL протоколу. Выставляется этот флаг таким образом:</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;cookie-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;secure<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>true<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/secure<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/cookie-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                    </li>
+                    <li>
+                        <h2>Отказ от использования флага HttpOnly</h2>
+                        <p>Куки могут быть созданы с флагом HttpOnly, который гарантирует, что они не могут быть доступны клиентским скриптам. Это позволяет защититься от некоторых из самых распространенных XSS атак. Выставляется этот флаг таким образом:</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;cookie-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;http-only<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>true<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/http-only<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/cookie-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>В версиях Tomcat 5.5 и 6.x флаг HttpOnly позволял устанавливать атрибут useHttpOnly для определенного приложения. Этот атрибут находится в элементе Context в файле server.xml. По умолчанию этот атрибут был отключен в версиях Tomcat 5.5 и 6.x, однако в Tomcat 7 атрибут useHttpOnly по умолчанию имеет значение true. Таким образом, в Tomcat 7, даже если в web.xml вы выставите флаг</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;http-only<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>false<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/http-only<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>ваш JSESSIONID по-прежнему будет HttpOnly, если не изменить это поведение в файле server.xml.
+                        </p></li>
+                    <li>
+                        <h2>Использование URL-параметров для отслеживания сессии</h2>
+                        <p>Элемент tracking-mode в спецификации Servlet 3.0 позволяет указать, будет JSESSIONID храниться в куках или же будет передаваться как URL-параметр. Если идентификатор сессии хранится в URL-параметре, то он может быть сохранен в истории браузера, на прокси-сервере, в логах и т.д. это делает наше приложение более уязвимым к атаке “захват сессии”. Вместо этого, спецификация Servlet 3.0 предлагает нам хранить JSESSIONID в кукисах. Делается это с помощью следующей конфигурации:</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;tracking-mode<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>COOKIE<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/tracking-mode<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                    </li>
+                    <li>
+                        <h2>Не настроен таймаут для сессии</h2>
+                        <p>Пользователи любят долго живущие сессии потому что они удобны. Хакеры любят долго живущие сессии потому что они дают им больше времени для проведения атак, таких как “захват сессии” или Cross Site Request Forgery. Что выбрать &ndash; удобство или безопасность &ndash; решать вам, но когда вы определитесь с временем жизни сессии, то можете настроить его следующим образом:</p>
+
+                        <div class="wp_syntax"><div class="code"><pre style="font-family:monospace;" class="xml"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;session-timeout<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>15<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/session-timeout<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/session-config<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+
+                        <p>В этом примере сессия будет жить в течение 15 минут бездействия пользователя. Если session-timeout не настроен, то спецификация Servlet требует, чтобы использовался таймаут, выбранный поставщиком контейнера (для Tomcat это 30 минут). Если в качестве длины жизни сессии указать отрицательное число или 0, то сессия будет жить “вечно”. Такой подход не рекомендуется применять.</p>
+                        <p>Время простоя также может быть настроено с помощью метода setMaxInactiveInterval класса HttpSession. В отличие от элемента session-timeout, этот метод принимает значение времени в секундах.
+                        </p></li>
+                </ol>
+                <h2>Вывод</h2>
+                <p>Создание и развертывание безопасных приложений требует рассмотрения системы с многих сторон. Настройки среды выполнения также важны как и настройки самого web-приложения. Если вы хотите поделиться своими приемами настройки безопасности web-приложений на Java, добро пожаловать в комментарии<script type="text/javascript">
+                    &lt;!--
+                    var _acic={dataProvider:10};(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="//www.acint.net/aci.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()
+                    //--&gt;
+                </script> Обезвоживание <a target="_blank" href="http://shliph-prom.ru/">http://shliph-prom.ru/</a> .</p>
+            </div>
+            <p class="tags"> Tags: <a rel="tag" href="/tag/webxml/">web.xml</a>, <a rel="tag" href="/tag/bezopasnost/">безопасность</a></p>
+            <div class="clear"></div>
+
+        </div>
+        <!-- /post -->
+    </div>
+    <a href="http://javaigrun.ru/2010/08/18/sem-nastroek-bezopasnosti-v-web-xml/">Взято отсюда</a>
+</div>
+</body>
+</html>

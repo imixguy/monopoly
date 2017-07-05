@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>three.js webgl - loaders - OBJ loader (with normals included in the OBJ)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #333;
+            color: #fff;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #info {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display:block;
+        }
+        #info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+    </style>
+    <script src="/resources/script/three/three.min.js"></script>
+    <script src="/resources/script/three/OBJLoader.js"></script>
+    <script src="/resources/script/three/Detector.js"></script>
+    <script src="/resources/script/three/stats.min.js"></script>
+    <script src="/resources/script/three/OrbitControls.js"></script>
+</head>
+
+<body>
+
+
+<script src="m-simpleCube.js"></script>
+
+<script>
+
+var container, stats;
+
+var camera, scene, renderer;
+
+var mouseX = 0, mouseY = 0;
+
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+
+
+init();
+animate();
+
+
+function init() {
+
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera.position.set( 50, 20, 140 );
+
+//    controls = new THREE.TrackballControls(camera, container);
+//    controls.rotateSpeed = 2.0;
+//    controls.zoomSpeed = 1.2;
+//    controls.panSpeed = 0.8;
+//    controls.noZoom = false;
+//    controls.noPan = false;
+//    controls.staticMoving = true;
+//    controls.dynamicDampingFactor = 0.1;
+//    controls.keys = [65, 83, 68];
+
+    scene.add( camera );
+
+    //To use enter the axis length
+    debugaxis(100);
+
+    // OBJECT(s)
+
+    var  loader = new THREE.OBJLoader();
+    var  object = loader.parse(obj_data);
+    console.log(object);
+
+    var  geometry = object.children[0].geometry;
+    console.log(geometry);
+
+    THREE.GeometryUtils.center(geometry);
+
+
+
+    var material = new THREE.MeshPhongMaterial( { ambient: 0x222222, color: 0x19A8CB, specular: 0x49D8FB, shininess: 50, perPixel: false, overdraw: true } );
+
+    object.children[0].geometry.computeFaceNormals();
+
+    mesh = spawnMesh(geometry, material);
+
+
+
+    // LIGHTS
+
+    pointLight = new THREE.PointLight( 0xffffff, .8 );
+    //pointLight.lookAt(mesh)
+    pointLight.position = camera.position;
+
+    //pointLight.castShadow = true;
+    scene.add( pointLight );
+
+
+
+
+
+
+
+    // RENDERER
+
+    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    //renderer.shadowMapEnabled = true;
+    //renderer.shadowMapSoft = true;
+    container.appendChild( renderer.domElement );
+
+
+}
+
+//
+
+function animate() {
+
+    requestAnimationFrame( animate );
+    render();
+
+}
+
+function render() {
+    camera.lookAt( scene.position );
+    controls.update();
+    renderer.render( scene, camera );
+
+}
+
+function spawnArrow( face ){
+
+    var x = face.centroid.x, y = face.centroid.y, z =face.centroid.z;
+    var xx = face.normal.x, yy = face.normal.y, zz = face.normal.z;
+
+    spawn=false;
+
+    // arrow is oriented according to a n 1 0 0 normal at first, we need to rotate relatively from here
+    rx = 0 ;
+    ry = Math.atan(zz/1) ;
+    rz = Math.atan(yy/1) ;
+
+    if(xx===0 && yy===0 && Math.abs(zz)===1 ) { rx=0; ry=-Math.PI/2*zz; rz=0; spawn=true;}
+    if(xx===0 && zz===0 && Math.abs(yy)===1 ) {rx=0; ry=0; rz=Math.PI/2*yy; spawn=true;}
+    if(xx===-1) { rx=0; ry= Math.PI; rz=0; spawn=true;}
+    if(xx===1) { rx=0; ry=0; rz=0; spawn=true;}
+
+    if (spawn===true) {
+        console.log("Spawning arrow ("+x+","+y+","+z+" n: "+xx+","+yy+","+zz+")")
+        // arrow
+        var rectLength = 100, rectWidth = 2, tipHeight = 40, tipWidth = 30, color= 0xff0000, anchorPointSize = 20;
+        var extrudeSettings = {	amount: 1,  bevelEnabled: true, bevelSegments: 2, steps: 2 }; // bevelSegments: 2, steps: 2 , bevelSegments: 5, bevelSize: 8, bevelThickness:5,
+
+        var shape = new THREE.Shape();
+        shape.moveTo( 0,0 );
+
+        shape.lineTo( 0, rectWidth );
+        shape.lineTo( rectLength, rectWidth );
+
+        shape.lineTo( rectLength-tipHeight/4, rectWidth + (tipWidth - rectWidth)/2 );
+        shape.lineTo( rectLength+tipHeight, rectWidth/2 );
+        shape.lineTo( rectLength-tipHeight/4, 0 - (tipWidth - rectWidth)/2 );
+
+        shape.lineTo( rectLength, 0 );
+        shape.lineTo( 0, 0 );
+
+        var shape3d = shape.extrude( extrudeSettings );
+        arrow = new THREE.Mesh( shape3d, new THREE.MeshLambertMaterial( { color: color, opacity: 0.3 } ) );
+
+        s=0.05;
+        arrow.scale.set( s, s, s );
+        arrow.position.set( x, y, z );
+        arrow.rotation.set( rx, ry, rz );
+
+        scene.add( arrow );
+
+    } else {
+        createAxis(v(xx*10, yy*10, zz*10), v(0, 0, 0), 0x335533, 0.8).position.set( x, y, z );
+        createAxis(v(0, 0, 0), v(-xx*5, -yy*5, -zz*5), 0x000000, 0.8).position.set( x, y, z );
+    }
+
+
+    return false;
+}
+
+function spawnMesh(geometry, material){
+    var mesh = new THREE.Mesh(geometry, material);
+
+    mesh.doubleSided = true;
+
+    for(var i = 0; i<mesh.geometry.faces.length; i++) {
+        m = spawnArrow(mesh.geometry.faces[i]);
+    }
+
+    mesh.geometry.castShadow = true;
+    mesh.geometry.receiveShadow = true;
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+
+    scene.add( mesh );
+
+    return mesh;
+}
+
+function debugaxis(axisLength){
+    // {x: red, y: green, z: blue}
+
+
+    createAxis(v(-axisLength, 0, 0), v(axisLength, 0, 0), 0xFF0000);
+    createAxis(v(0, -axisLength, 0), v(0, axisLength, 0), 0x00FF00);
+    createAxis(v(0, 0, -axisLength), v(0, 0, axisLength), 0x0000FF);
+};
+
+//Shorten the vertex function
+function v(x,y,z){
+    return new THREE.Vector3(x,y,z);
+}
+
+//Create axis (point1, point2, colour)
+function createAxis(p1, p2, color, opacity){
+    var line, lineGeometry = new THREE.Geometry(),
+            lineMat = new THREE.LineBasicMaterial({color: color, lineWidth: 1, "opacity":(opacity||0.5)});
+    lineGeometry.vertices.push(p1, p2);
+    line = new THREE.Line(lineGeometry, lineMat);
+    scene.add(line);
+    return line;
+}
+</script>
+
+</body>
+</html>

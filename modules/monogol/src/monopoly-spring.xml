@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="by.imix.games.monopoly"/>
+    <context:component-scan base-package="by.imix.games.gamecore.implDefault"/>
+
+    <bean id="room" class="by.imix.games.gamecore.implDefault.SpringRoom" scope="prototype">
+        <property name="maxCountUser" value="4"/>
+    </bean>
+
+    <bean id="roomCreator" class="by.imix.games.gamecore.implDefault.Creator">
+        <lookup-method name="createRoom" bean="room"/>
+        <lookup-method name="createUser" bean="userMonopoly" />
+    </bean>
+
+
+    <bean id="gameCreator" class="by.imix.games.monopoly.web.GameCreator">
+        <lookup-method name="createGame" bean="monopolyGame"/>
+    </bean>
+
+    <bean id="userMonopoly" class="by.imix.games.monopoly.UserMonopolyImpl" scope="prototype">
+    </bean>
+
+
+    <bean id="monopolyGame" class="by.imix.games.monopoly.MonopolyGame" scope="prototype">
+        <constructor-arg name="listCard">
+            <list>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Старт"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>5000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="01.jpg"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Мягков"/>
+                    <constructor-arg name="price" value="1500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="700"/>
+                    <constructor-arg name="numMonopoly" value="1"/>
+                    <constructor-arg name="countFirmInMonopoly" value="2"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Налоговая"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-6000</value>
+                            <value>-4000</value>
+                            <value>-2000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Nemiroff"/>
+                    <constructor-arg name="price" value="1500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="700"/>
+                    <constructor-arg name="numMonopoly" value="1"/>
+                    <constructor-arg name="countFirmInMonopoly" value="2"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Kent"/>
+                    <constructor-arg name="price" value="2500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="1200"/>
+                    <constructor-arg name="numMonopoly" value="2"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Шанс"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <value>2000</value>
+                            <value>4000</value>
+                            <value>6000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Marlboro"/>
+                    <constructor-arg name="price" value="2500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="1200"/>
+                    <constructor-arg name="numMonopoly" value="2"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Parlament"/>
+                    <constructor-arg name="price" value="3000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="1500"/>
+                    <constructor-arg name="numMonopoly" value="2"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPrison">
+                    <constructor-arg name="name" value="Тюрьма"/>
+                    <constructor-arg name="penalty" value="3000"/>
+                    <property name="image" value="09.jpg"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Panasonic"/>
+                    <constructor-arg name="price" value="3500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="1700"/>
+                    <constructor-arg name="numMonopoly" value="3"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Siemens"/>
+                    <constructor-arg name="price" value="3500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="1700"/>
+                    <constructor-arg name="numMonopoly" value="3"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Bosch"/>
+                    <constructor-arg name="price" value="4000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="2000"/>
+                    <constructor-arg name="numMonopoly" value="3"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Nokia"/>
+                    <constructor-arg name="price" value="5500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="2700"/>
+                    <constructor-arg name="numMonopoly" value="4"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Шанс"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <value>2000</value>
+                            <value>4000</value>
+                            <value>6000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="HTC"/>
+                    <constructor-arg name="price" value="5500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="2700"/>
+                    <constructor-arg name="numMonopoly" value="4"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Samsung"/>
+                    <constructor-arg name="price" value="6000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="3000"/>
+                    <constructor-arg name="numMonopoly" value="4"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Шанс"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <value>2000</value>
+                            <value>4000</value>
+                            <value>6000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="17.jpg"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="МТС"/>
+                    <constructor-arg name="price" value="8000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="4000"/>
+                    <constructor-arg name="numMonopoly" value="5"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Шанс"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <value>2000</value>
+                            <value>4000</value>
+                            <value>6000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Velcome"/>
+                    <constructor-arg name="price" value="8000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="4000"/>
+                    <constructor-arg name="numMonopoly" value="5"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Beeline"/>
+                    <constructor-arg name="price" value="9000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="4500"/>
+                    <constructor-arg name="numMonopoly" value="5"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Lexus"/>
+                    <constructor-arg name="price" value="11500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="5700"/>
+                    <constructor-arg name="numMonopoly" value="6"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Mersedess"/>
+                    <constructor-arg name="price" value="11500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="5700"/>
+                    <constructor-arg name="numMonopoly" value="6"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="BMW"/>
+                    <constructor-arg name="price" value="12000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="6000"/>
+                    <constructor-arg name="numMonopoly" value="6"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardCheating">
+                    <constructor-arg name="name" value="Мошенник"/>
+                    <constructor-arg name="numPrison" value="8"/>
+                    <property name="image" value="25.jpg"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Аэрофлот"/>
+                    <constructor-arg name="price" value="14500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="7200"/>
+                    <constructor-arg name="numMonopoly" value="7"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Аирлайнс"/>
+                    <constructor-arg name="price" value="14500"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="7200"/>
+                    <constructor-arg name="numMonopoly" value="7"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Шанс"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <value>2000</value>
+                            <value>4000</value>
+                            <value>6000</value>
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="АэроСвит"/>
+                    <constructor-arg name="price" value="15000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="7500"/>
+                    <constructor-arg name="numMonopoly" value="7"/>
+                    <constructor-arg name="countFirmInMonopoly" value="3"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardPlusMinus">
+                    <constructor-arg name="name" value="Налоговая"/>
+                    <constructor-arg name="possibleShtraf">
+                        <list value-type="java.lang.Integer">
+                            <value>-6000</value>
+                            <value>-4000</value>
+                            <value>-2000</value>
+                            <!--<value>20000</value>-->
+                            <!--<value>40000</value>-->
+                            <!--<value>60000</value>-->
+                        </list>
+                    </constructor-arg>
+                    <property name="image" value="surprR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Лукойл"/>
+                    <constructor-arg name="price" value="17000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="8500"/>
+                    <constructor-arg name="numMonopoly" value="8"/>
+                    <constructor-arg name="countFirmInMonopoly" value="2"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+                <bean class="by.imix.games.monopoly.card.CardFirm">
+                    <constructor-arg name="name" value="Роснефть"/>
+                    <constructor-arg name="price" value="20000"/>
+                    <constructor-arg name="countFilial" value="5"/>
+                    <constructor-arg name="filialPrice" value="10000"/>
+                    <constructor-arg name="numMonopoly" value="8"/>
+                    <constructor-arg name="countFirmInMonopoly" value="2"/>
+                    <property name="image" value="firmR.png"/>
+                </bean>
+            </list>
+        </constructor-arg>
+        <property name="imageFolder" value="monopoly"/>
+        <property name="imageCenter" value="center.jpg"/>
+        <property name="circleMany" value="5000"/>
+        <property name="startMany" value="30000"/>
+        <property name="credit" value="10000"/>
+        <property name="penalty_cheating" value="10000"/>
+    </bean>
+</beans>

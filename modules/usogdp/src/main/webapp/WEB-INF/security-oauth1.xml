@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/security/oauth2
+       http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
+
+
+    <!--<mvc:annotation-driven />-->
+    <!--<context:component-scan base-package="rw.ktc.ksupr.web.oauth"/>-->
+
+    <http auto-config='true'>
+
+
+        <!--<intercept-url pattern="/cv" access="ROLE_USER" />-->
+        <intercept-url pattern="/ex" access="ROLE_USER" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="jimi" password="jimi" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+    <!--apply the oauth client context -->
+
+
+    <beans:bean id="oauth2TokenServices"
+                class="org.springframework.security.oauth2.consumer.token.InMemoryOAuth2ClientTokenServices" />
+
+    <oauth:client token-services-ref="oauth2TokenServices" />
+
+    <oauth:resource id="authorization" type="authorization_code"
+                    clientId="usogdp" accessTokenUri="http://localhost:8080/cv/oauth/authorize"
+                    userAuthorizationUri="http://localhost:8080/cv/oauth/user/authorize"  />
+
+
+    <beans:bean id="oauthServise" class="rw.ktc.ksupr.web.oauth.OauthServiseImpl">
+        <beans:property name="cvURL" value="http://localhost:8080/cv/cvs"></beans:property>
+        <beans:property name="restTemplate">
+            <beans:bean class="org.springframework.security.oauth2.consumer.OAuth2RestTemplate">
+                <beans:constructor-arg ref="authorization"/>
+            </beans:bean>
+        </beans:property>
+        <beans:property name="tokenServices" ref="oauth2TokenServices"></beans:property>
+    </beans:bean>
+</beans:beans>

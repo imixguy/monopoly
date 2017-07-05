@@ -1,0 +1,66 @@
+/*
+      (\_/)
+     (='.'=)
+ E[:I/\/\/\/I:]3
+     (")_(")
+*/
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#main {
+    min-height: 100%;
+}
+
+#content {
+    overflow: auto;
+    padding-bottom: 60px;
+}
+
+/* must be same height as the footer */
+
+footer {
+    font-size: 12px;
+    position: relative;
+    margin-top: -60px; /* negative value of footer height */
+    height: 60px;
+    clear: both;
+}
+
+.page {
+    margin: auto;
+    width: 985px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+div.lineOne {
+    font-size: small;
+    min-height: 20px;
+    height: 20px;
+    clear: both;
+}
+
+div.square {
+    background: #e2e2e2;
+    border-radius: 6px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.ui-jqgrid tr.jqgrow td th.ui-th-column  {
+    font-size: 12px;
+}
+
+

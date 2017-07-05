@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="../ckeditor/skins/moono/editor_gecko.css?t=DAED">
+
+
+    <link href="skins/kama/app.css?t=D7EC21H" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../ckeditor/skins/moono/dialog.css?t=DAED">
+
+    <script src="../jquery/jquery-1.7.1.min.js"></script>
+    <script>
+
+
+        (function(){window.ImixFinder=function(a,b,c,d){
+            this.lang={};
+            this.a=a;
+        }}())
+        var ImixFinder=new ImixFinder("sdf");
+        var lang='ru';
+
+
+    </script>
+    <script src="lang/ru.js"></script>
+    <script>
+        lang=ImixFinder.lang[lang];
+        $(document).ready(function(){
+            $('#folders_view_label').html(lang.FoldersTitle);
+            $('#cke_9_label').text(lang.Upload).parent().attr('title',lang.Upload).attr('href','javascript:void("'+lang.Upload+'")');
+            $('#cke_10_label').text(lang.Refresh).parent().attr('title',lang.Refresh).attr('href','javascript:void("'+lang.Refresh+'")');
+            $('#cke_11_label').text(lang.Settings).parent().attr('title',lang.Settings).attr('href','javascript:void("'+lang.Settings+'")');
+            $('#cke_12_label').text(lang.Maximize.minimize).parent().attr('title',lang.Maximize.minimize).attr('href','javascript:void("'+lang.Maximize.minimize+'")');
+            $('#cke_13_label').text(lang.Help).parent().attr('title',lang.Help).attr('href','javascript:void("'+lang.Help+'")');
+            $('#cke_16').text(lang.Search.searchPlaceholder);
+            $('.message_content').text(lang.FolderLoading);
+            $('#status_view').html('<p>'+lang.FilesCountMany.replace('%1',1)+'</p>');
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="cke_dialog_background_cover" style="position: fixed; z-index: 10000; top: 0px; left: 0px; background-color: white; opacity: 0.5; width: 1900px; height: 1200px;"></div>
+<div lang="ru" class="cke_reset_all cke_1 cke_editor_editor1_dialog " style="display: block;">
+    <table style="position: absolute; top: 200px; left: 180px; z-index: 10010;" class="cke_dialog cke_browser_gecko cke_ltr">
+        <tbody>
+        <tr>
+            <td>
+                <div class="cke_dialog_body">
+                    <div class="cke_dialog_title" id="cke_dialog_title_69" style="-moz-user-select: none;">Выбор на сервере</div>
+                    <a title="Закрыть" href="javascript:void(0)" class="cke_dialog_close_button" id="cke_dialog_close_button_69" style="-moz-user-select: none;">
+                        <span class="cke_label">X</span>
+                    </a>
+
+                    <table class="cke_dialog_contents" style="margin-top: 0;">
+                        <tbody>
+                        <tr >
+                            <td class="cke_dialog_contents_body" id="cke_dialog_contents_69" style="width:840px; height: 440px;">
+                               <iframe src="ckfinder.html?type=Images" style="width:840px; height: 440px;"></iframe>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td role="presentation" class="cke_dialog_footer" id="cke_dialog_footer_69">
+                                <div onmousedown="CKEDITOR.tools.callFunction(121, event )" title="Перетащите для изменения размера" class="cke_resizer cke_resizer_ltr">◢</div>
+                                <table class="cke_dialog_ui_hbox cke_dialog_footer_buttons" id="cke_133_uiElement" role="presentation">
+                                    <tbody>
+                                    <tr class="cke_dialog_ui_hbox">
+                                        <td role="presentation" class="cke_dialog_ui_hbox_first">
+                                            <a id="cke_130_uiElement" class="cke_dialog_ui_button cke_dialog_ui_button_ok" title="ОК" href="javascript:void(0)" style="">
+                                                <span class="cke_dialog_ui_button" id="cke_129_label">ОК</span>
+                                            </a>
+                                        </td>
+                                        <td role="presentation" class="cke_dialog_ui_hbox_last">
+                                            <a id="cke_132_uiElement" class="cke_dialog_ui_button cke_dialog_ui_button_cancel" title="Отмена" href="javascript:void(0)" style="">
+                                                <span class="cke_dialog_ui_button" id="cke_131_label">Отмена</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>

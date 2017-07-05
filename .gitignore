@@ -1,0 +1,24 @@
+*.class
+logs/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#idea 
+.idea/
+.git/
+out/
+*.iml
+
+# eclipse stuff
+.settings
+.project
+.classpath
+bin/
+
+# maven build folder
+overlays/
+target/
+*.log

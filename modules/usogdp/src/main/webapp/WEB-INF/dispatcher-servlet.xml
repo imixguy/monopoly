@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+
+    <import resource="classpath*:dao-beans.xml"/>
+    <!--<mvc:annotation-driven/>-->
+
+    <!--  all resources inside folder src/main/webapp/resources are mapped so they can be refered to inside JSP files
+        (see inHeader.jsp for more details) -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <!--<mvc:resources mapping="/webjars/**" location="/webjars/"/>-->
+
+    <context:component-scan base-package="rw.ktc.ksupr.web.controllers"/>
+    <!--<context:component-scan base-package="rw.ktc.ksupr.web.oauth"/>-->
+
+    <!--<mvc:view-controller path="/" view-name="index"/>-->
+    <mvc:view-controller path="/trainconsist" view-name="trainconsist"/>
+    <mvc:view-controller path="/trainschedule" view-name="schedule"/>
+    <mvc:view-controller path="/trainprocessing" view-name="trainprocessing"/>
+    <!-- страничка со списком ajax Api доступными по get методам -->
+    <mvc:view-controller path="/api1" view-name="api1"/>
+    <!--страничка со списком всех доступных URL адресов в приложении-->
+    <mvc:view-controller path="/reference" view-name="reference"/>
+    <mvc:view-controller path="/emptyvagons" view-name="emptyVagons"/>
+    <mvc:view-controller path="/test1" view-name="test"/>
+
+    <mvc:view-controller path="/contacts" view-name="contact"/>
+    <mvc:view-controller path="/simstations" view-name="simstations"/>
+    <mvc:view-controller path="/districts" view-name="districts"/>
+    <mvc:view-controller path="/graphdistricts" view-name="graphdistricts"/>
+    <!--<mvc:redirect-view-controller path="/" redirect-url="main"/>-->
+
+    <!--<mvc:view-controller path="/" view-name="/index" />-->
+    <mvc:view-controller path="/test/tmp2" view-name="tmp2"/>
+    <mvc:view-controller path="/test/staMod" view-name="staModTest"/>
+
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+    <!--<property name="prefix" value="/jsp/"/>-->
+    <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+        <!--<property name="prefix" value="/WEB-INF/views/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+        <!--<property name="order" value="2"/>-->
+    <!--</bean>-->
+
+
+    <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+        <!--<property name="order" value="1"/>-->
+        <!--<property name="viewResolvers">-->
+            <!--<list>-->
+                <!--<ref bean="tilesViewResolver"/>-->
+                <!--<ref bean="jspViewResolver"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">-->
+        <!--<property name="definitions">-->
+            <!--<list>-->
+                <!--<value>/WEB-INF/tiles3-defs.xml</value>-->
+                <!--<value>/WEB-INF/tiles3-defs-test.xml</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="checkRefresh" value="true"/>-->
+        <!--&lt;!&ndash;enabling auto-refresh of Tiles definitions. &ndash;&gt;-->
+        <!--<property name="preparerFactoryClass"-->
+                  <!--value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">-->
+        <!--<property name="order" value="2"/>-->
+    <!--</bean>-->
+
+
+    <!--Конфигурируем JSON и XML request-->
+    <!--<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>-->
+
+    <!--<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">-->
+        <!--<property name="favorPathExtension" value="false"/>-->
+        <!--<property name="favorParameter" value="true"/>-->
+        <!--<property name="mediaTypes">-->
+            <!--<value>-->
+                <!--x-javascript=application/x-javascript-->
+                <!--json=application/json-->
+                <!--xml=application/xml-->
+            <!--</value>-->
+        <!--</property>-->
+
+    <!--</bean>-->
+
+</beans>

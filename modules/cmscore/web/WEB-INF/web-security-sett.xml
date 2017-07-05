@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                                 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- Здесь располагаются элементы без префикса security: -->
+    <!--подключение к БД-->
+    <!--<beans:import resource="spring-start.xml"/>-->
+    <!--Сервис для работы с пользователем-->
+    <!--<beans:import resource="classpath:spring-cms-allservice.xml"/>-->
+
+    <!--<jdbc-user-service id="userService"-->
+    <!--data-source-ref="dataSourceMySql"-->
+    <!--users-by-username-query=-->
+    <!--"select name, password, true from users where name=?"-->
+    <!--authorities-by-username-query=-->
+    <!--"select u.name, r.name role from users u LEFT JOIN user_role ur ON u.id=ur.users_id LEFT JOIN role r ON r.id=ur.roles_id where u.name=?" />-->
+
+    <!--permission core-->
+    <beans:bean name="listCredentialCore" class="java.util.ArrayList">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:value>ROLE_AUTH_DATA</beans:value>
+                <beans:value>ROLE_ADMIN_SETTINGS</beans:value>
+                <beans:value>ROLE_LOGIKA1</beans:value>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+    <http security="none" pattern="/resources/**"  />
+
+    <http auto-config="true" use-expressions="true" once-per-request="false" >
+        <access-denied-handler error-page="/403" />
+        <form-login login-page="/login.html" />
+        <!--<intercept-url pattern="/j_spring_security_check" access="hasRole('ROLE_AUTH_DATA')"/>-->
+        <logout logout-success-url="/index.html" />
+        <!--authentication-failure-url="/index.html?login_error=1"-->
+        <!--default-target-url='/office/kunden.html'-->
+        <!--always-use-default-target='true'-->
+
+        <!--<intercept-url pattern="/managercms/**" access="hasRole('ROLE_CRUD_DC')" />-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/savedcontent.html" access="hasRole('ROLE_CREATE_DC')" />-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/newdc.html" access="hasRole('ROLE_CREATE_DC')" />-->
+
+        <!--<intercept-url pattern="/managercms/**" access="permitAll" />-->
+
+        <intercept-url pattern="/changer/**" access="permitAll" requires-channel="https" />
+
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN_SETTINGS')" />
+        <intercept-url pattern="/usermanager/createnewuser.html" access="permitAll"/>
+        <intercept-url pattern="/usermanager/**" access="hasRole('ROLE_AUTH_DATA')" />
+        <!--Настройка секьюрити для Димки-->
+        <!--<intercept-url pattern="/messagebroker/**" access="hasRole('ROLE_AUTH_DATA')" />-->
+        <!--<intercept-url pattern="/usogdp.html" access="hasRole('ROLE_AUTH_DATA')" />-->
+        <!--<intercept-url pattern="/admin/**" access="hasRole('administrator')" />-->
+        <!--<intercept-url pattern="/src/rw/gcktc/webcms/form" access="permitAll" />-->
+        <!--<intercept-url pattern="/index.jsp" access="permitAll" />-->
+        <intercept-url pattern="/**" access="permitAll" />
+    </http>
+
+    <!--<user-service id="userService">-->
+    <!--<user name="habuma" password="letmein"-->
+    <!--authorities="unregisteruser,administrator"/>-->
+    <!--<user name="twoqubed" password="longhorns"-->
+    <!--authorities="unregisteruser"/>-->
+    <!--<user name="admin" password="admin"-->
+    <!--authorities="unregisteruser,administrator"/>-->
+    <!--</user-service>-->
+    <context:component-scan base-package="rw.gcktc.webcms.security"/>
+
+    <authentication-manager alias="authenticationManager">
+        <!--<authentication-provider user-service-ref="userService" />-->
+        <authentication-provider user-service-ref="userManServiceForSpringSecurity" />
+    </authentication-manager>
+
+    <!--<bean id="authenticationFilter"-->
+          <!--class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"-->
+          <!--p:postOnly="false" />-->
+
+    <!--<global-method-security secured-annotations="enabled"/>-->
+    <global-method-security pre-post-annotations="enabled" />
+</beans:beans>

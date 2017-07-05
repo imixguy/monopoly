@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd
+http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+http://www.springframework.org/schema/security/oauth http://www.springframework.org/schema/security/spring-security-oauth-1.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <!-- ============================== -->
+    <!-- OAUTH 2 : AUTHORIZATION SERVER -->
+    <!-- ============================== -->
+    <oauth:authorization-server client-details-service-ref="clientDetails" token-services-ref="tokenServices">
+        <oauth:authorization-code />
+        <oauth:implicit />
+        <oauth:refresh-token />
+        <oauth:client-credentials />
+        <oauth:password />
+    </oauth:authorization-server>
+
+    <oauth:client-details-service id="clientDetails">
+        <oauth:client client-id="my-trusted-client" authorized-grant-types="password,authorization_code,refresh_token,implicit"
+                      authorities="ROLE_CLIENT, ROLE_TRUSTED_CLIENT" scope="read,write,trust" access-token-validity="60"/>
+        <oauth:client client-id="my-trusted-client-with-secret" authorized-grant-types="password,authorization_code,refresh_token,implicit"
+                      secret="somesecret" authorities="ROLE_CLIENT, ROLE_TRUSTED_CLIENT" />
+        <oauth:client client-id="my-client-with-secret" authorized-grant-types="client_credentials" authorities="ROLE_CLIENT"
+                      scope="read" secret="secret" />
+        <oauth:client client-id="my-less-trusted-client" authorized-grant-types="authorization_code,implicit"
+                      authorities="ROLE_CLIENT" />
+        <oauth:client client-id="my-less-trusted-autoapprove-client" authorized-grant-types="implicit"
+                      authorities="ROLE_CLIENT" />
+        <oauth:client client-id="my-client-with-registered-redirect" authorized-grant-types="authorization_code,client_credentials"
+                      authorities="ROLE_CLIENT" redirect-uri="http://anywhere?key=value" scope="read,trust" />
+        <oauth:client client-id="my-untrusted-client-with-registered-redirect" authorized-grant-types="authorization_code"
+                      authorities="ROLE_CLIENT" redirect-uri="http://anywhere" scope="read" />
+        <oauth:client client-id="tonr" resource-ids="sparklr" authorized-grant-types="authorization_code,implicit"
+                      authorities="ROLE_CLIENT" scope="read,write" secret="secret" />
+    </oauth:client-details-service>
+
+    <!-- WILL NEED TO REPLACE THIS WITH JDBC OR GH-SPECIFIC IMPL -->
+    <!-- <bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.InMemoryTokenStore" /> -->
+
+    <bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore">
+        <!--<constructor-arg ref="dataSource" />-->
+    </bean>
+
+    <!-- The following 3 elements exist solely to support parameter-based client authentication, which is
+    discouraged by the OAuth2 spec. At this time, not all OAuth2 client implementations support
+    HTTP Basic client authentication. Therefore, these are included to allow the client to use
+    either form of client authentication. We may consider removing these in the future, however,
+    when HTTP Basic client authentication is fully supported across all client implementations. gg -->
+    <bean id="clientCredentialsTokenEndpointFilter" class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+    </bean>
+
+    <!--<authentication-manager id="clientAuthenticationManager" xmlns="http://www.springframework.org/schema/security">-->
+        <!--<authentication-provider user-service-ref="userManServiceForSpringSecurity" />-->
+    <!--</authentication-manager>-->
+
+    <bean id="clientDetailsUserService" class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
+        <constructor-arg ref="clientDetails" />
+    </bean>
+
+    <!-- End of configuration to support parameter-based client authentication -->
+
+
+
+    <!-- ========================= -->
+    <!-- OAUTH 2 : RESOURCE SERVER -->
+    <!-- ========================= -->
+    <oauth:resource-server id="resourceServerFilter" resource-id="greenhouseApi" token-services-ref="tokenServices" />
+
+
+    <!-- ====================== -->
+    <!-- OAUTH 2 : SHARED BEANS -->
+    <!-- ====================== -->
+    <bean id="tokenServices" class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
+        <property name="tokenStore" ref="tokenStore" />
+        <property name="supportRefreshToken" value="true" />
+        <property name="clientDetailsService" ref="clientDetails"/>
+        <property name="accessTokenValiditySeconds" value="604800" /> <!-- 1 week -->
+    </bean>
+
+
+    <!--http://stackoverflow.com/questions/15396168/spring-security-oauth2-why-does-my-auth-token-authenticates-client-but-returns-->
+    <!--http://techblog.hybris.com/2012/08/10/oauth2-server-side-implementation-using-spring-security-oauth2-module/-->
+    <!--http://alexbilbie.com/2013/02/developing-an-oauth2-authorization-server/-->
+</beans>

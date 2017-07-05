@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                                 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <beans:bean name="listCredentialAdminModule" class="java.util.ArrayList">
+        <beans:constructor-arg>
+            <beans:list>
+                <!--Разрешение на совершение CRUD операций с DynamicContent модулем-->
+                <beans:value>ROLE_CRUD_DC</beans:value>
+                <!--Разрешение на совершение CREATE NEW операций с DynamicContent модулем-->
+                <beans:value>ROLE_CREATE_DC</beans:value>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+    <!--<http auto-config="true" use-expressions="true" once-per-request="false">-->
+        <!--<intercept-url pattern="/managercms/**" access="hasRole('ROLE_CRUD_DC')" />-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/savedcontent.html" access="hasRole('ROLE_CREATE_DC')" />-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/newdc.html" access="hasRole('ROLE_CREATE_DC')" />-->
+    <!--</http>-->
+
+
+</beans:beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions >
+
+    <definition extends="public" name="rolemanager.settings">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/rolemanager/settings.jsp"/>
+    </definition>
+
+    <definition extends="public" name="rolemanager.credentialManager">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/rolemanager/credentialManager.jsp"/>
+    </definition>
+
+    <definition extends="public" name="rolemanager.deleteRole">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/rolemanager/deleterole.jsp"/>
+    </definition>
+
+    <definition extends="public" name="rolemanager.createRole">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/rolemanager/createRole.jsp"/>
+    </definition>
+
+    <definition extends="public" name="rolemanager.editRole">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/rolemanager/editRole.jsp"/>
+    </definition>
+
+    <!--юзеры-->
+    <definition extends="public" name="usermanager.listUsers">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/usermanager/listUsers.jsp"/>
+    </definition>
+
+    <definition extends="public" name="usermanager.createNewUser">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/usermanager/createNewUser.jsp"/>
+    </definition>
+
+
+    <definition extends="public" name="usermanager.deleteUser">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/usermanager/deleteUser.jsp"/>
+    </definition>
+
+    <definition extends="public" name="usermanager.editUser">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/usermanager/editUser.jsp"/>
+    </definition>
+
+    <definition extends="public" name="usermanager.userRole">
+        <put-attribute name="titleKey" value="programm.title" />
+        <put-attribute name="content" value="/WEB-INF/views/usermanager/userRole.jsp"/>
+    </definition>
+
+</tiles-definitions>
