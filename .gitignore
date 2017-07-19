@@ -7,7 +7,7 @@ logs/
 *.ear
 
 #idea 
-
+.idea/
 .git/
 out/
 
