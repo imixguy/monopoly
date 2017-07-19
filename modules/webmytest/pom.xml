@@ -4,18 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>rw.ktc.gcktc.cms</groupId>
-        <artifactId>cms-core</artifactId>
-        <version>0.1-SNAPSHOT</version>
-    </parent>
-
     <artifactId>webmytest</artifactId>
-    <name>webmytest</name>
+    <name>monopoly</name>
     <version>0.1-SNAPSHOT</version>
-    <description>WEB for KSUPRBCH</description>
+    <description>Configuration for monopoly game</description>
 
     <dependencies>
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>cmscore</artifactId>
+            <version>0.1.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>cmscore-hib</artifactId>
+            <version>0.1.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>cmscore-web</artifactId>
+            <version>0.1.6-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
     <build>
