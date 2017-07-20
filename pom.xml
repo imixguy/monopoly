@@ -15,10 +15,11 @@
         <module>modules/node</module>
         <module>modules/usermanager</module>
         <module>modules/rolemanager</module>
-        <!--<module>../cms_core</module>-->
+        <module>modules/cms_core</module>
         <module>modules/hibernate-node</module>
         <!--<module>../admincontent</module>-->
         <module>modules/monogol</module>
+        <module>modules/webmytest</module>
     </modules>
 
     <properties>
