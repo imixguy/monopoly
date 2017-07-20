@@ -6,7 +6,8 @@ logs/
 *.war
 *.ear
 
-#idea 
+#idea
+*.iml
 .idea/
 .git/
 out/
