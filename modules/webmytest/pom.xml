@@ -20,8 +20,6 @@
     <version>1.1</version>
     <description>Configuration for monopoly game</description>
 
-
-
     <dependencies>
         <dependency>
             <groupId>rw.ktc.gcktc.node</groupId>
@@ -57,6 +55,47 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webXml>web/WEB-INF/web.xml</webXml>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>../cmscore/web/</directory>
+                            <directory>../admincontent/web/</directory>
+                            <directory>../rolemanager_web/web/</directory>
+                            <directory>${project.basedir}/web/</directory>
+                            <directory>../monogol/web/</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-resources-plugin</artifactId>-->
+                <!--<version>2.4.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>default-copy-resources</id>-->
+                        <!--<phase>install</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-resources</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<overwrite>true</overwrite>-->
+                            <!--<outputDirectory>${project.basedir}/web/WEB-INF/</outputDirectory>-->
+                            <!--<resources>-->
+                                <!--<resource>-->
+                                    <!--<directory>${project.basedir}/web/resource/</directory>-->
+                                <!--</resource>-->
+                            <!--</resources>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
             <!--<plugin>-->
                 <!--<groupId>org.apache.felix</groupId>-->
                 <!--<artifactId>maven-bundle-plugin</artifactId>-->
