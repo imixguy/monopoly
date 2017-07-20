@@ -4,24 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>by.imix</groupId>
+        <artifactId>main_settings</artifactId>
+        <version>1.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <groupId>rw.ktc.gcktc.cms</groupId>
     <artifactId>cms-core</artifactId>
     <version>1.1</version>
     <packaging>jar</packaging>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.2.3.RELEASE</spring.version>
-        <spring.security.version>3.2.3.RELEASE</spring.security.version>
-        <hibernate.version>4.2.15.Final</hibernate.version>
-        <mysql-connector.version>5.1.31</mysql-connector.version>
-        <tiles.version>2.2.2</tiles.version>
-        <!--<tiles.version>3.0.4</tiles.version>-->
-        <java.version>1.7</java.version>
-        <jackson.version>2.4.1</jackson.version>
-        <node.version>1.1</node.version>
-    </properties>
 
     <dependencies>
 
@@ -95,11 +88,11 @@
         </dependency>
 
         <!--CKFinder-->
-        <dependency>
-            <groupId>com.ckfinder</groupId>
-            <artifactId>CKFinder</artifactId>
-            <version>2.4</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.ckfinder</groupId>-->
+            <!--<artifactId>CKFinder</artifactId>-->
+            <!--<version>2.4</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -333,6 +326,7 @@
         </dependency>
 
     </dependencies>
+
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>
@@ -350,8 +344,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -374,30 +368,30 @@
             <!--</configuration>-->
             <!--</plugin>-->
 
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-dependency-plugin</artifactId>-->
-            <!--<version>2.8</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<id>copy-dependencies</id>-->
-            <!--<phase>package</phase>-->
-            <!--<goals>-->
-            <!--<goal>copy-dependencies</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-            <!--<outputDirectory>-->
-            <!--${project.build.directory}/dependency-jars/-->
-            <!--</outputDirectory>-->
-            <!--</configuration>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
+           <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/dependency-jars/
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
 
         </plugins>
     </build>
 
-    <distributionManagement>
+    <!--<distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
             <name>libs-snapshot</name>
@@ -409,6 +403,6 @@
             <name>libs-release</name>
             <url>http://askbd-srv:8081/artifactory/libs-release-local</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 
 </project>

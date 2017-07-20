@@ -30,7 +30,6 @@
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.1.1.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.ckeditor:ckeditor-java-core:3.5.3" level="project" />
-    <orderEntry type="library" name="Maven: com.ckfinder:CKFinder:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:3.2.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:3.2.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:3.2.3.RELEASE" level="project" />
