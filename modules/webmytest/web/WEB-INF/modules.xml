@@ -12,16 +12,16 @@
     <import resource="classpath:spring-admincontroller.xml"/>
     <import resource="classpath:securityadminmodule.xml"/>
     <import resource="classpath:spring-module-rolemanager.xml"/>
-    <import resource="classpath:spring-vkwork.xml"/>
+    <!--<import resource="classpath:spring-vkwork.xml"/>-->
 
     <!--для включения игры monogol -->
-    <!--<bean id="listHibPackageMonogol"  class="java.util.ArrayList">-->
-        <!--<constructor-arg>-->
-            <!--<list>-->
-                <!--<value>by.imix.games.monopoly.card</value>-->
-            <!--</list>-->
-        <!--</constructor-arg>-->
-    <!--</bean>-->
+    <bean id="listHibPackageMonogol"  class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>by.imix.games.monopoly.card</value>
+            </list>
+        </constructor-arg>
+    </bean>
 
     <!--Добавляем модуль сервисов работы с контактом-->
     <!--<import resource="classpath:spring-vkwork.xml"/>-->
@@ -32,12 +32,12 @@
                 <!--добавляем в хиб маппинги ядра-->
                 <ref bean="listHibPackageNode"/>
                 <!--добавляем в хиб маппинги модуля ченжера-->
-                <ref bean="listHibPackageServChange"/>
+                <!--<ref bean="listHibPackageServChange"/>-->
                 <!--добавляем в хиб маппинги модуля авторизации-->
                 <ref bean="listHibPackageAuth"/>
                 <!--добавляем в хиб маппинги модуля игры монополия-->
                 <!--для включения игры monogol -->
-                <!--<ref bean="listHibPackageMonogol"/>-->
+                <ref bean="listHibPackageMonogol"/>
             </list>
         </constructor-arg>
     </bean>
