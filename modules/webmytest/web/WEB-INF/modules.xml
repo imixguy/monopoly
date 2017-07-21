@@ -8,8 +8,7 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 
-    <!--Добавляем модуль администрирования CMS-->
-    <import resource="classpath:spring-admincontroller.xml"/>
+    <!--Добавляем модуль администрирования CMS hib-->
     <import resource="classpath:securityadminmodule.xml"/>
     <import resource="classpath:spring-module-rolemanager.xml"/>
     <!--spring-vkwork-->
@@ -49,11 +48,17 @@
 
     <!--Подключаем конфиг основного ядра-->
     <import resource="spring-start.xml"/>
+
     <!--Подключаем конфиг настройки безопасности-->
     <import resource="web-security-sett.xml"/>
 
+    <!--Добавляем модуль администрирования CMS-->
+    <import resource="classpath:spring-admincontroller.xml"/>
+
+
     <!--для включения игры нужно подключить это и -->
     <import resource="classpath:monopoly-spring.xml"/>
+
 
     <!-- SECURYTI permission -->
     <bean id="listCredential" class="rw.gcktc.webcms.security.CredentialBox">
