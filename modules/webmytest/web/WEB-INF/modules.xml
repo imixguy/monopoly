@@ -12,6 +12,7 @@
     <import resource="classpath:spring-admincontroller.xml"/>
     <import resource="classpath:securityadminmodule.xml"/>
     <import resource="classpath:spring-module-rolemanager.xml"/>
+    <!--spring-vkwork-->
     <!--<import resource="classpath:spring-vkwork.xml"/>-->
 
     <!--для включения игры monogol -->

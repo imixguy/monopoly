@@ -84,6 +84,8 @@
     </dependencies>
 
     <build>
+        <defaultGoal>install</defaultGoal>
+
         <sourceDirectory>src</sourceDirectory>
         <resources>
             <resource>
@@ -113,7 +115,10 @@
                 <version>2.4</version>
                 <configuration>
                     <archive>
+
                         <manifest>
+
+
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addClasspath>true</addClasspath>
                             <!--<mainClass>rw.gcktc.nsi.app.StartInConsole</mainClass>-->

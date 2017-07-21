@@ -13,9 +13,7 @@ import java.awt.event.ItemListener;
 public class NewVC extends JFrame{
     private MyPMeni dialog;
     public static void main(String[] arg){
-
         MyPMeni m=new MyPMeni();
-
         NewVC vc=new NewVC();
         vc.setStringJc(m.getL());
         System.out.println( m.getL().get(0));
