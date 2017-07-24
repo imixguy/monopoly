@@ -52,7 +52,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
                 <!--<prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>-->
                 <!--<prop keyt="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>-->
                 <!--<prop key="hibernate.show_sql">true</prop>-->
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <!--<prop keyt="hibernate.current_session_context_class">thread</prop>-->
                 <!--<prop key="javax.persistence.validation.mode">none</prop>-->
             </props>
