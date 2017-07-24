@@ -36,7 +36,7 @@ public class PersonalKnowController {
         this.contentService = contentService;
     }
 
-    @RequestMapping(value = "user/content/savepersonalknow.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/savepersonalknow.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView addTypeContent(PersonalKnow pkForm,HttpSession httpSession) throws IOException {
         try {
@@ -52,7 +52,7 @@ public class PersonalKnowController {
         return new ModelAndView("redirect:/user/content/"+pkForm.getNode().getId()+"/viewpersonalknow.html");
     }
 
-    @RequestMapping(value = "user/content/savepersonalknow2.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/savepersonalknow2.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView addTypeContent2(HttpServletRequest httpreq) throws IOException {
         Node node=null;
@@ -75,14 +75,14 @@ public class PersonalKnowController {
         return (node!=null)?new ModelAndView("redirect:/user/content/"+node.getId()+"/viewpersonalknow.html"):new ModelAndView("redirect:user/content/savepersonalknow2.html");
     }
 
-    @RequestMapping(value = "user/content/addpersonalknow.html")
+    @RequestMapping(value = "/user/content/addpersonalknow.html")
     public ModelAndView addpage(PersonalKnow pk) throws IOException {
         ModelAndView mav=new ModelAndView("redactPersonalKnow");
         mav.addObject("pk", null);
         return mav;
     }
 
-    @RequestMapping(value = "user/content/{idPage}/editpersonalknow.html")
+    @RequestMapping(value = "/user/content/{idPage}/editpersonalknow.html")
     public ModelAndView editpage(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView("redactPersonalKnow");
         try {

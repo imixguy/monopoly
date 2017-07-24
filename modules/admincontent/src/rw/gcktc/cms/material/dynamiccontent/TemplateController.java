@@ -36,12 +36,12 @@ public class TemplateController {
         this.contentService = contentService;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/alltemplates.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/alltemplates.html")
     public String allTemplates() throws IOException {
         return "manager/dynamicpage/allTemplates";
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/savedtemplate.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/managercms/dynamiccontent/savedtemplate.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView saveTemplate(Template templateF, HttpServletRequest request) throws IOException {
         try {
@@ -61,7 +61,7 @@ public class TemplateController {
         return new ModelAndView("redirect:/managercms/dynamiccontent/alltemplates.html");
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/adddtemplate.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/adddtemplate.html")
     public ModelAndView addTemplate(Template template) throws IOException {
         ModelAndView mav=new ModelAndView("redactTemplate");
         //page=new DynamicContent();

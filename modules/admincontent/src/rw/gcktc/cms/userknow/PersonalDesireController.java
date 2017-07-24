@@ -35,7 +35,7 @@ public class PersonalDesireController {
         this.contentService = contentService;
     }
 
-    @RequestMapping(value = "user/content/savepersonaldesire.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/savepersonaldesire.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView addTypeContent(PersonalDesire pkForm,HttpSession httpSession) throws IOException {
         try {
@@ -51,14 +51,14 @@ public class PersonalDesireController {
         return new ModelAndView("redirect:/user/content/"+pkForm.getNode().getId()+"/viewpersonaldesire.html");
     }
 
-    @RequestMapping(value = "user/content/addpersonaldesire.html")
+    @RequestMapping(value = "/user/content/addpersonaldesire.html")
     public ModelAndView addpage(PersonalDesire pk) throws IOException {
         ModelAndView mav=new ModelAndView("redactPersonalDesire");
         mav.addObject("pk", null);
         return mav;
     }
 
-    @RequestMapping(value = "user/content/{idPage}/editpersonaldesire.html")
+    @RequestMapping(value = "/user/content/{idPage}/editpersonaldesire.html")
     public ModelAndView editpage(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView("redactPersonalDesire");
         try {

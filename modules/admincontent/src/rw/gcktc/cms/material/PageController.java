@@ -40,7 +40,7 @@ public class PageController {
         this.contentService = contentService;
     }
 
-    @RequestMapping(value = "admin/content/savepage.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/admin/content/savepage.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView addTypeContent(Page pageForm,HttpSession httpSession) throws IOException {
         try {
@@ -59,14 +59,14 @@ public class PageController {
         return new ModelAndView("redirect:/node/"+pageForm.getNode().getId()+"/viewpage.html");
     }
 
-    @RequestMapping(value = "admin/content/addpage.html")
+    @RequestMapping(value = "/admin/content/addpage.html")
     public ModelAndView addpage(Page page) throws IOException {
         ModelAndView mav=new ModelAndView("redactPage");
         mav.addObject("page", null);
         return new ModelAndView("redactPage");
     }
 
-    @RequestMapping(value = "admin/content/{idPage}/editpage.html")
+    @RequestMapping(value = "/admin/content/{idPage}/editpage.html")
     public ModelAndView editpage(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView("redactPage");
         try {

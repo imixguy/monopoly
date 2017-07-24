@@ -39,7 +39,7 @@ public class FileUploadController {
         this.context = context;
     }
 
-    @RequestMapping(value = "fileupload/upload.html",method= RequestMethod.POST) // Прием файла
+    @RequestMapping(value = "/fileupload/upload.html",method= RequestMethod.POST) // Прием файла
     @ResponseBody
     public String upload(@RequestParam(value="upload", required=false) MultipartFile image,@RequestParam(value="CKEditorFuncNum") String cKEditorFuncNum, HttpSession httpSession) {
         try {

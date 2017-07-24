@@ -68,7 +68,7 @@ public class LoginController{
         this.context = context;
     }
 
-    @RequestMapping(value = "index.html")
+    @RequestMapping(value = "/index.html")
     public String index() throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
 //        if(httpSession.getAttribute("context")==null){
@@ -81,17 +81,17 @@ public class LoginController{
         return "startPage";
     }
 
-//    @RequestMapping(value = "login.html")
+//    @RequestMapping(value = "/login.html")
 //    public String login() throws IOException {
 //        return "login";
 //    }
 
-//    @RequestMapping(value = "usogdp.html")
+//    @RequestMapping(value = "/usogdp.html")
 //    public String usogdp() throws IOException {
 //        return "../../views/usogdpInterfaceStart";
 //    }
 //
-//    @RequestMapping(value = "usermanager/authentication.html")
+//    @RequestMapping(value = "/usermanager/authentication.html")
 //    //public ModelAndView index(@CookieValue(required = false, value = "identity") String identity, Model uiModel) throws IOException {
 //    public ModelAndView authentication(@RequestParam(value = "login", required = false) String login, @RequestParam(value = "password", required = false) String password, HttpSession httpSession) throws IOException {
 //        logger.info("Логинимся");
@@ -114,7 +114,7 @@ public class LoginController{
 //        return new ModelAndView("startPage");
 //    }
 
-//    @RequestMapping(value = "usermanager/logout.html")
+//    @RequestMapping(value = "/usermanager/logout.html")
 //    public ModelAndView logout(HttpSession httpSession) throws IOException {
 //        httpSession.setAttribute("contS", null);
 //        httpSession.setAttribute("userA", null);
@@ -122,7 +122,7 @@ public class LoginController{
 //    }
 
 //    @Secured("ROLE_AUTH_DATA")
-//    @RequestMapping(value = "usermanager/gousercabinet.html")
+//    @RequestMapping(value = "/usermanager/gousercabinet.html")
 //    public ModelAndView gousercabinet(NewUserForm userForm) {
 //        ModelAndView mav=new ModelAndView("cabinetUser");
 //        mav.addObject("userForm",userForm);
@@ -131,7 +131,7 @@ public class LoginController{
 //    }
 
 
-    @RequestMapping(value = "usermanager/gousercabinet.html")
+    @RequestMapping(value = "/usermanager/gousercabinet.html")
     public ModelAndView gousercabinet() {
         ModelAndView mav=new ModelAndView("cabinetUser");
         Authentication a= null;
@@ -152,7 +152,7 @@ public class LoginController{
     @Autowired
     FileUploaderIface fileUploaderIface;
 
-    @RequestMapping(value = "usermanager/saveimage.html",method=RequestMethod.POST) // Прием файла
+    @RequestMapping(value = "/usermanager/saveimage.html",method=RequestMethod.POST) // Прием файла
     @ResponseBody
     public String saveImage(NewUserForm userForm,@RequestParam(value="userImage", required=false) MultipartFile image, HttpSession httpSession) {
         try {
@@ -181,7 +181,7 @@ public class LoginController{
         }
     }
 
-    @RequestMapping(value = "usermanager/createnewuser.html")
+    @RequestMapping(value = "/usermanager/createnewuser.html")
     public String createNewUser(NewUserForm newUserForm){
         return "userRegistration";
     }

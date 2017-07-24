@@ -33,14 +33,14 @@ public class AdminContentController {
         this.menuService = menuService;
     }
 
-    @RequestMapping(value = "admin/addnode/index.html")
+    @RequestMapping(value = "/admin/addnode/index.html")
     public ModelAndView index(HttpSession httpSession) throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
 
         return new ModelAndView("addnode");
     }
 
-    @RequestMapping(value = "admin/menu/listmenu.html")
+    @RequestMapping(value = "/admin/menu/listmenu.html")
     public ModelAndView menu(HttpSession httpSession) throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
         ModelAndView mv= new ModelAndView("listMenu");
@@ -50,7 +50,7 @@ public class AdminContentController {
     }
 
 
-    @RequestMapping(value = "admin/menu/redactMenu.html")
+    @RequestMapping(value = "/admin/menu/redactMenu.html")
     public String redactMenu(@RequestParam(value = "menu", required = false, defaultValue = "") Long idMenu, @ModelAttribute("menuForm") @Valid Menu menu, BindingResult bindingResult,Model model,HttpSession httpSession) {
         if(bindingResult.hasErrors()) {
             return "redactMenu";
@@ -67,7 +67,7 @@ public class AdminContentController {
         return "redactMenu";
     }
 
-    @RequestMapping(value = "admin/menu/removemenu.html")
+    @RequestMapping(value = "/admin/menu/removemenu.html")
     public String removemenu(@RequestParam(value = "menu", required = false) Long idMenu, HttpSession httpSession) throws IOException {
         menuService.removeMenu(idMenu);
         return "redirect:/admin/menu/listmenu.html";

@@ -17,21 +17,21 @@ import java.io.IOException;
  */
 @Controller("typeContentController")
 public class TypeContentController {
-    @RequestMapping(value = "managers/addtypecontent.html")
+    @RequestMapping(value = "/managers/addtypecontent.html")
     public ModelAndView addTypeContent(HttpSession httpSession) throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
 
         return new ModelAndView("addnode");
     }
 
-    @RequestMapping(value = "managers/getalltypecontent.html")
+    @RequestMapping(value = "/managers/getalltypecontent.html")
     public ModelAndView getAllTypeContent(HttpSession httpSession) throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
 
         return new ModelAndView("addnode");
     }
 
-    @RequestMapping(value = "managers/removetypecontent.html",method= RequestMethod.POST)
+    @RequestMapping(value = "/managers/removetypecontent.html",method= RequestMethod.POST)
     public ModelAndView removeTypeContent(HttpSession httpSession) throws IOException {
 //        uiModel.addAttribute("messageSource", messageSource);
 

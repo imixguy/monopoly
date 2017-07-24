@@ -1,0 +1,166 @@
+PageController.java
+    @RequestMapping(value = "/admin/content/savepage.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/admin/content/addpage.html")
+    @RequestMapping(value = "/admin/content/{idPage}/editpage.html")
+    @RequestMapping(value = "/node/{idPage}/viewpage.html")
+    @RequestMapping(value = "/node/allcontent.html")
+    @RequestMapping(value = "/node/allcontent2.html")
+TypeContentController.java
+    @RequestMapping(value = "/managers/addtypecontent.html")
+    @RequestMapping(value = "/managers/getalltypecontent.html")
+    @RequestMapping(value = "/managers/removetypecontent.html",method= RequestMethod.POST)
+rw.gcktc.cms.material.dynamiccontent
+DynamicContentController.java
+getAllContainers()
+    @RequestMapping(value = "/managercms/dynamiccontent/alldynamiccontents.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/savedcontent.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/managercms/dynamiccontent/removedc/{id_cont}", method = RequestMethod.DELETE, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/newdc.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/{idPage}/editdc.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/{idPage}/clonedc.html")
+    @RequestMapping(value = "/content/dynamic/{idPage}/view.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/getTemplates", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/getContainers", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/getDataContainers", method = RequestMethod.GET, produces="application/json")
+TemplateController.java
+    @RequestMapping(value = "/managercms/dynamiccontent/alltemplates.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/savedtemplate.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/managercms/dynamiccontent/adddtemplate.html")
+rw.gcktc.cms.userknow
+PersonalDesireController.java
+    @RequestMapping(value = "/user/content/savepersonaldesire.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/addpersonaldesire.html")
+    @RequestMapping(value = "/user/content/{idPage}/editpersonaldesire.html")
+    @RequestMapping(value = "/user/content/{idPk}/viewpersonaldesire.html")
+    @RequestMapping(value = "/user/content/allpersonaldesire.html")
+PersonalKnowController.java
+    @RequestMapping(value = "/user/content/savepersonalknow.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/savepersonalknow2.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/user/content/addpersonalknow.html")
+    @RequestMapping(value = "/user/content/{idPage}/editpersonalknow.html")
+    @RequestMapping(value = "/user/content/{idPk}/viewpersonalknow.html")
+    @RequestMapping(value = "/user/content/allpersonalknow.html")
+rw.gcktc.webcms.controller.admincontent
+AdminContentController.java
+    @RequestMapping(value = "/admin/addnode/index.html")
+    @RequestMapping(value = "/admin/menu/listmenu.html")
+    @RequestMapping(value = "/admin/menu/redactMenu.html")
+    @RequestMapping(value = "/admin/menu/removemenu.html")
+cms-core
+rw.gcktc.webcms.controller.firststart
+ControllerFirstStart.java
+    @RequestMapping(value = "/index.html")
+rw.gcktc.webcms.controller.logging
+LoggingController.java
+    @RequestMapping(value = "/changer/task/checkperform", method = RequestMethod.GET, produces= MediaType.TEXT_HTML_VALUE)
+rw.gcktc.webcms.controller.login
+LoginController.java
+saveNewUser(NewUserForm, BindingResult, HttpSession)
+    @RequestMapping(value = "/index.html")
+    @RequestMapping(value = "/usermanager/gousercabinet.html")
+    @RequestMapping(value = "/usermanager/saveimage.html",method=RequestMethod.POST) // Прием файла
+    @RequestMapping(value = "/usermanager/createnewuser.html")
+rw.gcktc.webcms.controller.other
+FileUploadController.java
+    @RequestMapping(value = "/fileupload/upload.html",method= RequestMethod.POST) // Прием файла
+monopoly
+by.imix.games.gamecore.implDefault.web
+RoomManagerController.java
+    @RequestMapping(value = "/games/room/krot.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/rooms.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/userdata", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/getAllRoom", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/room/getAllPermissionRoom", method = RequestMethod.GET, produces="application/json")
+by.imix.games.monopoly.web
+MonopolyController.java
+offRoom(long)
+    @RequestMapping(value = "/games/monopoly/game.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/getCards", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/gameinfo", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/createroom.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/loadgamedata", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/getStartGamers", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/{numberRoom}/joinRoom.html", method = RequestMethod.GET)
+UserActionsController.java
+    @RequestMapping(value = "/games/monopoly/actions/throw_cube", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/buy_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/buy_filial", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/put_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirm/{type}", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/getPossibleFirmCh/{nameUser}", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/sell_filial", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/redeem_firm", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/change_firm", method = RequestMethod.POST)
+    @RequestMapping(value = "/games/monopoly/actions/change_firm_ok", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/change_firm_cancal", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/out_prison", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_start", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/pay_penalty", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_buy", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/auction_fold", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/game_end", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/actions/game_close", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/actions/send_message", method = RequestMethod.POST, produces="application/json")
+rolemanager
+rw.ktc.cms.modules.rolemanager
+RoleManagerController.java
+checkNameRole(String)
+    @RequestMapping(value = "/admin/rolemanager/checkrole", method= RequestMethod.POST, produces="application/json")
+createRole(Model)
+    @RequestMapping(value = "/admin/rolemanager/createRole.html")
+deleteRole(Long[])
+    @RequestMapping(value = "/admin/rolemanager/deleterole", method= RequestMethod.POST, produces="application/json")
+deletRole()
+    @RequestMapping(value = "/admin/rolemanager/deleterole.html")
+editRoles()
+    @RequestMapping(value = "/admin/rolemanager/credentialManager.html")
+editRoles(String)
+    @RequestMapping(value = "/admin/rolemanager/editroles", method= RequestMethod.POST, produces="application/json")
+getRoles()
+    @RequestMapping(value = "/admin/rolemanager/getroles", method= RequestMethod.GET, produces="application/json")
+saveNewRole(NewRoleForm, BindingResult)
+    @RequestMapping(value = "/admin/rolemanager/createRole", method = RequestMethod.POST)
+settings()
+    @RequestMapping(value = "/admin/rolemanager/settings.html")
+UserManagerController.java
+changeActivityUser(Long)
+    @RequestMapping(value = "/admin/usermanager/changeuser", method= RequestMethod.POST, produces="application/json")
+changeUserRole(String)
+    @RequestMapping(value = "/admin/usermanager/user-role", method= RequestMethod.POST, produces="application/json")
+checkUserLogin(String)
+    @RequestMapping(value = "/admin/usermanager/checkuserlogin", method= RequestMethod.POST, produces="application/json")
+createNewUser(Model)
+    @RequestMapping(value = "/admin/usermanager/createnewuser.html")
+deleteUser()
+    @RequestMapping(value = "/admin/usermanager/deleteuser.html")
+deleteUser(Long[])
+    @RequestMapping(value = "/admin/usermanager/deleteuser", method= RequestMethod.POST, produces="application/json")
+editRoles()
+    @RequestMapping(value = "/admin/usermanager/listusers", method= RequestMethod.GET, produces="application/json")
+listUsers()
+    @RequestMapping(value = "/admin/usermanager/listusers.html")
+saveNewUser(NewUserFullForm, BindingResult)
+    @RequestMapping(value = "/admin/usermanager/createnewuser.html", method = RequestMethod.POST)
+userRole()
+    @RequestMapping(value = "/admin/usermanager/user-role.html")
+Usage in comments
+cms-core
+rw.gcktc.webcms.controller.firststart
+ControllerFirstStart.java
+//    @RequestMapping(value = "settings.html")
+rw.gcktc.webcms.controller.login
+LoginController.java
+//    @RequestMapping(value = "/login.html")
+//    @RequestMapping(value = "/usogdp.html")
+//    @RequestMapping(value = "/usermanager/authentication.html")
+//    @RequestMapping(value = "/usermanager/logout.html")
+//    @RequestMapping(value = "/usermanager/gousercabinet.html")
+monopoly
+by.imix.games.monopoly.web
+UserActionsController.java
+//    @RequestMapping(value = "/games/monopoly/actions/getChange_firm", method = RequestMethod.GET, produces="application/json")
+rolemanager
+rw.ktc.cms.modules.rolemanager
+RoleManagerController.java
+//    @RequestMapping(value = "/admin/rolemanager/editRole.html")
+//    @RequestMapping(value = "/admin/rolemanager/editrole", method= RequestMethod.POST, produces="application/json")
