@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoggingController {
     private static Logger logger = Logger.getLogger(LoggingController.class);
 
-    @RequestMapping(value = "changer/task/checkperform", method = RequestMethod.GET, produces= MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(value = "/changer/task/checkperform", method = RequestMethod.GET, produces= MediaType.TEXT_HTML_VALUE)
     public @ResponseBody
     boolean checkPerform(@RequestParam("id") Long id, @RequestParam("log") String log, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin","*");

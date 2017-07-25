@@ -44,26 +44,26 @@ public class UserManagerController {
 
     //---------------------------------------------------------------
     //--- назначение ролей пользователю  -----
-    @RequestMapping(value = "admin/usermanager/user-role.html")
+    @RequestMapping(value = "/admin/usermanager/user-role.html")
     public String userRole(){
         return "usermanager.userRole";
     }
 
     //--- список пользователей  -----
-    @RequestMapping(value = "admin/usermanager/listusers.html")
+    @RequestMapping(value = "/admin/usermanager/listusers.html")
     public String listUsers(){
         return "usermanager.listUsers";
     }
 
     //-----создание/редактирование пользователя----------
-    @RequestMapping(value = "admin/usermanager/createnewuser.html")
+    @RequestMapping(value = "/admin/usermanager/createnewuser.html")
     public String createNewUser(Model model){
         model.addAttribute("newUserForm", new NewUserFullForm());
         return "usermanager.createNewUser";
     }
 
     //-----создание/редактирование (POST запрос)
-    @RequestMapping(value = "admin/usermanager/createnewuser.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/usermanager/createnewuser.html", method = RequestMethod.POST)
     public String saveNewUser(@Valid NewUserFullForm newUserForm, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "usermanager.createNewUser";
@@ -79,20 +79,20 @@ public class UserManagerController {
     }
 
     //--- удалить пользователя  -----
-    @RequestMapping(value = "admin/usermanager/deleteuser.html")
+    @RequestMapping(value = "/admin/usermanager/deleteuser.html")
     public String deleteUser(){
         return "usermanager.deleteUser";
     }
 //------------------------------------------------------------------
     //-------список пользователей (JSON)----------
-    @RequestMapping(value = "admin/usermanager/listusers", method= RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/admin/usermanager/listusers", method= RequestMethod.GET, produces="application/json")
     public @ResponseBody List<UserVO> editRoles() {
         List<UserVO> users=getUserAdminService().getAllUser();
         return users;
     }
 
     //------- изменение активности юзера (JSON)----------
-    @RequestMapping(value = "admin/usermanager/changeuser", method= RequestMethod.POST, produces="application/json")
+    @RequestMapping(value = "/admin/usermanager/changeuser", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody Long changeActivityUser(@RequestParam("userId") Long userId) {
         User user=getUserAdminService().getUserById(userId);
         if(user.getActive()){
@@ -104,7 +104,7 @@ public class UserManagerController {
     }
 
     //-------- удаление пользователя (JSON)-------
-    @RequestMapping(value = "admin/usermanager/deleteuser", method= RequestMethod.POST, produces="application/json")
+    @RequestMapping(value = "/admin/usermanager/deleteuser", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody int deleteUser(@RequestBody  Long[] usersId) {
         for(Long id: usersId){
             User us=getUserAdminService().getUserById(id);
@@ -114,7 +114,7 @@ public class UserManagerController {
     }
 
     //-------- изменение ролей у пользователя (JSON)-------
-    @RequestMapping(value = "admin/usermanager/user-role", method= RequestMethod.POST, produces="application/json")
+    @RequestMapping(value = "/admin/usermanager/user-role", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody Long changeUserRole(@RequestParam("userIdRoleName")  String userIdRoleName) {
         String[] s=userIdRoleName.split(";");
         Long userId=Long.parseLong(s[1]);
@@ -124,7 +124,7 @@ public class UserManagerController {
     }
 
     //-------- проверка имени пользователя (JSON)-------
-    @RequestMapping(value = "admin/usermanager/checkuserlogin", method= RequestMethod.POST, produces="application/json")
+    @RequestMapping(value = "/admin/usermanager/checkuserlogin", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody boolean checkUserLogin(@RequestParam("userLogin") String userLogin) {
         try{
             User user=getUserAdminService().getUserByName(userLogin);

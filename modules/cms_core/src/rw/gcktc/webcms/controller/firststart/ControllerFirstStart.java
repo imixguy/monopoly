@@ -27,7 +27,7 @@ public class ControllerFirstStart {
         this.context = context;
     }
 
-    @RequestMapping(value = "index.html")
+    @RequestMapping(value = "/index.html")
     public String index() throws IOException {
 //        log.info("Не поподает сюда - беда блин");
         return "firstPage";

@@ -29,7 +29,7 @@ public class MonopolyController {
         return gameManager;
     }
 
-    @RequestMapping(value = "games/monopoly/game.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/game.html", method = RequestMethod.GET)
     public ModelAndView startGame() {
         log.info("games/monopoly/game.html");
         ModelAndView mav=new ModelAndView();
@@ -42,7 +42,7 @@ public class MonopolyController {
         return mav;
     }
 
-    @RequestMapping(value = "games/monopoly/getCards", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/getCards", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public List<Card> getCards() {
         try {
@@ -52,7 +52,7 @@ public class MonopolyController {
         }
     }
 
-    @RequestMapping(value = "games/monopoly/gameinfo", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/monopoly/gameinfo", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public Room getGameInfo() {
         try {
@@ -62,7 +62,7 @@ public class MonopolyController {
         }
     }
 
-    @RequestMapping(value = "games/monopoly/createroom.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/createroom.html", method = RequestMethod.GET)
     public String createRoomMonopoly(@RequestParam("countgameuser") int countGameUser) {
         UserMonopoly userRoom=getGameManager().getUser();
         if(userRoom==null){
@@ -83,7 +83,7 @@ public class MonopolyController {
         return getGameManager().getUser();
     }
 
-    @RequestMapping(value = "games/monopoly/loadgamedata", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/loadgamedata", method = RequestMethod.GET)
     @ResponseBody
     public DataForGame loadGameData() {
         try {
@@ -94,7 +94,7 @@ public class MonopolyController {
         }
     }
 
-    @RequestMapping(value = "games/monopoly/getStartGamers", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/getStartGamers", method = RequestMethod.GET)
     @ResponseBody
     public List<UserMonopoly> getStartGamers() {
         try {
@@ -116,7 +116,7 @@ public class MonopolyController {
         return room.removeUser(getGameManager().getUser());
     }
 
-    @RequestMapping(value = "games/monopoly/{numberRoom}/joinRoom.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/monopoly/{numberRoom}/joinRoom.html", method = RequestMethod.GET)
     public String joinRoom(@PathVariable("numberRoom")long numberRoom) {
         UserMonopoly userRoom=getGameManager().getUser();
         if(userRoom==null){

@@ -50,12 +50,12 @@ public class DynamicContentController {
         this.contentService = contentService;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/alldynamiccontents.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/alldynamiccontents.html")
     public String allTemplates() throws IOException {
         return "manager/dynamicpage/allDynamicContents";
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/savedcontent.html" ,method= RequestMethod.POST)
+    @RequestMapping(value = "/managercms/dynamiccontent/savedcontent.html" ,method= RequestMethod.POST)
     @ResponseBody
     public ModelAndView saveDynamicContent(DynamicContent dcForm, HttpServletRequest request) throws IOException {
         try {
@@ -117,7 +117,7 @@ public class DynamicContentController {
         return new ModelAndView("redirect:/managercms/dynamiccontent/alldynamiccontents.html");
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/removedc/{id_cont}", method = RequestMethod.DELETE, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/removedc/{id_cont}", method = RequestMethod.DELETE, produces="application/json")
     public @ResponseBody boolean removedc(@PathVariable("id_cont") Long id_cont) throws IOException {
         try {
             contentService.removeNodeById(id_cont);
@@ -127,14 +127,14 @@ public class DynamicContentController {
         return true;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/newdc.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/newdc.html")
     public ModelAndView newdc() throws IOException {
         ModelAndView mav=new ModelAndView("redactDynamicContent");
         mav.addObject("dynamicContent", new DynamicContent());
         return mav;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/{idPage}/editdc.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/{idPage}/editdc.html")
     public ModelAndView editdc(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView("redactDynamicContent");
         try {
@@ -147,7 +147,7 @@ public class DynamicContentController {
         return mav;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/{idPage}/clonedc.html")
+    @RequestMapping(value = "/managercms/dynamiccontent/{idPage}/clonedc.html")
     public ModelAndView cloneDC(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView("redactDynamicContent");
         try {
@@ -161,7 +161,7 @@ public class DynamicContentController {
         return mav;
     }
 
-    @RequestMapping(value = "content/dynamic/{idPage}/view.html")
+    @RequestMapping(value = "/content/dynamic/{idPage}/view.html")
     public ModelAndView viewDynamicContent(@PathVariable("idPage") Long idPage) throws IOException {
         ModelAndView mav=new ModelAndView();
         try {
@@ -268,7 +268,7 @@ public class DynamicContentController {
         page.setCont(containers);
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/getTemplates", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/getTemplates", method = RequestMethod.GET, produces="application/json")
     public @ResponseBody List<NodeProperty> getTemplates(@RequestParam("typet") String typet) throws IOException {
         List<Node> listNode=contentService.getAllNodeFromPrKey("typeTemplate",typet);
         List<NodeProperty> listTName=new ArrayList<NodeProperty>();
@@ -281,7 +281,7 @@ public class DynamicContentController {
         return listTName;
     }
 
-    @RequestMapping(value = "managercms/dynamiccontent/getContainers", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/managercms/dynamiccontent/getContainers", method = RequestMethod.GET, produces="application/json")
     public @ResponseBody List<String> getContainers(@RequestParam("id_cont") Long id_cont) throws IOException {
         Node node=contentService.getNodeById(id_cont);
         NodeProperty np=node.getPropertysValue(node,"file").get(0);

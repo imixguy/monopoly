@@ -30,13 +30,13 @@ public class RoomManagerController{
         return roomManager;
     }
 
-    @RequestMapping(value = "games/room/krot.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/krot.html", method = RequestMethod.GET)
     public ModelAndView getRoomViewer2() {
         ModelAndView mav=new ModelAndView("games/krot/krot");
         return mav;
     }
 
-    @RequestMapping(value = "games/room/rooms.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/rooms.html", method = RequestMethod.GET)
     public ModelAndView getRoomViewer() {
         log.info("load games/room/rooms.html");
         ModelAndView mav=new ModelAndView("games/monopoly/rooms");
@@ -44,13 +44,13 @@ public class RoomManagerController{
         return mav;
     }
 
-    @RequestMapping(value = "games/room/userdata", method = RequestMethod.GET)
+    @RequestMapping(value = "/games/room/userdata", method = RequestMethod.GET)
     @ResponseBody
     public UserRoom getUserData() {
         return roomManager.getUser();
     }
 
-    @RequestMapping(value = "games/room/getAllRoom", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/room/getAllRoom", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public List<Room> getAllRoom() {
         return (List<Room>) roomManager.getAllPermissionRoom();
@@ -60,7 +60,7 @@ public class RoomManagerController{
 //@PathVariable("idPage")
 //@RequestParam("typet")
 
-    @RequestMapping(value = "games/room/getAllPermissionRoom", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/games/room/getAllPermissionRoom", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public List<Room> getAllPermissionRoom() {
         return (List<Room>) roomManager.getAllPermissionRoom();
