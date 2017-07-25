@@ -64,6 +64,11 @@ rw.gcktc.webcms.controller.other
 FileUploadController.java
     @RequestMapping(value = "/fileupload/upload.html",method= RequestMethod.POST) // Прием файла
 monopoly
+
+
+===============Monopoly===============
+/games/monopoly/game.html Start page
+
 by.imix.games.gamecore.implDefault.web
 RoomManagerController.java
     @RequestMapping(value = "/games/room/krot.html", method = RequestMethod.GET)
