@@ -1,4 +1,4 @@
-package by.imix.games.gamecore;
+package by.imix.games.gamecore.game;
 
 import java.util.List;
 

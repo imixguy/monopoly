@@ -1,15 +1,19 @@
 package by.imix.games.monopoly;
 
+import by.imix.games.gamecore.UserAuction;
 import by.imix.games.gamecore.UserRoom;
 import by.imix.games.monopoly.web.ActionUser;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by miha on 24.12.2014.
  */
-public interface UserMonopoly extends UserRoom{
+public interface UserMonopoly extends UserRoom, UserAuction{
+
+
 
     int getMany();
     void setMany(int many);

@@ -1,8 +1,8 @@
 package by.imix.games.gamecore.implDefault.web;
 
 import by.imix.games.gamecore.ActionRoomI;
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import rw.gcktc.cms.usermanager.User;
 
@@ -40,34 +40,6 @@ public abstract class DefaultUserRoom implements UserRoom {
         this.activeRooms=new ArrayList<>();
         this.maxCountActiveRoom=maxCountActiveRoom;
         availableAction=EnumSet.noneOf(ActionRoomI.class);
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public Set getAvailableAction(){return availableAction;}
-
-    /**{@inheritDoc}*/
-    @Override
-    public void setAvailableAction(Set availableAction) {
-        this.availableAction = availableAction;
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public String getName() {
-        return user.getName();
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public void checkedTime() {
-        lastIn=new Date();
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public Date getLastIn() {
-        return lastIn;
     }
 
     /**{@inheritDoc}*/

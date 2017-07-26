@@ -158,7 +158,7 @@ public class MonopolyGame implements GameMonopoly{
         nextGamer();
         for(UserMonopoly user:getListUser()) {
             user.setMany(getStartMany());
-            ActionUser.createInstance(this,user, START_GAME, "Hello in Game");
+            ActionUser.createInstance(this,user, START_GAME, "Hello in GameRoom");
         }
     }
 
