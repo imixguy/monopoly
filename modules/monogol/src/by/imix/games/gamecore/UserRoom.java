@@ -6,30 +6,39 @@ import java.util.Set;
 
 /**
  * Created by miha on 16.12.2014.
- * Пользователь комнаты
+ * Room User
  */
 public interface UserRoom {
-    static final String CREATE_ROOM="CreateRoom";
-    //Внешний пользователь  -  с логинки
+    static final String CREATE_ROOM = "CreateRoom";
+
+    //outside user
     void setUser(Object user);
-    //имя пользовавателя
+
+    //Name User
     String getName();
-    //дата последнего действия
+
+    //Date of last action
     Date getLastIn();
-    //действие произошло
+
+    //Action was done
     void checkedTime();
-    //Список комнат в которых находится пользоватьль
+
+    //List room where user is
     List<Room> getActiveRooms();
-    //Удалить событие
-//    void removeAction(String action);
-    //Добавить событие
-//    void addAction(String action);
-    //Добавить событие
-//    void addActions(String... actions);
-    //Имеет ли пользователь право совершать действие
-//    boolean hasAction(String action);
-    //Получить все доступные действия , которые может совершать пользователь
+
+    /*Remove action
+    void removeAction(String action);
+    add action
+    void addAction(String action);
+    add actions
+    void addActions(String... actions);
+    Check that user may to do action
+    boolean hasAction(String action);*/
+
+    //Get list all available actions for user
     Set getAvailableAction();
+
+    //set list all available actions
     void setAvailableAction(Set availableAction);
 
 }

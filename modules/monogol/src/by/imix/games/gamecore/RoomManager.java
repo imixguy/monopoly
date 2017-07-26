@@ -4,18 +4,19 @@ import java.util.List;
 
 /**
  * Created by miha on 16.12.2014.
+ * Manager for room
  */
 public interface RoomManager {
-    //создать комнату
+    //create room
     Room createRoom();
-    //получить список всех комнат
+    //get list all room
     List<? extends Room> getAllRoom();
-    //получить список комнат в которые можно войти конкретному пользователю
+    //get list room for specific user
     List<? extends Room> getAllPermissionRoom();
-    //получить комнату по номеру
+    //get roum about number
     Room getRoomByNumber(long numberRoom);
-    //получить комнаты по пользователю
+    //get room about user
     List<? extends Room> getRoomByUser();
-    //получить пользователя для комнаты
+    //get user about room
     UserRoom getUser();
 }

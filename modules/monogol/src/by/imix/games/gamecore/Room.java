@@ -4,27 +4,29 @@ import java.util.List;
 
 /**
  * Created by miha on 16.12.2014.
+ * Room
  */
 public interface Room {
-    //Добавить пользователя
+    //add user
     boolean addUser(UserRoom user);
-    //Удалить пользователя
+    //Remove user
     boolean removeUser(UserRoom user);
-    //Получить номер комнаты
+    //Get room number
     long getNumberRoom();
-    //Установить номер комнаты
+    //set room number
     void setNumberRoom(long numberRoom);
-    //доступна ли комната конкретному пользователю
+    //Check allow rom for specific user
     boolean isPermission(UserRoom user);
-    //открыта ли комната для входа
+    //Check that room is opened for entrance
     boolean isOpenRoom();
-    //количество людей в комнате
+    //count people in room
     int countPerson();
-    //список пользователей
+    //List user in room
     List<? extends UserRoom> getListUser();
-    //макс число игроков
+    //Max count user that can be to room
     void setMaxCountUser(int count);
+    //Max count active user that can be to room
     int getMaxCountUser();
-    //список пользователей наблюдающих за игрой
+    //List traced users for game
     List<? extends UserRoom> getListViewUser();
 }

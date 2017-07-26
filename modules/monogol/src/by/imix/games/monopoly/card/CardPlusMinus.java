@@ -32,7 +32,7 @@ public class CardPlusMinus extends CardDefault {
         this.possibleShtraf = possibleShtraf;
     }
 
-
+    /**{@inheritDoc}*/
     @Override
     public void transferCardForUser(Room room, UserRoom userRoom) {
         GameMonopoly gameMonopoly = (GameMonopoly) room;
@@ -51,6 +51,7 @@ public class CardPlusMinus extends CardDefault {
         }
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
     }

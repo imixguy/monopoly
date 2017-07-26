@@ -10,19 +10,21 @@ import java.util.*;
 
 /**
  * Created by miha on 16.12.2014.
+ * Class with basis functionality for user room with imix node user
  */
 public abstract class DefaultUserRoom implements UserRoom {
-    //Внешний класс пользователя
+    //Outside user
     @JsonIgnore
     private User user;
-    //список комнат в которые вошел пользователь
+    //list rooms what user was entrance
     @JsonIgnore
     private List<Room> activeRooms;
-    //максимальное количество комнат в которые может войти пользователь
+    //max count rooms is available for user can entrance
     private int maxCountActiveRoom;
     @JsonIgnore
+    //date last entrance
     private Date lastIn;
-    //список доступных действий
+    //list available action
     @JsonIgnore
     //private Set<String> listAvailableActions;
     private Set availableAction;
@@ -40,34 +42,46 @@ public abstract class DefaultUserRoom implements UserRoom {
         availableAction=EnumSet.noneOf(ActionRoomI.class);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Set getAvailableAction(){return availableAction;}
+
+    /**{@inheritDoc}*/
     @Override
     public void setAvailableAction(Set availableAction) {
         this.availableAction = availableAction;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public String getName() {
         return user.getName();
     }
 
+    /**{@inheritDoc}*/
+    @Override
     public void checkedTime() {
         lastIn=new Date();
     }
 
+    /**{@inheritDoc}*/
+    @Override
     public Date getLastIn() {
         return lastIn;
     }
 
+    /**{@inheritDoc}*/
+    @Override
     public List<Room> getActiveRooms(){
         return activeRooms;
     }
 
+    //Method return user
     public User getUser() {
         return user;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void setUser(Object user) {
         this.user = (User)user;

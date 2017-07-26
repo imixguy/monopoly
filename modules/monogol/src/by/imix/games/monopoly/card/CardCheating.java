@@ -11,15 +11,22 @@ import static by.imix.games.monopoly.ActionMonopolyE.GO_PRISON;
 
 /**
  * Created by miha on 02.02.2015.
+ * Class describe CardCheating
  */
 public class CardCheating extends CardDefault {
     private int numPrison;
 
+    /**
+     * Constructor with name and count steps for skip
+     * @param name - name
+     * @param numPrison - count step need skip
+     */
     public CardCheating(String name,int numPrison){
         this.numPrison=numPrison;
         setName(name);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void transferCardForUser(Room room, UserRoom userRoom) {
         GameMonopoly gameMonopoly = (GameMonopoly) room;
@@ -30,15 +37,24 @@ public class CardCheating extends CardDefault {
         ActionUser.createInstance(gameMonopoly, userMonopoly, GO_PRISON, userMonopoly);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void dropInToCard(Room room, UserRoom userRoom) {
 
     }
 
+    /**
+     * Count step need skip
+     * @return count step need skip
+     */
     public int getNumPrison() {
         return numPrison;
     }
 
+    /**
+     * Set count step need skip
+     * @param numPrison set count step need skip
+     */
     public void setNumPrison(int numPrison) {
         this.numPrison = numPrison;
     }
