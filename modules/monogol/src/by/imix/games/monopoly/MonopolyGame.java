@@ -2,7 +2,7 @@ package by.imix.games.monopoly;
 
 import by.imix.games.gamecore.Room;
 import by.imix.games.gamecore.UserRoom;
-import by.imix.games.monopoly.card.Card;
+import by.imix.games.gamecore.card.Card;
 import by.imix.games.monopoly.card.CardFirm;
 import by.imix.games.monopoly.card.CardPrison;
 import by.imix.games.monopoly.web.ActionUser;
@@ -184,7 +184,7 @@ public class MonopolyGame implements GameMonopoly{
         curentUser.setThrowCubs(false);
         curentUser.getAvailableAction().clear();
 
-        getListCard().get(curentUser.getIndexPosition()).stayFirm(this,curentUser);
+        getListCard().get(curentUser.getIndexPosition()).dropInToCard(this,curentUser);
 
         if(!canCheckPenalty(curentUser)){
             curentUser.getAvailableAction().add(THROW_CUBE);
@@ -695,7 +695,7 @@ public class MonopolyGame implements GameMonopoly{
                 firmFilialSell(curentUser);
             }else{
                 curentUser.getAvailableAction().clear();
-                getListCard().get(curentUser.getIndexPosition()).stayFirm(this, curentUser);
+                getListCard().get(curentUser.getIndexPosition()).transferCardForUser(this, curentUser);
                 if(!canCheckPenalty(curentUser)){
                     curentUser.getAvailableAction().add(THROW_CUBE);
                 }
@@ -931,7 +931,7 @@ public class MonopolyGame implements GameMonopoly{
         curentUser.setThrowCubs(true);
         curentUser.setIndexPosition(pos);
         ActionUser.createInstance(this,curentUser, GO_SELL, countStep);
-        listCard.get(pos).gotOnCard(this,curentUser);
+        listCard.get(pos).transferCardForUser(this,curentUser);
         if(curentUser.getPrison()>0){
             nextGamer();
             return;

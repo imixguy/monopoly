@@ -1,6 +1,9 @@
 package by.imix.games.monopoly.card;
 
 
+import by.imix.games.gamecore.Room;
+import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.card.CardDefault;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.MonopolyGame;
 import by.imix.games.monopoly.UserMonopoly;
@@ -15,7 +18,7 @@ import static by.imix.games.monopoly.ActionMonopolyE.*;
  */
 @Entity
 @Table(name = "m_card")
-public class CardFirm extends CardDefault{
+public class CardFirm extends CardDefault {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -116,7 +119,9 @@ public class CardFirm extends CardDefault{
     }
 
     @Override
-    public void gotOnCard(GameMonopoly gameMonopoly, UserMonopoly userMonopoly) {
+    public void transferCardForUser(Room room, UserRoom userRoom) {
+        GameMonopoly gameMonopoly = (GameMonopoly) room;
+        UserMonopoly userMonopoly = (UserMonopoly) userRoom;
         //если фирма ничья то ее можно купить или выставить на аукцион
         if (getUserOwner() == null) {
             if (userMonopoly.getMany() >= this.getPrice()) {
@@ -137,7 +142,7 @@ public class CardFirm extends CardDefault{
     }
 
     @Override
-    public void stayFirm(GameMonopoly gameMonopoly,UserMonopoly userMonopoly) {
+    public void dropInToCard(Room room, UserRoom userRoom) {
 
     }
 

@@ -1,7 +1,7 @@
 package by.imix.games.monopoly;
 
 import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
-import by.imix.games.monopoly.card.Card;
+import by.imix.games.gamecore.card.Card;
 import by.imix.games.monopoly.web.ActionUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import rw.gcktc.cms.usermanager.User;

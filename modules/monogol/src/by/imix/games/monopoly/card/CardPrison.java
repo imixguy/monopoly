@@ -1,5 +1,8 @@
 package by.imix.games.monopoly.card;
 
+import by.imix.games.gamecore.Room;
+import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.card.CardDefault;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.UserMonopoly;
 
@@ -10,7 +13,7 @@ import static by.imix.games.monopoly.ActionMonopolyE.THROW_CUBE;
 /**
  * Created by miha on 15.12.2014.
  */
-public class CardPrison extends CardDefault{
+public class CardPrison extends CardDefault {
     private int penalty;
 
     public CardPrison(String name,int penalty){
@@ -20,13 +23,15 @@ public class CardPrison extends CardDefault{
     }
 
     @Override
-    public void gotOnCard(GameMonopoly gameMonopoly,UserMonopoly userMonopoly) {
+    public void transferCardForUser(Room room, UserRoom userRoom) {
+        GameMonopoly gameMonopoly = (GameMonopoly) room;
         //счатаем что количество дней отдыха равно - количеству карт
         gameMonopoly.goToCard(new SecureRandom().nextInt(gameMonopoly.getListCard().size()));
     }
 
     @Override
-    public void stayFirm(GameMonopoly gameMonopoly,UserMonopoly userMonopoly) {
+    public void dropInToCard(Room room, UserRoom userRoom) {
+        UserMonopoly userMonopoly = (UserMonopoly) userRoom;
         if(userMonopoly.getPrison()!=0){
             if(userMonopoly.getPrison()<3){
                 userMonopoly.getAvailableAction().add(THROW_CUBE);

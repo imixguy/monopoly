@@ -1,7 +1,7 @@
 package by.imix.games.monopoly;
 
 import by.imix.games.gamecore.Room;
-import by.imix.games.monopoly.card.Card;
+import by.imix.games.gamecore.card.Card;
 import by.imix.games.monopoly.card.CardFirm;
 
 import java.util.Collection;

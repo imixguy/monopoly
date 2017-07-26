@@ -1,5 +1,8 @@
 package by.imix.games.monopoly.card;
 
+import by.imix.games.gamecore.Room;
+import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.card.CardDefault;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.UserMonopoly;
 import by.imix.games.monopoly.web.ActionUser;
@@ -13,7 +16,7 @@ import static by.imix.games.monopoly.ActionMonopolyE.*;
  * Created by miha on 15.12.2014.
  * Карточка налоговой инспекции или лоттореи или казино
  */
-public class CardPlusMinus extends CardDefault{
+public class CardPlusMinus extends CardDefault {
     private List<Integer> possibleShtraf;
 
     public CardPlusMinus(String name,List<Integer> possibleShtraf) {
@@ -31,7 +34,9 @@ public class CardPlusMinus extends CardDefault{
 
 
     @Override
-    public void gotOnCard(GameMonopoly gameMonopoly,UserMonopoly userMonopoly) {
+    public void transferCardForUser(Room room, UserRoom userRoom) {
+        GameMonopoly gameMonopoly = (GameMonopoly) room;
+        UserMonopoly userMonopoly = (UserMonopoly) userRoom;
         Integer pm=userMonopoly.getPenalty();
         if(pm==0) {
             pm = possibleShtraf.get(new SecureRandom().nextInt(possibleShtraf.size()));
@@ -47,6 +52,6 @@ public class CardPlusMinus extends CardDefault{
     }
 
     @Override
-    public void stayFirm(GameMonopoly gameMonopoly,UserMonopoly userMonopoly) {
+    public void dropInToCard(Room room, UserRoom userRoom) {
     }
 }

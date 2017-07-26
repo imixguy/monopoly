@@ -4,7 +4,7 @@ import by.imix.games.gamecore.ActionRoomI;
 import by.imix.games.gamecore.Room;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.UserMonopoly;
-import by.imix.games.monopoly.card.Card;
+import by.imix.games.gamecore.card.Card;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
