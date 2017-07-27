@@ -29,14 +29,14 @@ public class Auction {
         int indCU=gameMonopoly.getListUser().indexOf(gameMonopoly.getCurentUser());
         if(gameMonopoly.getListUser().size()-1!=indCU) {
             for (int i = indCU+1; i < gameMonopoly.getListUser().size(); i++) {
-                if(gameMonopoly.getListUser().get(i).getMany()>=auctionStartFirm.getPrice()) {
+                if(gameMonopoly.getListUser().get(i).getMoney()>=auctionStartFirm.getPrice()) {
                     userGoAuction.add(gameMonopoly.getListUser().get(i));
                 }
             }
         }
         if(indCU!=0){
             for (int i = 0; i < indCU; i++) {
-                if(gameMonopoly.getListUser().get(i).getMany()>auctionStartFirm.getPrice()) {
+                if(gameMonopoly.getListUser().get(i).getMoney()>auctionStartFirm.getPrice()) {
                     userGoAuction.add(gameMonopoly.getListUser().get(i));
                 }
             }
@@ -83,7 +83,7 @@ public class Auction {
             List<UserMonopoly> lr = new ArrayList<>();
             for (int i = 0; i < userGoAuction.size(); i++) {
                 if (userGoAuction.get(i) != auctionUser) {
-                    if (userGoAuction.get(i).getMany() < auctionStartFirm.getPrice()) {
+                    if (userGoAuction.get(i).getMoney() < auctionStartFirm.getPrice()) {
                         lr.add(userGoAuction.get(i));
                         ActionUser.createInstance(gameMonopoly, auctionUser, AUCTION_FOLD, auctionStartFirm);
                     }
@@ -118,15 +118,15 @@ public class Auction {
     }
 
     private void buyFirm(){
-        if(auctionUser.getMany()>auctionStartFirm.getPrice()){
+        if(auctionUser.getMoney()>auctionStartFirm.getPrice()){
             //забираем у выигравшего деньги за фирму
-            auctionUser.setMany(auctionUser.getMany()-auctionStartFirm.getPrice());
+            auctionUser.setMoney(auctionUser.getMoney()-auctionStartFirm.getPrice());
             ActionUser.createInstance(gameMonopoly,auctionUser, BUY_FIRM, auctionStartFirm);
 
             auctionStartFirm.setUserOwner(auctionUser);
 
             //объявившему аукцион отдаем заработанное на аукционе
-            gameMonopoly.getCurentUser().setMany(gameMonopoly.getCurentUser().getMany()+(auctionStartFirm.getPrice()-old_price));
+            gameMonopoly.getCurentUser().setMoney(gameMonopoly.getCurentUser().getMoney()+(auctionStartFirm.getPrice()-old_price));
             ActionUser.createInstance(gameMonopoly,auctionUser, PAY_PENALTY, (auctionStartFirm.getPrice()-old_price));
 
             auctionUser.setActivGamer(false);

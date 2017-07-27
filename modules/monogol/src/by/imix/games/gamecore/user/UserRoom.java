@@ -2,6 +2,7 @@ package by.imix.games.gamecore.user;
 
 import by.imix.games.gamecore.game.Room;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,5 +25,8 @@ public interface UserRoom extends UserGame {
     //set win flag
     boolean isWin();
 
-
+    //date last entrance
+    Date getLastIn();
+    //set date last entrance
+    void checkedTime();
 }

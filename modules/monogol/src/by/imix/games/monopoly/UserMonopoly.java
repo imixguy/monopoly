@@ -1,71 +1,54 @@
 package by.imix.games.monopoly;
 
-import by.imix.games.gamecore.UserAuction;
-import by.imix.games.gamecore.UserRoom;
-import by.imix.games.monopoly.web.ActionUser;
+import by.imix.games.gamecore.user.UserAuction;
+import by.imix.games.gamecore.user.UserCredit;
+import by.imix.games.gamecore.user.UserCube;
+import by.imix.games.gamecore.user.UserRoom;
 
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by miha on 24.12.2014.
+ * User for monopoly game
  */
-public interface UserMonopoly extends UserRoom, UserAuction{
+public interface UserMonopoly extends UserRoom, UserAuction, UserCube, UserCredit {
 
+    //player money
+    int getMoney();
+    //set player money
+    void setMoney(int many);
 
-
-    int getMany();
-    void setMany(int many);
-
+    //Penalty
     void setPenalty(int penalty);
+    //Get Penalty count
     int getPenalty();
 
+    //IndexPosition
     int getIndexPosition();
+    //set IndexPosition
     void setIndexPosition(int indexPosition);
 
-    boolean isActivGamer();
-    void setActivGamer(boolean activGamer);
-
-    //установить кредит
-    void setCredit(int credit);
-    //узнать сумму кредита
-    int getCredit();
-
+    //direction where go player forward or back
     boolean isGoForward();
+    //set direction where go player forward or back
     void setGoForward(boolean goForward);
 
-    List<ActionUser> getAndClearActionsAllUser();
-    boolean addActionUser(ActionUser actionsAllUser);
-
-    //игрок проиграл
-    boolean isLoose();
-    void setLoose(boolean key);
-
-    void setWin(boolean b);
-    boolean isWin();
-
-    //Игрок выкинул дубль
-    void throwDouble(boolean yes);
-    //Узнать сколько раз игрок выкинул дублей за ход
-    int getCountThrowDouble();
-
+    //It is list monopoly where was bought filial on current step
     Collection<Integer> getMonopByFilThisStep();
+    //Set list monopoly where was bought filial on current step
     void setMonopByFilThisStep(Collection<Integer> monopByFilThisStep);
+    //Check that this monopoly contain filial which was buy on current step
     boolean isMonopByFilThisStep(int numMonopoly);
 
-    //узнать кинул ли игрок кубик
-    boolean isThrowCubs();
-    //игрок кинул кубик
-    void setThrowCubs(boolean throwCubs);
-
-    //игрок предлагает обмен
+    //Player proposes change firm
     void doChangeFirm();
-    //установить количество обменов предложенных играком за ход, метод предназначен для обнуления результата
+    //set count changed of was proposed by player for step, need for clearing result
     void setChangeFirmCount(int changeFirmCount);
-    //узнать сколько раз игрок предлогал обмен
+    //check how many time player propose of changed
     int getChangeFirmCount();
 
+    //set prison
     void setPrison(int i);
+    //get prison
     int getPrison();
 }

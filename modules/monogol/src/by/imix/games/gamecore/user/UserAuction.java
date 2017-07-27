@@ -1,6 +1,9 @@
 package by.imix.games.gamecore.user;
 
+import by.imix.games.monopoly.web.ActionUser;
+
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -8,8 +11,7 @@ import java.util.Set;
  * User that can be participate auction
  */
 public interface UserAuction {
-    //Date of last action
-    Date getLastIn();
+
 
     //Get list all available actions for user
     Set getAvailableAction();
@@ -17,8 +19,12 @@ public interface UserAuction {
     //set list all available actions
     void setAvailableAction(Set availableAction);
 
-    //Action was done
-    void checkedTime();
+
+
+    //get ll auction user and clear
+    List<ActionUser> getAndClearActionsAllUser();
+    //add user to auction
+    boolean addActionUser(ActionUser actionsAllUser);
 
      /*Remove action
     void removeAction(String action);

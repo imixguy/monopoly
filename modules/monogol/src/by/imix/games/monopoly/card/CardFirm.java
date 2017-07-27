@@ -124,14 +124,14 @@ public class CardFirm extends CardDefault {
         UserMonopoly userMonopoly = (UserMonopoly) userRoom;
         //если фирма ничья то ее можно купить или выставить на аукцион
         if (getUserOwner() == null) {
-            if (userMonopoly.getMany() >= this.getPrice()) {
+            if (userMonopoly.getMoney() >= this.getPrice()) {
                 userMonopoly.getAvailableAction().add(BUY_FIRM);
             }
             userMonopoly.getAvailableAction().add(AUCTION_START);
         } else {
             if (userMonopoly != getUserOwner() && !isPut() ) {
                 userMonopoly.setPenalty(0 - getPenalty());
-                if(userMonopoly.getMany()>getPenalty()) {
+                if(userMonopoly.getMoney()>getPenalty()) {
                     userMonopoly.getAvailableAction().add(PAY_PENALTY);
                 }
             }else{
@@ -148,8 +148,8 @@ public class CardFirm extends CardDefault {
 
     //купить филиал
     public void buyFilial(MonopolyGame monopolyGame,UserMonopoly user){
-        if(getFilialStay()< getCountFilial() && user.getMany()>=getFilialPrice()) {
-            user.setMany(user.getMany() - getFilialPrice());
+        if(getFilialStay()< getCountFilial() && user.getMoney()>=getFilialPrice()) {
+            user.setMoney(user.getMoney() - getFilialPrice());
             setFilialStay(getFilialStay()+1);
             ActionUser.createInstance(monopolyGame, user, BUY_FILIAL, this);
         }else{
@@ -160,7 +160,7 @@ public class CardFirm extends CardDefault {
 
     public void sellFilial(MonopolyGame monopolyGame,UserMonopoly user){
         if(getUserOwner()!=null && user==getUserOwner() && getFilialStay()>0) {
-            user.setMany(user.getMany() + getFilialPrice());
+            user.setMoney(user.getMoney() + getFilialPrice());
             setFilialStay(getFilialStay()-1);
         }else{
             //штраф
@@ -171,7 +171,7 @@ public class CardFirm extends CardDefault {
     //вернуть в банк
     public void returnInBank(GameMonopoly gameMonopoly) {
         //фирму в банк деньги пользователю
-        userOwner.setMany(userOwner.getMany()+getFilialStay()*getFilialPrice()+getPrice());
+        userOwner.setMoney(userOwner.getMoney()+getFilialStay()*getFilialPrice()+getPrice());
         setUserOwner(null);
     }
 
@@ -182,7 +182,7 @@ public class CardFirm extends CardDefault {
 
     public boolean putFirm(MonopolyGame monopolyGame, UserMonopoly curentUser) {
         if(getUserOwner()==curentUser & getFilialStay()==0){
-            curentUser.setMany(curentUser.getMany()+Math.round(getPrice()/2));
+            curentUser.setMoney(curentUser.getMoney()+Math.round(getPrice()/2));
             put=true;
             return true;
         }else{
@@ -193,8 +193,8 @@ public class CardFirm extends CardDefault {
     }
 
     public boolean redeemFirm(MonopolyGame monopolyGame, UserMonopoly curentUser) {
-        if(getUserOwner()==curentUser && isPut() && curentUser.getMany()>getPrice()){
-            curentUser.setMany(curentUser.getMany()-getPrice());
+        if(getUserOwner()==curentUser && isPut() && curentUser.getMoney()>getPrice()){
+            curentUser.setMoney(curentUser.getMoney()-getPrice());
             put=false;
             return true;
         }else{

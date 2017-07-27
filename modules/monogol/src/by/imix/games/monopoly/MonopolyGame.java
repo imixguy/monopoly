@@ -157,7 +157,7 @@ public class MonopolyGame implements GameMonopoly{
         curentUser=getListUser().get(new SecureRandom().nextInt(getMaxCountUser()));
         nextGamer();
         for(UserMonopoly user:getListUser()) {
-            user.setMany(getStartMany());
+            user.setMoney(getStartMany());
             ActionUser.createInstance(this,user, START_GAME, "Hello in GameRoom");
         }
     }
@@ -290,7 +290,7 @@ public class MonopolyGame implements GameMonopoly{
 
     //получение денег за круг
     private void getManybyCircle(UserMonopoly curentUser) {
-        curentUser.setMany(curentUser.getMany() + circleMany);
+        curentUser.setMoney(curentUser.getMoney() + circleMany);
     }
 
     @Override
@@ -298,8 +298,8 @@ public class MonopolyGame implements GameMonopoly{
         if(curentUser.getAvailableAction().contains(BUY_FIRM)){
             if(listCard.get(curentUser.getIndexPosition()) instanceof CardFirm) {
                 CardFirm cardF = (CardFirm) listCard.get(curentUser.getIndexPosition());
-                if(cardF.getUserOwner()==null && curentUser.getMany()>=cardF.getPrice()) {
-                    curentUser.setMany(curentUser.getMany() - cardF.getPrice());
+                if(cardF.getUserOwner()==null && curentUser.getMoney()>=cardF.getPrice()) {
+                    curentUser.setMoney(curentUser.getMoney() - cardF.getPrice());
                     cardF.setUserOwner(curentUser);
                     ActionUser.createInstance(this,curentUser, BUY_FIRM, cardF);
                     curentUser.getAvailableAction().clear();
@@ -323,15 +323,15 @@ public class MonopolyGame implements GameMonopoly{
     @Override
     public void payPenalty() {
         if(curentUser.getAvailableAction().contains(PAY_PENALTY)){
-            if(curentUser.getPenalty()!=0 && curentUser.getMany()+curentUser.getPenalty()>=0){
+            if(curentUser.getPenalty()!=0 && curentUser.getMoney()+curentUser.getPenalty()>=0){
                 Card c=getListCard().get(curentUser.getIndexPosition());
                 if(c instanceof CardFirm){
                     CardFirm card=(CardFirm)c;
-                    card.getUserOwner().setMany(card.getUserOwner().getMany()-curentUser.getPenalty());
+                    card.getUserOwner().setMoney(card.getUserOwner().getMoney()-curentUser.getPenalty());
                     ActionUser.createInstance(this,curentUser, RECEIVE_INCOME, card.getUserOwner());
                 }
                 curentUser.getAvailableAction().clear();
-                curentUser.setMany(curentUser.getMany()-Math.abs(curentUser.getPenalty()));
+                curentUser.setMoney(curentUser.getMoney()-Math.abs(curentUser.getPenalty()));
                 ActionUser.createInstance(this,curentUser, PAY_PENALTY, curentUser);
                 curentUser.setPenalty(0);
                 //если был в тюрьме выходит из тюрьмы
@@ -380,7 +380,7 @@ public class MonopolyGame implements GameMonopoly{
             if(!canCheckPenalty(curentUser)){
                 Card card=listCard.get(getCurentUser().getIndexPosition());
                 if(card instanceof CardFirm) {
-                    if (((CardFirm)card).getUserOwner()==null && curentUser.getMany() >= ((CardFirm)card).getPrice()) {
+                    if (((CardFirm)card).getUserOwner()==null && curentUser.getMoney() >= ((CardFirm)card).getPrice()) {
                         curentUser.getAvailableAction().add(BUY_FIRM);
                     }
                 }
@@ -404,7 +404,7 @@ public class MonopolyGame implements GameMonopoly{
                     penaltyCheating(curentUser);
                 }
             }
-            if(curentUser.getMany()>price){
+            if(curentUser.getMoney()>price){
                 for(CardFirm cF:lCF) {
                     if (cF.redeemFirm(this, curentUser)) {
                         ActionUser.createInstance(this, curentUser, REDEEM_FIRM, cF);
@@ -511,7 +511,7 @@ public class MonopolyGame implements GameMonopoly{
 
     //проверка на возможность пользователя оплатить штраф
     public boolean canCheckPenalty(UserMonopoly userMonopoly){
-        if(Math.abs(curentUser.getPenalty())>0 && curentUser.getMany()>=Math.abs(curentUser.getPenalty())){
+        if(Math.abs(curentUser.getPenalty())>0 && curentUser.getMoney()>=Math.abs(curentUser.getPenalty())){
             curentUser.getAvailableAction().add(PAY_PENALTY);
             return true;
         }
@@ -663,14 +663,14 @@ public class MonopolyGame implements GameMonopoly{
                     ((CardFirm)getListCard().get(indF)).setUserOwner(objectOffers.getUser());
                     ActionUser.createInstance(this,objectOffers.getUser(), BUY_FIRM, getListCard().get(indF));
                 }
-                objectOffers.getUser().setMany(objectOffers.getUser().getMany() + objectOffers.getManyUserChanger());
-                usCH.setMany(usCH.getMany()-objectOffers.getManyUserChanger());
+                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() + objectOffers.getManyUserChanger());
+                usCH.setMoney(usCH.getMoney()-objectOffers.getManyUserChanger());
                 for (Integer indF:objectOffers.getIndFirm()){
                     ((CardFirm)getListCard().get(indF)).setUserOwner(usCH);
                     ActionUser.createInstance(this,usCH, BUY_FIRM, getListCard().get(indF));
                 }
-                objectOffers.getUser().setMany(objectOffers.getUser().getMany() - objectOffers.getMany());
-                usCH.setMany(usCH.getMany()+objectOffers.getMany());
+                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() - objectOffers.getMany());
+                usCH.setMoney(usCH.getMoney()+objectOffers.getMany());
                 ActionUser.createInstance(this,curentUser, CHANGE_FIRM_OK, objectOffers);
             }else{
                 ActionUser.createInstance(this,curentUser, CHANGE_FIRM_CANCAL, objectOffers);
@@ -684,7 +684,7 @@ public class MonopolyGame implements GameMonopoly{
                 if(card instanceof CardFirm) {
                     CardFirm cardF=(CardFirm)card;
                     if (cardF.getUserOwner() == null) {
-                        if (curentUser.getMany() >= cardF.getPrice()) {
+                        if (curentUser.getMoney() >= cardF.getPrice()) {
                             curentUser.getAvailableAction().add(BUY_FIRM);
                         }
                         curentUser.getAvailableAction().add(AUCTION_START);
@@ -820,10 +820,10 @@ public class MonopolyGame implements GameMonopoly{
                 if (c instanceof CardFirm) {
                     CardFirm card = (CardFirm) c;
                     int retM=Math.abs(user.getPenalty());
-                    if(retM>user.getMany()){
-                        retM=user.getMany();
+                    if(retM>user.getMoney()){
+                        retM=user.getMoney();
                     }
-                    card.getUserOwner().setMany(card.getUserOwner().getMany() + retM);
+                    card.getUserOwner().setMoney(card.getUserOwner().getMoney() + retM);
                     user.setPenalty(0);
                 }
             }
@@ -896,7 +896,7 @@ public class MonopolyGame implements GameMonopoly{
                 }
                 //выкупить фирму
                 if(curentUser.getPrison()==0) {
-                    if (((CardFirm) card).isPut() && userMonopoly.getMany() > ((CardFirm) card).getPrice()) {
+                    if (((CardFirm) card).isPut() && userMonopoly.getMoney() > ((CardFirm) card).getPrice()) {
                         userMonopoly.getAvailableAction().add(REDEEM_FIRM);
                         continue;
                     }

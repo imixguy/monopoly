@@ -1,7 +1,8 @@
 package by.imix.games.monopoly;
 
-import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
+import by.imix.games.gamecore.ActionRoomI;
 import by.imix.games.gamecore.card.Card;
+import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
 import by.imix.games.monopoly.web.ActionUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import rw.gcktc.cms.usermanager.User;
@@ -14,26 +15,32 @@ import java.util.*;
  */
 
 public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
-    private int many;
+    //money
+    private int money;
+    //penalty
     private int penalty;
     @JsonIgnore
     private SecureRandom rand=new SecureRandom();
+    //position of user
     private int indexPosition=0;
+    //credit for user
     private int credit;
+    //active user or not
     private boolean activGamer=false;
-    //ldb;
+    //go Forward or back;
     private boolean goForward=true;
-    //Список всех последних действий пользователей - после забора почистить
+    //List each actions of user, after execute to cleanup
     @JsonIgnore
     private List<ActionUser> actionsAllUser;
     @JsonIgnore
+    //list bought cards(firm)
     private List<Card> listBuyCard;
-    //проиграл
+    //louse
     private boolean loose=false;
-    //выиграл
+    //win
     private boolean win=false;
     @JsonIgnore
-    //бросил ли уже пользователь кубик
+    //it is checked that user threw cube
     private boolean throwCubs=false;
     //количество выкинутых дублей за один ход
     private int throwDouble=0;
@@ -43,35 +50,48 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
     private Set<Integer> monopByFilThisStep;
     //Находится ли пользователь в тюрьме и сколько ходов 0 - не находится.
     private int prison=0;
+    //list available action
+    @JsonIgnore
+    //private Set<String> listAvailableActions;
+    private Set availableAction;
 
-    public UserMonopolyImpl(){this(null, 1);}
+    public UserMonopolyImpl(){
+        this(null, 1);
+    }
 
     public UserMonopolyImpl(User user){
         this(user, 1);
     }
 
     public UserMonopolyImpl(User user, int maxCountActiveRoom) {
+        this(user, maxCountActiveRoom,0);
+    }
+
+    public UserMonopolyImpl(User user, int maxCountActiveRoom, Integer money) {
         super(user,maxCountActiveRoom);
         //setAvailableAction(new ActionMonopolyC());
-        listBuyCard=new ArrayList<>();
+
+        this.money = money;
         actionsAllUser=new ArrayList<>();
         monopByFilThisStep=new HashSet<>();
-    }
 
-    public UserMonopolyImpl(User user, int maxCountActiveRoom, Integer many) {
-        super(user,maxCountActiveRoom);
-        //setAvailableAction(new ActionMonopolyC());
-        this.many = many;
         listBuyCard=new ArrayList<>();
-        actionsAllUser=new ArrayList<>();
+        availableAction=EnumSet.noneOf(ActionRoomI.class);
     }
 
-    public int getMany() {
-        return many;
+    @Override
+    public Set getAvailableAction(){return availableAction;}
+    @Override
+    public void setAvailableAction(Set availableAction) {
+        this.availableAction = availableAction;
     }
 
-    public void setMany(int many) {
-        this.many = many;
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int many) {
+        this.money = many;
     }
 
     public int getPenalty() {

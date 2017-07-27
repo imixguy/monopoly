@@ -42,7 +42,7 @@ public class CardPlusMinus extends CardDefault {
             pm = possibleShtraf.get(new SecureRandom().nextInt(possibleShtraf.size()));
         }
         if(pm>0){
-            userMonopoly.setMany(userMonopoly.getMany() + pm);
+            userMonopoly.setMoney(userMonopoly.getMoney() + pm);
             ActionUser.createInstance(gameMonopoly,userMonopoly, RECEIVE_INCOME, userMonopoly);
             gameMonopoly.nextGamer();
         }else{
