@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="by.imix.games.monopoly"/>
+    <context:component-scan base-package="by.imix.games.gamecore.implDefault"/>
+    <context:component-scan base-package="by.imix.games.gamecore.implDefault"/>
+
+    <bean id="room" class="by.imix.games.gamecore.implDefault.SpringRoom" scope="prototype">
+        <property name="maxCountUser" value="4"/>
+    </bean>
+
+    <bean id="roomCreator" class="by.imix.games.gamecore.implDefault.Creator">
+        <lookup-method name="createRoom" bean="room"/>
+        <lookup-method name="createUser" bean="userMonopoly" />
+    </bean>
+
+
+    <bean id="gameCreator" class="by.imix.games.monopoly.web.GameCreator">
+        <lookup-method name="createGame" bean="monopolyGame"/>
+    </bean>
+
+    <bean id="userMonopoly" class="by.imix.games.monopoly.UserMonopolyImpl" scope="prototype">
+    </bean>
+
+
+    <bean id="imaginariumGame" class="by.imix.games.imaginarium." scope="prototype">
+        <constructor-arg name="listCard">
+            <list>
+
+
+            </list>
+        </constructor-arg>
+        <property name="imageFolder" value="imaginarium"/>
+        <property name="imageCenter" value="center.jpg"/>
+    </bean>
+</beans>
