@@ -1,8 +1,8 @@
 package by.imix.games.monopoly;
 
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.UserRoom;
 import by.imix.games.gamecore.card.Card;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 import by.imix.games.monopoly.card.CardFirm;
 import by.imix.games.monopoly.card.CardPrison;
 import by.imix.games.monopoly.web.ActionUser;
@@ -90,8 +90,9 @@ public class MonopolyGame implements GameMonopoly{
 
     @Override
     public boolean addUser(UserRoom user) {
+        UserMonopoly mUser= (UserMonopoly) user;
         if(room.addUser(user)){
-            user.setAvailableAction(EnumSet.noneOf(ActionMonopolyE.class));
+            mUser.setAvailableAction(EnumSet.noneOf(ActionMonopolyE.class));
             if(isOpenRoom()){
                 return true;
             }else{

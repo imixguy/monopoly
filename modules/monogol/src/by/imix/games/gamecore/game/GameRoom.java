@@ -1,6 +1,7 @@
 package by.imix.games.gamecore.game;
 
-import by.imix.games.gamecore.Room;
+
+import by.imix.games.gamecore.user.UserRoom;
 
 import java.util.List;
 

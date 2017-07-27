@@ -1,6 +1,6 @@
 package by.imix.games.gamecore.game;
 
-import by.imix.games.gamecore.*;
+import by.imix.games.gamecore.user.UserRoom;
 
 import java.util.List;
 
@@ -10,15 +10,15 @@ import java.util.List;
  */
 public interface RoomManager {
     //create room
-    by.imix.games.gamecore.Room createRoom();
+    Room createRoom();
     //get list all room
-    List<? extends by.imix.games.gamecore.Room> getAllRoom();
+    List<? extends Room> getAllRoom();
     //get list room for specific user
-    List<? extends by.imix.games.gamecore.Room> getAllPermissionRoom();
+    List<? extends Room> getAllPermissionRoom();
     //get roum about number
-    by.imix.games.gamecore.Room getRoomByNumber(long numberRoom);
+    Room getRoomByNumber(long numberRoom);
     //get room about user
-    List<? extends by.imix.games.gamecore.Room> getRoomByUser();
+    List<? extends Room> getRoomByUser();
     //get user about room
     UserRoom getUser();
 }

@@ -1,9 +1,9 @@
 package by.imix.games.imaginarium;
 
-import by.imix.games.gamecore.GameRoomDefault;
-import by.imix.games.gamecore.Room;
 import by.imix.games.gamecore.card.Card;
-import by.imix.games.monopoly.UserMonopoly;
+import by.imix.games.gamecore.game.GameRoomDefault;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 
 import java.util.List;
 
@@ -43,7 +43,17 @@ public class GameRoomImaginariumDefault extends GameRoomDefault implements GameR
 
     /**{@inheritDoc}*/
     @Override
-    public UserMonopoly getCurentUser() {
+    public UserRoom getCurentUser() {
         return null;
+    }
+
+    @Override
+    public void gameEnd(UserRoom user) {
+
+    }
+
+    @Override
+    public void gameClose(UserRoom user) {
+
     }
 }

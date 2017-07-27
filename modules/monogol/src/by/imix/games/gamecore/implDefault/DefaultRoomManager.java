@@ -1,10 +1,10 @@
 package by.imix.games.gamecore.implDefault;
 
 import by.imix.games.gamecore.ActionRoomI;
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.RoomManager;
-import by.imix.games.gamecore.UserRoom;
-import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.game.RoomManager;
+import by.imix.games.gamecore.user.UserAuction;
+import by.imix.games.gamecore.user.UserRoom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +100,7 @@ public class DefaultRoomManager implements RoomManager {
             if (userD == null) {
                 userD = creator.createUser();
                 userD.setUser(getWebUser());
-                ((DefaultUserRoom)userD).getAvailableAction().add(ActionRoomI.CREATE_ROOM);
+                ((UserAuction)userD).getAvailableAction().add(ActionRoomI.CREATE_ROOM);
                 listUserRoom.put(user.getName(), userD);
             }
             userD.checkedTime();

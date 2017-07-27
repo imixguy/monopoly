@@ -15,65 +15,65 @@ import static by.imix.games.monopoly.ActionMonopolyE.*;
  */
 public class Auction {
     private GameMonopoly gameMonopoly;
-    private UserMonopoly auctionUser=null;
-    private CardFirm auctionStartFirm=null;
-    private List<UserMonopoly> userGoAuction=null;
+    private UserMonopoly auctionUser = null;
+    private CardFirm auctionStartFirm = null;
+    private List<UserMonopoly> userGoAuction = null;
     private int old_price;
 
     public Auction(GameMonopoly gameMonopoly) {
-        this.gameMonopoly=gameMonopoly;
-        auctionStartFirm=(CardFirm)gameMonopoly.getListCard().get(gameMonopoly.getCurentUser().getIndexPosition());
-        old_price=auctionStartFirm.getPrice();
+        this.gameMonopoly = gameMonopoly;
+        auctionStartFirm = (CardFirm) gameMonopoly.getListCard().get(gameMonopoly.getCurentUser().getIndexPosition());
+        old_price = auctionStartFirm.getPrice();
         //priceTop=Math.round(old_price/10);
-        userGoAuction=new ArrayList<>();
-        int indCU=gameMonopoly.getListUser().indexOf(gameMonopoly.getCurentUser());
-        if(gameMonopoly.getListUser().size()-1!=indCU) {
-            for (int i = indCU+1; i < gameMonopoly.getListUser().size(); i++) {
-                if(gameMonopoly.getListUser().get(i).getMoney()>=auctionStartFirm.getPrice()) {
+        userGoAuction = new ArrayList<>();
+        int indCU = gameMonopoly.getListUser().indexOf(gameMonopoly.getCurentUser());
+        if (gameMonopoly.getListUser().size() - 1 != indCU) {
+            for (int i = indCU + 1; i < gameMonopoly.getListUser().size(); i++) {
+                if (gameMonopoly.getListUser().get(i).getMoney() >= auctionStartFirm.getPrice()) {
                     userGoAuction.add(gameMonopoly.getListUser().get(i));
                 }
             }
         }
-        if(indCU!=0){
+        if (indCU != 0) {
             for (int i = 0; i < indCU; i++) {
-                if(gameMonopoly.getListUser().get(i).getMoney()>auctionStartFirm.getPrice()) {
+                if (gameMonopoly.getListUser().get(i).getMoney() > auctionStartFirm.getPrice()) {
                     userGoAuction.add(gameMonopoly.getListUser().get(i));
                 }
             }
         }
-        ActionUser.createInstance(gameMonopoly,gameMonopoly.getCurentUser(), AUCTION_START, auctionStartFirm);
+        ActionUser.createInstance(gameMonopoly, gameMonopoly.getCurentUser(), AUCTION_START, auctionStartFirm);
     }
 
     public void nextGamer() {
-        if(userGoAuction.size()==0){
-            ActionUser.createInstance(gameMonopoly,gameMonopoly.getCurentUser(), AUCTION_BRACK, null);
+        if (userGoAuction.size() == 0) {
+            ActionUser.createInstance(gameMonopoly, gameMonopoly.getCurentUser(), AUCTION_BRACK, null);
             gameMonopoly.stopAuction();
             return;
         }
-        if(auctionUser==null){
-            auctionUser=userGoAuction.get(0);
-        }else{
+        if (auctionUser == null) {
+            auctionUser = userGoAuction.get(0);
+        } else {
             auctionUser.setActivGamer(false);
-            if(userGoAuction.get(userGoAuction.size()-1)==auctionUser){
-                auctionUser=userGoAuction.get(0);
-            }else{
-                auctionUser=userGoAuction.get(userGoAuction.indexOf(auctionUser)+1);
+            if (userGoAuction.get(userGoAuction.size() - 1) == auctionUser) {
+                auctionUser = userGoAuction.get(0);
+            } else {
+                auctionUser = userGoAuction.get(userGoAuction.indexOf(auctionUser) + 1);
             }
         }
-        if(userGoAuction.size()==1 && auctionStartFirm.getPrice() > old_price) {
+        if (userGoAuction.size() == 1 && auctionStartFirm.getPrice() > old_price) {
             buyFirm();
             return;
         }
         auctionUser.setActivGamer(true);
-        Set sdf= auctionUser.getAvailableAction();
-        sdf.addAll(EnumSet.of(AUCTION_BUY,AUCTION_FOLD));
-        ActionUser.createInstance(gameMonopoly,auctionUser, AUCTION_CHANGE_USER, auctionStartFirm);
+        Set sdf = auctionUser.getAvailableAction();
+        sdf.addAll(EnumSet.of(AUCTION_BUY, AUCTION_FOLD));
+        ActionUser.createInstance(gameMonopoly, auctionUser, AUCTION_CHANGE_USER, auctionStartFirm);
     }
 
-    public void auctionBuy(){
-        if(auctionUser.getAvailableAction().contains(AUCTION_BUY)) {
+    public void auctionBuy() {
+        if (auctionUser.getAvailableAction().contains(AUCTION_BUY)) {
             auctionUser.getAvailableAction().clear();
-            if(userGoAuction.size()==1){
+            if (userGoAuction.size() == 1) {
                 buyFirm();
                 return;
             }
@@ -91,43 +91,43 @@ public class Auction {
             }
             userGoAuction.removeAll(lr);
             nextGamer();
-        }else{
+        } else {
             //штраф
             gameMonopoly.penaltyCheating(auctionUser);
         }
     }
 
-    public void auctionFold(){
-        if(auctionUser.getAvailableAction().contains(AUCTION_FOLD)) {
+    public void auctionFold() {
+        if (auctionUser.getAvailableAction().contains(AUCTION_FOLD)) {
             auctionUser.getAvailableAction().clear();
             userGoAuction.remove(auctionUser);
             ActionUser.createInstance(gameMonopoly, auctionUser, AUCTION_FOLD, null);
-            if(userGoAuction.size()==0){
+            if (userGoAuction.size() == 0) {
                 auctionUser.setActivGamer(false);
                 ActionUser.createInstance(gameMonopoly, auctionUser, AUCTION_BRACK, null);
                 auctionStartFirm.setPrice(old_price);
                 gameMonopoly.stopAuction();
                 return;
-            }else {
+            } else {
                 nextGamer();
             }
-        }else{
+        } else {
             //штраф
             gameMonopoly.penaltyCheating(auctionUser);
         }
     }
 
-    private void buyFirm(){
-        if(auctionUser.getMoney()>auctionStartFirm.getPrice()){
+    private void buyFirm() {
+        if (auctionUser.getMoney() > auctionStartFirm.getPrice()) {
             //забираем у выигравшего деньги за фирму
-            auctionUser.setMoney(auctionUser.getMoney()-auctionStartFirm.getPrice());
-            ActionUser.createInstance(gameMonopoly,auctionUser, BUY_FIRM, auctionStartFirm);
+            auctionUser.setMoney(auctionUser.getMoney() - auctionStartFirm.getPrice());
+            ActionUser.createInstance(gameMonopoly, auctionUser, BUY_FIRM, auctionStartFirm);
 
             auctionStartFirm.setUserOwner(auctionUser);
 
             //объявившему аукцион отдаем заработанное на аукционе
-            gameMonopoly.getCurentUser().setMoney(gameMonopoly.getCurentUser().getMoney()+(auctionStartFirm.getPrice()-old_price));
-            ActionUser.createInstance(gameMonopoly,auctionUser, PAY_PENALTY, (auctionStartFirm.getPrice()-old_price));
+            gameMonopoly.getCurentUser().setMoney(gameMonopoly.getCurentUser().getMoney() + (auctionStartFirm.getPrice() - old_price));
+            ActionUser.createInstance(gameMonopoly, auctionUser, PAY_PENALTY, (auctionStartFirm.getPrice() - old_price));
 
             auctionUser.setActivGamer(false);
         }

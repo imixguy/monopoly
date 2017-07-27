@@ -1,7 +1,7 @@
 package by.imix.games.gamecore.implDefault;
 
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;

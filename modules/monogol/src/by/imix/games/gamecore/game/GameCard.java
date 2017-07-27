@@ -1,6 +1,5 @@
 package by.imix.games.gamecore.game;
 
-import by.imix.games.gamecore.GameRoom;
 import by.imix.games.gamecore.card.Card;
 
 import java.util.List;

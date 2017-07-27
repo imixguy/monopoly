@@ -1,7 +1,7 @@
 package by.imix.games.monopoly;
 
-import by.imix.games.gamecore.Room;
 import by.imix.games.gamecore.card.Card;
+import by.imix.games.gamecore.game.Room;
 import by.imix.games.monopoly.card.CardFirm;
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * Created by miha on 25.12.2014.
  */
-public interface GameMonopoly extends Room{
+public interface GameMonopoly extends Room {
     Room getRoom();
     void setRoom(Room room);
 

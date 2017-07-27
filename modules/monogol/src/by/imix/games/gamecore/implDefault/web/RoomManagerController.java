@@ -1,8 +1,8 @@
 package by.imix.games.gamecore.implDefault.web;
 
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.RoomManager;
-import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.game.RoomManager;
+import by.imix.games.gamecore.user.UserRoom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

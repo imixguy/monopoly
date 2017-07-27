@@ -1,7 +1,7 @@
 package by.imix.games.monopoly.web;
 
-import by.imix.games.gamecore.RoomManager;
-import by.imix.games.gamecore.UserRoom;
+import by.imix.games.gamecore.game.RoomManager;
+import by.imix.games.gamecore.user.UserRoom;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.UserMonopoly;
 import org.springframework.beans.factory.annotation.Autowired;

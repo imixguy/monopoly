@@ -1,7 +1,8 @@
 package by.imix.games.gamecore.implDefault;
 
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.UserRoom;
+
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 
 /**
  * Created by miha on 07.01.2015.

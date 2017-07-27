@@ -1,14 +1,14 @@
 package by.imix.games.gamecore.game;
 
-import by.imix.games.gamecore.*;
-import by.imix.games.monopoly.UserMonopoly;
+
+import by.imix.games.gamecore.user.UserRoom;
 
 import java.util.List;
 
 /**
  * Created by miha on 26.07.2017.
  */
-public class GameRoomDefault implements by.imix.games.gamecore.GameRoom {
+public class GameRoomDefault implements GameRoom {
     @Override
     public Room getRoom() {
         return null;

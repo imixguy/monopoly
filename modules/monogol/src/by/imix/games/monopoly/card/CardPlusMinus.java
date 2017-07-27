@@ -1,8 +1,8 @@
 package by.imix.games.monopoly.card;
 
-import by.imix.games.gamecore.Room;
-import by.imix.games.gamecore.UserRoom;
 import by.imix.games.gamecore.card.CardDefault;
+import by.imix.games.gamecore.game.Room;
+import by.imix.games.gamecore.user.UserRoom;
 import by.imix.games.monopoly.GameMonopoly;
 import by.imix.games.monopoly.UserMonopoly;
 import by.imix.games.monopoly.web.ActionUser;
@@ -10,7 +10,8 @@ import by.imix.games.monopoly.web.ActionUser;
 import java.security.SecureRandom;
 import java.util.List;
 
-import static by.imix.games.monopoly.ActionMonopolyE.*;
+import static by.imix.games.monopoly.ActionMonopolyE.GET_PENALTY;
+import static by.imix.games.monopoly.ActionMonopolyE.RECEIVE_INCOME;
 
 /**
  * Created by miha on 15.12.2014.

@@ -1,5 +1,10 @@
 package by.imix.games.imaginarium;
 
+import by.imix.games.gamecore.game.Room;
+
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by Mikhail_Kachanouski on 7/26/2017.
  */
@@ -24,17 +29,6 @@ public class UserImaginariumImpl implements UserImaginarium{
 
     }
 
-
-    @Override
-    public void setCredit(int credit) {
-
-    }
-
-    @Override
-    public int getCredit() {
-        return 0;
-    }
-
     @Override
     public boolean isGoForward() {
         return false;
@@ -46,13 +40,8 @@ public class UserImaginariumImpl implements UserImaginarium{
     }
 
     @Override
-    public List<ActionUser> getAndClearActionsAllUser() {
+    public List<Room> getActiveRooms() {
         return null;
-    }
-
-    @Override
-    public boolean addActionUser(ActionUser actionsAllUser) {
-        return false;
     }
 
     @Override
@@ -76,62 +65,32 @@ public class UserImaginariumImpl implements UserImaginarium{
     }
 
     @Override
-    public void throwDouble(boolean yes) {
-
-    }
-
-    @Override
-    public int getCountThrowDouble() {
-        return 0;
-    }
-
-    @Override
-    public Collection<Integer> getMonopByFilThisStep() {
+    public Date getLastIn() {
         return null;
     }
 
     @Override
-    public void setMonopByFilThisStep(Collection<Integer> monopByFilThisStep) {
+    public void checkedTime() {
 
     }
 
     @Override
-    public boolean isMonopByFilThisStep(int numMonopoly) {
+    public void setUser(Object user) {
+
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public boolean isActivGamer() {
         return false;
     }
 
     @Override
-    public boolean isThrowCubs() {
-        return false;
-    }
+    public void setActivGamer(boolean activGamer) {
 
-    @Override
-    public void setThrowCubs(boolean throwCubs) {
-
-    }
-
-    @Override
-    public void doChangeFirm() {
-
-    }
-
-    @Override
-    public void setChangeFirmCount(int changeFirmCount) {
-
-    }
-
-    @Override
-    public int getChangeFirmCount() {
-        return 0;
-    }
-
-    @Override
-    public void setPrison(int i) {
-
-    }
-
-    @Override
-    public int getPrison() {
-        return 0;
     }
 }
