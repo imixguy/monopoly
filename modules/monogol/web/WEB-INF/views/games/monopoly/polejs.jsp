@@ -84,7 +84,7 @@ var langEn={
     TAKE_CREDIT:"Take credit",
     GIVE_CREDIT:"Give credit",
     PUT_FIRM:"Put firm",
-    REDEEM_FIRM:"Redeem fFirm",
+    REDEEM_FIRM:"Redeem Firm",
     CHANGE_FIRM:"Change firm",
     SELL_FILIAL:"Sell filial",
     PAY_PENALTY:"Pay penalty",
@@ -114,7 +114,7 @@ Fishka.prototype = {
         this.vid=$('<div style="border-radius:'+r+'px;display:inline;margin:auto;text-align:center;width:'+r+'px;height:'+r+'px; background-color: '+this.colorF[this.numF-1]+';border: 3px solid white;"><span style="color:'+this.colorText[this.numF-1]+'font-weight:bold;font-size:'+this.size.fontsize+'pt;">'+this.numF+'</span></div>')
         this.vid.hide().show();
     }
-}      //"many":100000,"penalty":0,"indexPosition":0,"credit":0,"activGamer":false,"goForward":true,"name":"admin"
+}      //"money":100000,"penalty":0,"indexPosition":0,"credit":0,"activGamer":false,"goForward":true,"name":"admin"
 
 var Gamer=Class.create();
 Gamer.prototype = {
@@ -130,17 +130,17 @@ Gamer.prototype = {
         this.vid=$('<div style="border-radius: '+this.gameM.actSize.fontsize+'px;font-size:'+this.gameM.actSize.fontsize+'pt;position:relative; display:inline-block;vertical-align:top;width: '+(v-20)+'px;height: '+(t-20)+'px; background-color: '+this.fishka.colorF[this.fishka.numF-1]+';background-image: url(/resources/images/games/'+this.gameM.room.imageFolder+'/setka.png);margin: 5px;"><div style="color:'+this.fishka.colorText[this.fishka.numF-1]+';margin: 5px;">'+this.fishka.numF+' '+this.user.name+'</div></div>');
         this.bord=$('<img style="border-radius: '+this.gameM.actSize.fontsize+'px;position:absolute; top:0; left:0;" src="/resources/images/games/'+this.gameM.room.imageFolder+'/ramka.png" width="'+(v-20)+'px" height="'+(t-20)+'px"/>');
         this.vid.append(this.bord);
-        this.manyV=$('<div style="color:'+this.fishka.colorText[this.fishka.numF-1]+';margin: 5px;">Деньги: '+this.user.many+'</div>');
+        this.moneyV=$('<div style="color:'+this.fishka.colorText[this.fishka.numF-1]+';margin: 5px;">Деньги: '+this.user.money+'</div>');
         this.penaltyV=$('<div style="color:'+this.fishka.colorText[this.fishka.numF-1]+';margin: 5px;">Штраф: '+this.user.penalty+'</div>');
         if(this.user.penalty==0){
             this.penaltyV.hide();
         }
-        //this.manyV=$('<div>'+this.user.c+'</div>');
-        this.vid.append(this.manyV).append(this.penaltyV);//.append;
+        //this.moneyV=$('<div>'+this.user.c+'</div>');
+        this.vid.append(this.moneyV).append(this.penaltyV);//.append;
         this.updateVid();
     },
     updateVid:function(){
-        this.manyV.text("Деньги: "+this.user.many);
+        this.moneyV.text("Деньги: "+this.user.money);
         if(this.user.penalty!=0){
             this.penaltyV.text("Штраф: "+Math.abs(this.user.penalty));
             this.penaltyV.show();
@@ -185,11 +185,11 @@ Card.prototype = {
         }
         var info=$('<div style="color:white;font-size:'+this.gameM.actSize.fontsize+'pt;position: absolute; z-index: -5; top: 0;left: 0;width:100%;height:100%;">').append(this.infoFirm);
         if(this.obj.price){
-            this.infoManyBG=$('<div style="z-index:-5;position:relative;background-image: url(/resources/images/games/'+this.gameM.room.imageFolder+'/setka.png);">').css('height',Math.round(this.h/4)+'px').css('width',this.w+'px');
-            this.infoMany=$('<div style="position: absolute; z-index: -2; top: 0;left: 0;text-align: center; vertical-align: middle;display: table-cell;">');
-            this.infoMany.css('height',Math.round(this.h/4)+'px').css('width',this.w+'px').text(this.obj.price);
-            this.infoManyBG.append(this.infoMany);
-            info.append(this.infoManyBG);
+            this.infoMoneyBG=$('<div style="z-index:-5;position:relative;background-image: url(/resources/images/games/'+this.gameM.room.imageFolder+'/setka.png);">').css('height',Math.round(this.h/4)+'px').css('width',this.w+'px');
+            this.infoMoney=$('<div style="position: absolute; z-index: -2; top: 0;left: 0;text-align: center; vertical-align: middle;display: table-cell;">');
+            this.infoMoney.css('height',Math.round(this.h/4)+'px').css('width',this.w+'px').text(this.obj.price);
+            this.infomoneyBG.append(this.infomoney);
+            info.append(this.infoMoneyBG);
         }
         this.infoFirm=$('<div style="text-align: center; vertical-align: middle;">').css('height',Math.round((this.h/4)*3)+'px').css('width',this.w+'px');
         this.infoFirm.text(this.obj.name);
@@ -210,18 +210,18 @@ Card.prototype = {
         }
     },
     sellFirm:function(){
-        this.infoManyBG.css("background-color","");
-        this.infoMany.text(this.obj.price);
+        this.infoMoneyBG.css("background-color","");
+        this.infoMoney.text(this.obj.price);
     },
     buyFirm:function(gamer){
-        this.infoManyBG.css("background-color",gamer.fishka.colorF[gamer.fishka.numF-1]);
+        this.infoMoneyBG.css("background-color",gamer.fishka.colorF[gamer.fishka.numF-1]);
         this.obj.userOwner=gamer;
         this.recalculatePenalty();
     },
     recalculatePenalty:function(){
-        this.infoMany.text(this.obj.price);
+        this.infoMoney.text(this.obj.price);
         if(this.obj.userOwner!=null && !this.obj.put){
-            this.infoMany.text(Math.round(this.obj.price/5+(this.obj.price*(this.obj.filialStay*this.obj.filialStay))/10));
+            this.infoMoney.text(Math.round(this.obj.price/5+(this.obj.price*(this.obj.filialStay*this.obj.filialStay))/10));
         }
     },
     goOn:function(gamer){ //фишка попала на поле
@@ -236,10 +236,10 @@ Card.prototype = {
         this.getSelectVid();
         this.vid.append(this.selectVid);
         if(action=='BUY_FILIAL' || action=='SELL_FILIAL'){
-            this.infoMany.text(this.obj.priceFilial);
+            this.infoMoney.text(this.obj.priceFilial);
         }
         if(action=='PUT_FIRM'){
-            this.infoMany.text(this.obj.price/2);
+            this.infoMoney.text(this.obj.price/2);
         }
         this.vkldf=function(){
             thisEl.infocard.off('click',thisEl.vkldf).on('click',thisEl.vkldf2);
@@ -291,7 +291,7 @@ Card.prototype = {
         var thisEl=this;
         this.getSelectVid2();
         this.vid.append(this.selectVid2);
-        this.infoMany.text(this.obj.price);
+        this.infoMoney.text(this.obj.price);
         this.vkldf3=function(){
             thisEl.infocard.off('click',thisEl.vkldf3).on('click',thisEl.vkldf4);
             thisEl.listVid.on('click',thisEl.vkldf4);
@@ -316,7 +316,7 @@ Card.prototype = {
             this.putVid=$('<div style="background:red;position:absolute;z-index:20;top:0;left:0;width:'+this.w+'px;height:'+this.h+'px;opacity:0.4"></div>');
         }
         this.vid.append(this.putVid);
-        this.infoMany.text(this.obj.price);
+        this.infoMoney.text(this.obj.price);
     },
     redeemFirm:function(){
         this.putVid.remove();
@@ -345,7 +345,7 @@ Card.prototype = {
     buyFilial:function(){
         if(this.poleStar==null){
             this.poleStar=$('<div style="position: absolute; z-index: -3; top: 0;left: 0;text-align: center; vertical-align: middle;display: table-cell;">').css('height',Math.round(this.h/4)+'px').css('width',this.w+'px');
-            this.infoManyBG.append(this.poleStar);
+            this.infoMoneyBG.append(this.poleStar);
         }
         var imgS='zvezd01.png';
         var razm=Math.round(this.gameM.actSize.shMc/4)-3;
@@ -482,7 +482,7 @@ var gameMonopoly={
                                 card.buyFirm(gamerA);
                                 thisEl.panelAuction.hide();
                             }
-                            if(data.listAction[i].action == "NOT_MANY"){
+                            if(data.listAction[i].action == "NOT_MONEY"){
                                 this.loginfo('У вас не достаточно денег. Нужно '+data.listAction[i].infoAction);
                             }
                             if (data.listAction[i].action == "RECEIVE_INCOME") {
@@ -544,10 +544,10 @@ var gameMonopoly={
     razborExchOff:function(data){
         this.changePanel.userSelect.append('<option value="' + data.userChanger.name + '">' + data.userChanger.name + '</option>');
         this.changePanel.userSelect.attr("disabled","disabled");
-        this.changePanel.myMany.attr("disabled","disabled");
-        this.changePanel.myMany.val(data.many);
-        this.changePanel.apponentMany.attr("disabled","disabled");
-        this.changePanel.apponentMany.val(data.manyUserChanger);
+        this.changePanel.myMoney.attr("disabled","disabled");
+        this.changePanel.myMoney.val(data.money);
+        this.changePanel.apponentMoney.attr("disabled","disabled");
+        this.changePanel.apponentMoney.val(data.moneyUserChanger);
         for(var i=0;i<data.indFirmUserChanger.length;i++){
             var card=this.listCard[data.indFirmUserChanger[i]];
             this.changePanel.apponentSelect.append(card.listVid);
@@ -574,10 +574,10 @@ var gameMonopoly={
     cleanChPanel:function(data,panelBut){
         this.changePanel.userSelect.empty();
         this.changePanel.userSelect.removeAttr("disabled");
-        this.changePanel.myMany.removeAttr("disabled");
-        this.changePanel.myMany.val(0);
-        this.changePanel.apponentMany.removeAttr("disabled");
-        this.changePanel.apponentMany.val(0);
+        this.changePanel.myMoney.removeAttr("disabled");
+        this.changePanel.myMoney.val(0);
+        this.changePanel.apponentMoney.removeAttr("disabled");
+        this.changePanel.apponentMoney.val(0);
         this.changePanel.mySelect.empty();
         this.changePanel.apponentSelect.empty();
         for(var i=0;i<data.indFirmUserChanger.length;i++){
@@ -849,8 +849,8 @@ var gameMonopoly={
         var panelChMy=$('<div style="width:'+(this.actSize.shCPl/2)+'px;height:'+(t-2)+'px;float:left;"></div>');
         var panelCh2=$('<div style="width:'+(this.actSize.shCPl/2)+'px;height:'+(t-2)+'px;float:left;"></div>');
         ochf.mySelect=$('<div style="border:1px solid gray;margin: 3px;height:'+(t-100)+'px;overflow:auto;"></div>');
-        ochf.myMany=$('<input type="text" style="background: black; color:#ffffff;">');
-        panelChMy.append('<div style="height:22px;">Вы</div>').append(ochf.mySelect).append($('<div style="padding: 3px;">').append(ochf.myMany));
+        ochf.myMoney=$('<input type="text" style="background: black; color:#ffffff;">');
+        panelChMy.append('<div style="height:22px;">Вы</div>').append(ochf.mySelect).append($('<div style="padding: 3px;">').append(ochf.myMoney));
         ochf.userSelect=$('<select style="background: black; color:#ffffff;margin: 3px;">');
         ochf.userSelect.change(function(){
             for(var i=0;i<thisEl.listCard.length;i++){
@@ -861,7 +861,7 @@ var gameMonopoly={
             thisEl.getPossibleFirm("CHANGE_FIRM",this.value);
         });
         ochf.apponentSelect=$('<div style="border:1px solid gray;margin: 3px;height:'+(t-100)+'px;overflow:auto;">');
-        ochf.apponentMany=$('<input type="text" style="background: black; color:#ffffff;">');
+        ochf.apponentMoney=$('<input type="text" style="background: black; color:#ffffff;">');
         ochf.panelBut=$('<div>')
                 .append($('<button>ok</button>').click(function(){
                     thisEl.actionsUser("CHANGE_FIRM","change_firmObr");
@@ -870,7 +870,7 @@ var gameMonopoly={
                 .append($('<button>Отмена</button>').click(function(){
                     thisEl.cancalChangeFirm();
                 }));
-        panelCh2.append($('<div style="height:22px;">').append(ochf.userSelect)).append(ochf.apponentSelect).append($('<div style="padding: 3px;">').append(ochf.apponentMany)).append(ochf.panelBut);
+        panelCh2.append($('<div style="height:22px;">').append(ochf.userSelect)).append(ochf.apponentSelect).append($('<div style="padding: 3px;">').append(ochf.apponentMoney)).append(ochf.panelBut);
 
         ochf.vid.append(panelChMy).append(panelCh2);
         this.changePanel=ochf;
@@ -929,9 +929,9 @@ var gameMonopoly={
         this.listSelectFirm=[];
         this.listSelectFirm2=[];
         this.changePanel.apponentSelect.empty();
-        this.changePanel.apponentMany.val("");
+        this.changePanel.apponentMoney.val("");
         this.changePanel.mySelect.empty();
-        this.changePanel.myMany.val("");
+        this.changePanel.myMoney.val("");
         this.changePanel.vid.hide();
     },
     throw_cubeObr:function(data,fishka,ind){
@@ -1051,12 +1051,12 @@ var gameMonopoly={
                 jQuery.ajaxSettings.traditional = true;
                 typeReq="POST";
                 datat="html";
-                var many1=parseInt(this.changePanel.myMany.val());
-                if(isNaN(many1)){many1=0;}
-                var many2=parseInt(this.changePanel.apponentMany.val());
-                if(isNaN(many2)){many2=0;}
+                var money1=parseInt(this.changePanel.myMoney.val());
+                if(isNaN(money1)){money1=0;}
+                var money2=parseInt(this.changePanel.apponentMoney.val());
+                if(isNaN(money2)){money2=0;}
 //                'indFirmUserChanger': this.listSelectFirm,'indFirm': this.listSelectFirm2,
-                datas = {'indFirmUserChanger': this.listSelectFirm,'indFirm':this.listSelectFirm2,'manyUserChanger':many1,'many':many2, 'userName':this.changePanel.userSelect.val()};
+                datas = {'indFirmUserChanger': this.listSelectFirm,'indFirm':this.listSelectFirm2,'moneyUserChanger':money1,'money':money2, 'userName':this.changePanel.userSelect.val()};
 //                alert(datas);
             }
         }

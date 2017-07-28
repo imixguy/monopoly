@@ -36,9 +36,9 @@ public class MonopolyGame implements GameMonopoly{
     //Текущий пользователь
     private UserMonopoly curentUser=null;
     //Деньги за круг
-    private int circleMany;
+    private int circleMoney;
     //стартовые деньги
-    private int startMany;
+    private int startMoney;
     //возможный кредит
     private int credit;
 
@@ -48,20 +48,20 @@ public class MonopolyGame implements GameMonopoly{
         this.listCard = listCard;
     }
 
-    public int getStartMany() {
-        return startMany;
+    public int getStartMoney() {
+        return startMoney;
     }
 
-    public void setStartMany(int startMany) {
-        this.startMany = startMany;
+    public void setStartMoney(int startMoney) {
+        this.startMoney = startMoney;
     }
 
-    public int getCircleMany() {
-        return circleMany;
+    public int getCircleMoney() {
+        return circleMoney;
     }
 
-    public void setCircleMany(int circleMany) {
-        this.circleMany = circleMany;
+    public void setCircleMoney(int circleMoney) {
+        this.circleMoney = circleMoney;
     }
 
     public List<Card> getListCard() {
@@ -158,7 +158,7 @@ public class MonopolyGame implements GameMonopoly{
         curentUser=getListUser().get(new SecureRandom().nextInt(getMaxCountUser()));
         nextGamer();
         for(UserMonopoly user:getListUser()) {
-            user.setMoney(getStartMany());
+            user.setMoney(getStartMoney());
             ActionUser.createInstance(this,user, START_GAME, "Hello in GameRoom");
         }
     }
@@ -290,8 +290,8 @@ public class MonopolyGame implements GameMonopoly{
     }
 
     //получение денег за круг
-    private void getManybyCircle(UserMonopoly curentUser) {
-        curentUser.setMoney(curentUser.getMoney() + circleMany);
+    private void getMoneybyCircle(UserMonopoly curentUser) {
+        curentUser.setMoney(curentUser.getMoney() + circleMoney);
     }
 
     @Override
@@ -415,7 +415,7 @@ public class MonopolyGame implements GameMonopoly{
                     }
                 }
             }else{
-                ActionUser.createInstance(this, curentUser, NOT_MANY, price);
+                ActionUser.createInstance(this, curentUser, NOT_MONEY, price);
             }
         }else{
             penaltyCheating(curentUser);
@@ -631,7 +631,7 @@ public class MonopolyGame implements GameMonopoly{
 
     private ChangeFirm objectOffers;
     @Override
-    public void changeFirm(Set<Integer> indFirm, Set<Integer> indFirm2, int many, int many2, String userName) {
+    public void changeFirm(Set<Integer> indFirm, Set<Integer> indFirm2, int money, int money2, String userName) {
         if(curentUser.getAvailableAction().contains(CHANGE_FIRM)){
             UserMonopoly umA=getUserByName(userName);
             if(umA==null){
@@ -643,7 +643,7 @@ public class MonopolyGame implements GameMonopoly{
             umA.getAvailableAction().add(EXCHANGE_OFFERS);
             curentUser.setActivGamer(false);
             //todo сделать проверки на принадлежность фирм и необходимой суммы денег
-            objectOffers=new ChangeFirm(indFirm, indFirm2, many, many2, curentUser,umA);
+            objectOffers=new ChangeFirm(indFirm, indFirm2, money, money2, curentUser,umA);
             curentUser=umA;
             ActionUser.createInstance(this,curentUser, CHANGE_USER, curentUser);
             curentUser.setActivGamer(true);
@@ -652,7 +652,7 @@ public class MonopolyGame implements GameMonopoly{
     }
 
     public void changeFirm(ChangeFirm changeFirm) {
-        this.changeFirm(changeFirm.getIndFirmUserChanger(),changeFirm.getIndFirm(),changeFirm.getManyUserChanger(),changeFirm.getMany(),changeFirm.getUserName());
+        this.changeFirm(changeFirm.getIndFirmUserChanger(),changeFirm.getIndFirm(),changeFirm.getMoneyUserChanger(),changeFirm.getMoney(),changeFirm.getUserName());
     }
 
     public void changeFirm(ActionMonopolyE type){
@@ -664,14 +664,14 @@ public class MonopolyGame implements GameMonopoly{
                     ((CardFirm)getListCard().get(indF)).setUserOwner(objectOffers.getUser());
                     ActionUser.createInstance(this,objectOffers.getUser(), BUY_FIRM, getListCard().get(indF));
                 }
-                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() + objectOffers.getManyUserChanger());
-                usCH.setMoney(usCH.getMoney()-objectOffers.getManyUserChanger());
+                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() + objectOffers.getMoneyUserChanger());
+                usCH.setMoney(usCH.getMoney()-objectOffers.getMoneyUserChanger());
                 for (Integer indF:objectOffers.getIndFirm()){
                     ((CardFirm)getListCard().get(indF)).setUserOwner(usCH);
                     ActionUser.createInstance(this,usCH, BUY_FIRM, getListCard().get(indF));
                 }
-                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() - objectOffers.getMany());
-                usCH.setMoney(usCH.getMoney()+objectOffers.getMany());
+                objectOffers.getUser().setMoney(objectOffers.getUser().getMoney() - objectOffers.getMoney());
+                usCH.setMoney(usCH.getMoney()+objectOffers.getMoney());
                 ActionUser.createInstance(this,curentUser, CHANGE_FIRM_OK, objectOffers);
             }else{
                 ActionUser.createInstance(this,curentUser, CHANGE_FIRM_CANCAL, objectOffers);
@@ -917,7 +917,7 @@ public class MonopolyGame implements GameMonopoly{
             if(pos>=listCard.size()){
                 pos=pos-listCard.size();
                 //выдать деньги за круг
-                getManybyCircle(curentUser);
+                getMoneybyCircle(curentUser);
                 //увеличить кредит на 50%
                 curentUser.setCredit((int)(curentUser.getCredit()*1.5));
             }

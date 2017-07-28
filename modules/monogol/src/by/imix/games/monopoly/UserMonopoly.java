@@ -16,7 +16,7 @@ public interface UserMonopoly extends UserRoom, UserAuction, UserCube, UserCredi
     //player money
     int getMoney();
     //set player money
-    void setMoney(int many);
+    void setMoney(int money);
 
     //Penalty
     void setPenalty(int penalty);

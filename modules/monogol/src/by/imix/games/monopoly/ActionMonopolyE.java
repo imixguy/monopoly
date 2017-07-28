@@ -54,7 +54,7 @@ public enum ActionMonopolyE  implements ActionRoom {
     //аукцион не состоялся
     AUCTION_BRACK ("auctionBrack"),
     //не хватает денег
-    NOT_MANY ("notMany"),
+    NOT_MONEY ("notMoney"),
     //игрок выиграл
     WIN ("win"),
     //игрок проиграл

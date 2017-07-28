@@ -90,8 +90,8 @@ public class UserMonopolyImpl extends DefaultUserRoom implements UserMonopoly{
         return money;
     }
 
-    public void setMoney(int many) {
-        this.money = many;
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getPenalty() {

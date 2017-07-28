@@ -8,27 +8,27 @@ import java.util.Set;
 public class ChangeFirm {
     private Set<Integer> indFirmUserChanger;
     private Set<Integer> indFirm;
-    private int manyUserChanger;
-    private int many;
+    private int moneyUserChanger;
+    private int money;
     private String userName;
     private UserMonopoly userChanger;
     private UserMonopoly user;
 
     public ChangeFirm(){}
 
-    public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int manyUserChanger, int many, String userName) {
+    public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int moneyUserChanger, int money, String userName) {
         this.indFirmUserChanger = indFirmUserChanger;
         this.indFirm = indFirm;
-        this.manyUserChanger = manyUserChanger;
-        this.many = many;
+        this.moneyUserChanger = moneyUserChanger;
+        this.money = money;
         this.userName=userName;
     }
 
-    public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int manyUserChanger, int many, UserMonopoly userChanger, UserMonopoly user) {
+    public ChangeFirm(Set<Integer> indFirmUserChanger, Set<Integer> indFirm, int moneyUserChanger, int money, UserMonopoly userChanger, UserMonopoly user) {
         this.indFirmUserChanger = indFirmUserChanger;
         this.indFirm = indFirm;
-        this.manyUserChanger = manyUserChanger;
-        this.many = many;
+        this.moneyUserChanger = moneyUserChanger;
+        this.money = money;
         this.userChanger = userChanger;
         this.user = user;
     }
@@ -49,20 +49,20 @@ public class ChangeFirm {
         this.indFirm = indFirm;
     }
 
-    public int getManyUserChanger() {
-        return manyUserChanger;
+    public int getMoneyUserChanger() {
+        return moneyUserChanger;
     }
 
-    public void setManyUserChanger(int manyUserChanger) {
-        this.manyUserChanger = manyUserChanger;
+    public void setMoneyUserChanger(int moneyUserChanger) {
+        this.moneyUserChanger = moneyUserChanger;
     }
 
-    public int getMany() {
-        return many;
+    public int getMoney() {
+        return money;
     }
 
-    public void setMany(int many) {
-        this.many = many;
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public String getUserName() {

@@ -343,8 +343,8 @@
         </constructor-arg>
         <property name="imageFolder" value="monopoly"/>
         <property name="imageCenter" value="center.jpg"/>
-        <property name="circleMany" value="5000"/>
-        <property name="startMany" value="30000"/>
+        <property name="circleMoney" value="5000"/>
+        <property name="startMoney" value="30000"/>
         <property name="credit" value="10000"/>
         <property name="penalty_cheating" value="10000"/>
     </bean>

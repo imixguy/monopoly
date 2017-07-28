@@ -18,15 +18,17 @@ import java.util.Set;
  */
 
 @Controller("userActionsController")
-public class UserActionsController{
+public class UserActionsController implements UserActions {
     private Logger log= LoggerFactory.getLogger(UserActionsController.class);
 
     @Autowired
     GameManager gameManager;
+
     public void setGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/throw_cube", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void throwCube() {
@@ -45,6 +47,7 @@ public class UserActionsController{
     }
 
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/buy_firm", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void buyFirm() {
@@ -54,26 +57,30 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/buy_filial", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void buyFilial(@RequestParam("indFirm[]")int[] indFirm) {
+    public void buyFilial(@RequestParam("indFirm[]") int[] indFirm) {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.buyFilial(indFirm);
         }
     }
 
+    @Override
     public void takeCredit() {
 
     }
 
+    @Override
     public void giveCredit() {
 
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/put_firm", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void putFirm(@RequestParam("indFirm[]")int[] indFirm) {
+    public void putFirm(@RequestParam("indFirm[]") int[] indFirm) {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.putFirm(indFirm);
@@ -83,6 +90,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/getPossibleFirm/{type}", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public Collection<Integer> getPossibleFirm(@PathVariable String type){
@@ -96,6 +104,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/getPossibleFirmCh/{nameUser}", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public Collection<Integer> getPossibleFirmCh(@PathVariable String nameUser){
@@ -104,18 +113,20 @@ public class UserActionsController{
 
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/sell_filial", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void sellFilial(@RequestParam("indFirm[]")Set<Integer> indFirm) {
+    public void sellFilial(@RequestParam("indFirm[]") Set<Integer> indFirm) {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.sellFilial(indFirm);
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/redeem_firm", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void redeemFirm(@RequestParam("indFirm[]")int[] indFirm) {
+    public void redeemFirm(@RequestParam("indFirm[]") int[] indFirm) {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.redeemFirm(indFirm);
@@ -128,17 +139,19 @@ public class UserActionsController{
 //        return new ChangeFirm(new HashSet<Integer>(Arrays.asList(1,2)),new HashSet<Integer>(Arrays.asList(2,3)),0,0,"");
 //    }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/change_firm", method = RequestMethod.POST)
     @ResponseBody
     public void changeFirm(ChangeFirm changeFirm) {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
-            game.changeFirm(changeFirm);//indFirm,indFirm2,many,many2,userName);
+            game.changeFirm(changeFirm);//indFirm,indFirm2,money,money2,userName);
         }
     }
 
 
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/change_firm_ok", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void changeFirmOk() {
@@ -148,6 +161,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/change_firm_cancal", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void changeFirmCancal() {
@@ -157,12 +171,14 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/out_prison", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void outPrison() {
 
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/auction_start", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void auctionStart() {
@@ -172,6 +188,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/pay_penalty", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void payPenalty() {
@@ -181,6 +198,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/auction_buy", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void auctionBuy() {
@@ -193,6 +211,7 @@ public class UserActionsController{
         }
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/auction_fold", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void auctionFold() {
@@ -206,12 +225,14 @@ public class UserActionsController{
 
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/game_end", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public void gameEnd() {
         getGame().gameEnd(getUserMonopoly());
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/game_close", method = RequestMethod.GET)
     public String gameClose() {
         GameMonopoly game=getGame();
@@ -222,6 +243,7 @@ public class UserActionsController{
         return "redirect:/games/room/rooms.html";
     }
 
+    @Override
     @RequestMapping(value = "/games/monopoly/actions/send_message", method = RequestMethod.POST, produces="application/json")
     @ResponseBody
     public void sendMessage(@RequestParam("message") String message) {

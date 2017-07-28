@@ -29,9 +29,9 @@ public interface GameMonopoly extends Room {
     Auction getAuction();
 
     //стартовые деньги
-    void setStartMany(int credit);
+    void setStartMoney(int credit);
     //деньги за круг
-    void setCircleMany(int circleMany);
+    void setCircleMoney(int circleMoney);
     //максимальный кредит
     void setCredit(int credit);
 
@@ -78,9 +78,9 @@ public interface GameMonopoly extends Room {
     Map<Integer, Set<CardFirm>> getAllMonopoly();
     Map<Integer, Set<CardFirm>> getAllMonopoly(UserMonopoly user);
 
-    //предложение обмена текущим игроком (Предлагает фирмы indFirm и денег many) игроку с именем userName
-    //запрашивает фирмы indFirm2 и денег many2
-    void changeFirm(Set<Integer> indFirm, Set<Integer> indFirm2, int many, int many2, String userName);
+    //предложение обмена текущим игроком (Предлагает фирмы indFirm и денег money) игроку с именем userName
+    //запрашивает фирмы indFirm2 и денег money2
+    void changeFirm(Set<Integer> indFirm, Set<Integer> indFirm2, int money, int money2, String userName);
     void changeFirm(ChangeFirm changeFirm);
     //согласие с предложенным обменом либо не согласие зависит от типа type CHANGE_FIRM_CANCAL - не согласен, иначе CHANGE_FIRM_OK
     void changeFirm(ActionMonopolyE type);
