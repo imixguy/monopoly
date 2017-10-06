@@ -26,9 +26,9 @@ public enum ActionMonopolyE  implements ActionRoom {
     //Обмен фирмами (предложить обмен)
     CHANGE_FIRM ("changeFirm"),
     //Обмен фирмами согласится
-    CHANGE_FIRM_OK ("changeFirmOk"),
+    CHANGE_FIRM_OK ("changeFirmApprove"),
     //Обмен фирмами отказать
-    CHANGE_FIRM_CANCAL ("changeFirmCancal"),
+    CHANGE_FIRM_CANCAL ("changeFirmReject"),
     //продал филиал
     SELL_FILIAL ("sellFilial"),
     //получил штраф

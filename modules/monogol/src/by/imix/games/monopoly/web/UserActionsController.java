@@ -154,7 +154,7 @@ public class UserActionsController implements UserActions {
     @Override
     @RequestMapping(value = "/games/monopoly/actions/change_firm_ok", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void changeFirmOk() {
+    public void changeFirmApprove() {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.changeFirm(ActionMonopolyE.CHANGE_FIRM_OK);
@@ -164,7 +164,7 @@ public class UserActionsController implements UserActions {
     @Override
     @RequestMapping(value = "/games/monopoly/actions/change_firm_cancal", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public void changeFirmCancal() {
+    public void changeFirmReject() {
         GameMonopoly game=getGame();
         if(getUserMonopoly()==game.getCurentUser()){
             game.changeFirm(ActionMonopolyE.CHANGE_FIRM_CANCAL);

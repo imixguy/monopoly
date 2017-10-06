@@ -75,23 +75,55 @@ public interface UserActions {
      */
     void changeFirm(ChangeFirm changeFirm);
 
-    void changeFirmOk();
+    /**
+     * Change firm approve
+     */
+    void changeFirmApprove();
 
-    void changeFirmCancal();
+    /**
+     * Change firm reject
+     */
+    void changeFirmReject();
 
+    /**
+     * Apply entrance from prison (pay deposit)
+     */
     void outPrison();
 
+    /**
+     * Start auction
+     */
     void auctionStart();
 
+    /**
+     * Pay penalty
+     */
     void payPenalty();
 
+    /**
+     * Give price that propose on the auction
+     */
     void auctionBuy();
 
+    /**
+     * Reject auction offer
+     */
     void auctionFold();
 
+    /**
+     * Game end
+     */
     void gameEnd();
 
+    /**
+     * Close game
+     * @return message
+     */
     String gameClose();
 
+    /**
+     * Send message
+     * @param message message
+     */
     void sendMessage(@RequestParam("message") String message);
 }

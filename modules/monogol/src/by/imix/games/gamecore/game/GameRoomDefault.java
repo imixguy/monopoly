@@ -9,47 +9,56 @@ import java.util.List;
  * Created by miha on 26.07.2017.
  */
 public class GameRoomDefault implements GameRoom {
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public Room getRoom() {
         return null;
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public void setRoom(Room room) {
 
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public boolean isStartGame() {
         return false;
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public void nextGamer() {
 
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public UserRoom getCurentUser() {
         return null;
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public List<UserRoom> getListUser() {
         return null;
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public List<UserRoom> getListViewUser() {
         return null;
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public void gameEnd(UserRoom user) {
 
     }
 
-    @Override
+     /**{@inheritDoc}*/
+     @Override
     public void gameClose(UserRoom user) {
 
     }
