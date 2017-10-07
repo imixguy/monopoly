@@ -416,7 +416,7 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
         var thisEl=obj;
 		//here we need pull in place and cards
 		var data=new Object();		
-		var rootPath="file:///D:/test/myproject/monopoly/modules/monogol/web/resources/images/games/imaginarium/";//resources/images/games/imaginarium/
+		var rootPath="file:///C:/files/work/monopoly/modules/monogol/web/resources/images/games/imaginarium/";//resources/images/games/imaginarium/
 		data.cards=[];
 		data.pole=new Object();
 		data.pole.src=rootPath+"pole.jpg";
@@ -527,8 +527,7 @@ var gameImaginarium={
         if(online){
             this.online=online;
         }
-        this.loadDataGame();
-		
+        this.dataGameLoader.loadDataGame(this, "loadPlace");
     },
     migEl:null,
     setMigEl:function(el){
@@ -547,25 +546,6 @@ var gameImaginarium={
                 thisEl.blink(this);
             });
         });
-    },
-    loadDataGame:function(){
-		this.dataGameLoader.loadDataGame(this, "loadPlace")
-		
-       /*  var thisEl=this;
-        if(this.online){
-        $.ajax({
-            url: predictURL+"/games/monopoly/gameinfo",
-            dataType : "json",
-            type: "GET"
-        }).done(function(data) {
-            if(data!=null) {
-                thisEl.room=data;
-                if(thisEl.listCard.length==0){
-                    thisEl.loadPlace();
-                }
-            }
-        });
-        } */
     },
     startloadgamedata:function(){
         var thisEl=this;
