@@ -403,27 +403,45 @@ DataGameLoader.prototype = {
             if(data!=null) {
                 thisEl.room=data;
                 if(thisEl.listCard.length==0){
-                    thisEl[functionName]();
+                    thisEl[collbackNameFunction]();
                 }
             }
         });
+    },
+    loadCurentPosition:function(obj, collbackNameFunction){
+                              var thisEl=obj;
+                              $.ajax({
+                                  url: "/games/monopoly/gameinfo",
+                                  dataType : "json",
+                                  type: "GET"
+                              }).done(function(data) {
+                                  if(data!=null) {
+                                      thisEl.room=data;
+                                      if(thisEl.listCard.length==0){
+                                          thisEl[collbackNameFunction]();
+                                      }
+                                  }
+                              });
     }
 }
 
+
 var DataGameNoLoad=Class.create();
 DataGameNoLoad.prototype = DataGameLoader.prototype;
+DataGameNoLoad.prototype.gamers=[];
 DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
-        var thisEl=obj;
 		//here we need pull in place and cards
 		var data=new Object();		
 		var rootPath="file:///C:/files/work/monopoly/modules/monogol/web/resources/images/games/imaginarium/";//resources/images/games/imaginarium/
-		data.cards=[];
+		this.cards=[];
 		data.pole=new Object();
 		data.pole.src=rootPath+"pole.jpg";
-		for(var i=0;i<98;i++){
+		for(var i=1;i<97;i++){
 			var card=new Object();
-			card.src=rootPath+"card"+i+".jpg";
-			data.cards[i]=card;
+			var t=(i<10)?"00":"0";
+			card.src=rootPath+""+t+i+".jpg";
+			card.id=i;
+			this.cards[i]=card;
 		}
 		data.cardsVote=[];
 		for(var i = 0;i<49;i++){
@@ -431,15 +449,20 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 			card.src=rootPath+"cardVote"+i+".jpg";
 			data.cardsVote[i]=card;
 		}
-		
+		this.users=StartGame.getAllUser();
 		
         if(data!=null) {
-            thisEl.room=data;
-            if(thisEl.listCard.length==0){
-			obj[collbackNameFunction](data);
-		}
-    }        
+            obj.room=data;
+            if(obj.listCard.length==0){
+			    obj[collbackNameFunction](data);
+		    }
+        }
 }
+DataGameNoLoad.prototype.loadCurentPosition=function(obj, collbackNameFunction){
+    var thisEl=obj;
+
+}
+
 DataGameNoLoad.prototype.loadUser=function(obj, collbackNameFunction){
 	var listPlayerEl=$(".playerField");
 	for(var i=0; i<listPlayerEl.length; i++){
@@ -500,6 +523,17 @@ var StartGame={
 	    $('#startWindow').hide();
 		gameImaginarium.init(null,false);		
 		
+	},
+	getAllUser(){
+	    var listPlayerEl=$(".namePlayer");
+	    var users=[];
+	    for(var i=0;i<listPlayerEl.length;i++){
+	        var user = {};
+	        user.name=$(listPlayerEl[i]).val();
+	        user.id=i+1;
+	        users[i] = user;
+	    }
+	    return users;
 	}
 }	
 
@@ -528,8 +562,12 @@ var gameImaginarium={
             this.online=online;
         }
         this.dataGameLoader.loadDataGame(this, "loadPlace");
+        this.dataGameLoader.loadCurentPosition(this, "changeViewer");
     },
     migEl:null,
+    changeViewer:function(data){
+
+    },
     setMigEl:function(el){
         var t=this.migEl;
         this.migEl=el;
@@ -773,9 +811,7 @@ var gameImaginarium={
         if(data!=null) {
 			thisEl.listCard=data.cards;
             thisEl.buildPlace(data, getMaxSizeInnerBlock(567,794,this.pageS[2],this.pageS[3]));
-            for(var i=0;i<thisEl.listCard.length;i++){
-				thisEl.listCard[i].checkedData();
-            }
+
             thisEl.buildSystemControl();
             thisEl.getStartGamers();
             thisEl.startloadgamedata();            
