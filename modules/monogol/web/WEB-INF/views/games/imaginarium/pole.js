@@ -475,13 +475,26 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 		if(this.activeUser.pass!=null && this.activeUser.pass!=""){
 		       $('.passTransfer').show();
 		}
-        if(data!=null) {
-            obj.room=data;
-            if(obj.listCard.length==0){
-			    obj[collbackNameFunction](data);
-		    }
-        }
+	thisEl=this;
+	$(document).on('click','#TransferComplete',function(){
+	    if(thisEl.activeUser.pass==null || thisEl.activeUser.pass=="" || thisEl.activeUser.pass==$('.passTransfer').val()){
+	        $('#transferDevice').hide();
+	    }else{
+	        thisEl.showError($('#errorPlacetransferDevice'),"Не правильный пароль");
+	    }
+	});
+    if(data!=null) {
+        obj.room=data;
+        if(obj.listCard.length==0){
+		    obj[collbackNameFunction](data);
+		}
+    }
 }
+DataGameNoLoad.prototype.showError=function(el, text){
+		var err=$("<div>").text(text);
+		$(el).append(err);
+	    err.fadeOut( 3000, function() {err.remove();});
+	}
 DataGameNoLoad.prototype.loadCurentPosition=function(obj, collbackNameFunction){
     var thisEl=obj;
 
