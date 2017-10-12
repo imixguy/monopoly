@@ -64,6 +64,25 @@ function  getMaxSizeInnerBlock(widthInner, heightInner, elWidth, elHeight){
 	return [Math.floor(widthInner-1%widthInner),Math.floor(heightInner-1%heightInner)]	
 }
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 var Class={create:function(){return function(){this.initialize.apply(this, arguments);}}}
 Object.extend = function(d,s){for (var property in s) {d[property] = s[property];}return d;}
 
@@ -449,8 +468,13 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 			card.src=rootPath+"cardVote"+i+".jpg";
 			data.cardsVote[i]=card;
 		}
-		this.users=StartGame.getAllUser();
-		
+		this.users=shuffle(StartGame.getAllUser());
+		this.activeUser = this.users[0];
+		$('.namePlayerTransfer').text(this.activeUser.name);
+		$('#transferDevice').show();
+		if(this.activeUser.pass!=null && this.activeUser.pass!=""){
+		       $('.passTransfer').show();
+		}
         if(data!=null) {
             obj.room=data;
             if(obj.listCard.length==0){
@@ -462,7 +486,6 @@ DataGameNoLoad.prototype.loadCurentPosition=function(obj, collbackNameFunction){
     var thisEl=obj;
 
 }
-
 DataGameNoLoad.prototype.loadUser=function(obj, collbackNameFunction){
 	var listPlayerEl=$(".playerField");
 	for(var i=0; i<listPlayerEl.length; i++){
@@ -475,14 +498,14 @@ var StartGame={
 	showStartWindow:function(){
 		this.addOnePlayer();
 		this.addOnePlayer();
-		if(this.skipNeed()) return;	
-		var butMinusPl = $("#minusPlayer");
-		var butPlusPl = $("#plusPlayer");
+		//if(this.skipNeed()) return;
 		var thisEl=this;
-		butMinusPl.on("click", function(){thisEl.removeOnePlayer()});
-		butPlusPl.on("click", function(){thisEl.addOnePlayer()});
-		var buttonStart = $("#buttonStart");
-		buttonStart.on("click", function(){thisEl.startGame()});
+		$(document).on('click', '#minusPlayer', function(){thisEl.removeOnePlayer()});
+		$(document).on('click', '#plusPlayer', function(){thisEl.addOnePlayer()});
+		$(document).on('click', '#buttonStart', function(){thisEl.startGame()});
+        $(document).on('change', '#passSwitch', function(){
+               if (this.checked) {$('.passPanel').show();}else{$('.passPanel').hide();}
+        });
 	},
 	skipNeed:function(){
 		if(this.skeepneed){
@@ -526,10 +549,12 @@ var StartGame={
 	},
 	getAllUser(){
 	    var listPlayerEl=$(".namePlayer");
+
 	    var users=[];
 	    for(var i=0;i<listPlayerEl.length;i++){
 	        var user = {};
 	        user.name=$(listPlayerEl[i]).val();
+	        user.pass=$(listPlayerEl[i]).parent().find(".passPlayer").val();
 	        user.id=i+1;
 	        users[i] = user;
 	    }
