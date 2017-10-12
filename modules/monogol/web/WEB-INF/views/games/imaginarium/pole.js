@@ -406,6 +406,10 @@ Card.prototype = {
 var DataGameLoader=Class.create();
 DataGameLoader.prototype = {
     colorF:"",
+    cards:[],
+    users:[],
+    activeUser:null,
+    indexActiveUser:0,//index active user in users array
     initialize:function( ){
         
     },
@@ -452,7 +456,7 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 		//here we need pull in place and cards
 		var data=new Object();		
 		var rootPath="file:///C:/files/work/monopoly/modules/monogol/web/resources/images/games/imaginarium/";//resources/images/games/imaginarium/
-		this.cards=[];
+
 		data.pole=new Object();
 		data.pole.src=rootPath+"pole.jpg";
 		for(var i=1;i<97;i++){
@@ -469,7 +473,8 @@ DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 			data.cardsVote[i]=card;
 		}
 		this.users=shuffle(StartGame.getAllUser());
-		this.activeUser = this.users[0];
+		this.cards =
+		this.activeUser = this.users[this.indexActiveUser];
 		$('.namePlayerTransfer').text(this.activeUser.name);
 		$('#transferDevice').show();
 		if(this.activeUser.pass!=null && this.activeUser.pass!=""){
@@ -494,7 +499,7 @@ DataGameNoLoad.prototype.showError=function(el, text){
 		var err=$("<div>").text(text);
 		$(el).append(err);
 	    err.fadeOut( 3000, function() {err.remove();});
-	}
+}
 DataGameNoLoad.prototype.loadCurentPosition=function(obj, collbackNameFunction){
     var thisEl=obj;
 
