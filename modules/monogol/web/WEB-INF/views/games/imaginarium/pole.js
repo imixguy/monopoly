@@ -411,18 +411,18 @@ DataGameLoader.prototype = {
     activeUser:null,
     indexActiveUser:0,//index active user in users array
     initialize:function( ){
-        
+
     },
     build:function(){
-       
+
     },
 	loadDataGame:function(obj, collbackNameFunction){
-        var thisEl=obj;		
+        var thisEl=obj;
         $.ajax({
             url: "/games/monopoly/gameinfo",
             dataType : "json",
             type: "GET"
-        }).done(function(data) {			
+        }).done(function(data) {
             if(data!=null) {
                 thisEl.room=data;
                 if(thisEl.listCard.length==0){
@@ -454,27 +454,40 @@ DataGameNoLoad.prototype = DataGameLoader.prototype;
 DataGameNoLoad.prototype.gamers=[];
 DataGameNoLoad.prototype.loadDataGame=function(obj, collbackNameFunction){
 		//here we need pull in place and cards
-		var data=new Object();		
+		var data=new Object();
 		var rootPath="file:///C:/files/work/monopoly/modules/monogol/web/resources/images/games/imaginarium/";//resources/images/games/imaginarium/
 
 		data.pole=new Object();
 		data.pole.src=rootPath+"pole.jpg";
-		for(var i=1;i<97;i++){
+		this.users = StartGame.getAllUser();
+		var countcard=Math.floor(96/this.users.length)*this.users.length;
+		for(var i=1;i<(countcard+1);i++){
 			var card=new Object();
 			var t=(i<10)?"00":"0";
 			card.src=rootPath+""+t+i+".jpg";
 			card.id=i;
-			this.cards[i]=card;
+			this.cards[i-1]=card;
 		}
-		data.cardsVote=[];
-		for(var i = 0;i<49;i++){
-			var card=new Object();
-			card.src=rootPath+"cardVote"+i+".jpg";
-			data.cardsVote[i]=card;
-		}
+		console.log("count card is "+this.cards.length);
+//		data.cardsVote=[];
+//
+//		for(var i = 0;i<49;i++){
+//			var card=new Object();
+//			card.src=rootPath+"cardVote"+i+".jpg";
+//			data.cardsVote[i]=card;
+//		}
+        this.cards=shuffle(this.cards);
 		this.users=shuffle(StartGame.getAllUser());
-		this.cards =
+		for(var i=0; i<this.users.length; i++){
+		    this.users[i].cards=[];
+		    for(var j=0; j<6; j++){
+		        this.users[i].cards[j]=this.cards[this.cards.length-1];
+		        this.cards.splice(this.cards.length-1, 1);
+		    }
+		}
+
 		this.activeUser = this.users[this.indexActiveUser];
+		data.activeUser = this.activeUser;
 		$('.namePlayerTransfer').text(this.activeUser.name);
 		$('#transferDevice').show();
 		if(this.activeUser.pass!=null && this.activeUser.pass!=""){
@@ -507,16 +520,16 @@ DataGameNoLoad.prototype.loadCurentPosition=function(obj, collbackNameFunction){
 DataGameNoLoad.prototype.loadUser=function(obj, collbackNameFunction){
 	var listPlayerEl=$(".playerField");
 	for(var i=0; i<listPlayerEl.length; i++){
-		
+
 	}
-}	
-	
+}
+
 var StartGame={
 	skeepneed:true,
 	showStartWindow:function(){
 		this.addOnePlayer();
 		this.addOnePlayer();
-		//if(this.skipNeed()) return;
+		if(this.skipNeed()) return;
 		var thisEl=this;
 		$(document).on('click', '#minusPlayer', function(){thisEl.removeOnePlayer()});
 		$(document).on('click', '#plusPlayer', function(){thisEl.addOnePlayer()});
@@ -541,7 +554,7 @@ var StartGame={
 			this.showError("We have maximum players!");
 			return;
 		}
-		var plF = $(el[0]).clone();				
+		var plF = $(el[0]).clone();
 		plF.find(".numPlayer").text(el.length+1);
 		$('#playerPanel').append(plF);
 		$('#countPlayers').text(el.length+1);
@@ -560,10 +573,10 @@ var StartGame={
 		$('#errorPlace').append(err);
 	    err.fadeOut( 3000, function() {err.remove();});
 	},
-	startGame:function(){		
+	startGame:function(){
 	    $('#startWindow').hide();
-		gameImaginarium.init(null,false);		
-		
+		gameImaginarium.init(null,false);
+
 	},
 	getAllUser(){
 	    var listPlayerEl=$(".namePlayer");
@@ -578,7 +591,7 @@ var StartGame={
 	    }
 	    return users;
 	}
-}	
+}
 
 
 var gameImaginarium={
@@ -857,7 +870,7 @@ var gameImaginarium={
 
             thisEl.buildSystemControl();
             thisEl.getStartGamers();
-            thisEl.startloadgamedata();            
+            thisEl.startloadgamedata();
         }
         /* }else{
                thisEl.listCard=[];
@@ -909,11 +922,11 @@ var gameImaginarium={
 		//?
 		$('body').css('background','black');
         var gC=1;
-		
+
         var topline=$('<div>');
         $('#poleGame').css('width', (size[0]-2)+'px');
         $('#poleGame').css('font-size', 10+'pt');
-        
+
         var centerLine=$('<div style="display: inline; clear: left;">');
         centerLine.append('<div id="centerPl" class="centerPlace" style="position:relative;width:'+(size[0]-2)+'px;height:'+(size[1]-2)+'px;display: inline; float: left;"><img src="'+data.pole.src+'" width="'+(size[0]-2)+'px" height="'+(size[1]-2)+'px"/></div>');
         this.poleGame.append($('<div id="place" style="float:left;">').append(centerLine));
