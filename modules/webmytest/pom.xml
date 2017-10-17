@@ -90,7 +90,7 @@
                     <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
 
 
-                    <outputDirectory>../webapps</outputDirectory>
+                    <outputDirectory>webapps</outputDirectory>
                     <warName>ROOT</warName>
 
 
