@@ -90,7 +90,7 @@
                     <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
 
 
-                    <outputDirectory>webapps</outputDirectory>
+                    <outputDirectory>${session.executionRootDirectory}</outputDirectory>
                     <warName>ROOT</warName>
 
 
