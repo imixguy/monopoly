@@ -14,7 +14,7 @@
    </bean>
     <!--user:miha pass:miha12 root_pass:miha12-->
 
-   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
-      <jdbc:script location="dbscripts/db-data.sql"/>
-   </jdbc:initialize-database>
+   <!--<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">-->
+      <!--<jdbc:script location="dbscripts/db-data.sql"/>-->
+   <!--</jdbc:initialize-database>-->
 </beans>
