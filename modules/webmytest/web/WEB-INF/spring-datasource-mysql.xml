@@ -8,9 +8,9 @@
        <!--<property name="url" value="jdbc:mysql://#{systemEnvironment[OPENSHIFT_MYSQL_DB_HOST]}:#{systemEnvironment[OPENSHIFT_MYSQL_DB_PORT]}/#{systemEnvironment[OPENSHIFT_APP_NAME]}?characterEncoding=UTF-8" />-->
        <!--<property name="username" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_USERNAME]}" />-->
        <!--<property name="password" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_PASSWORD]}" />-->
-       <property name="url" value="jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/$OPENSHIFT_APP_NAME?characterEncoding=UTF-8" />
-       <property name="username" value="$OPENSHIFT_MYSQL_DB_USERNAME" />
-       <property name="password" value="$OPENSHIFT_MYSQL_DB_PASSWORD" />
+       <property name="url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}?characterEncoding=UTF-8" />
+       <property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
+       <property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
    </bean>
     <!--user:miha pass:miha12 root_pass:miha12-->
 
