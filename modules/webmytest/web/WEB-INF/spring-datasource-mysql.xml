@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-       <property name="url" value="jdbc:mysql://#{systemEnvironment[OPENSHIFT_MYSQL_DB_HOST]}:#{systemEnvironment[OPENSHIFT_MYSQL_DB_PORT]}/#{systemEnvironment[OPENSHIFT_APP_NAME]}?characterEncoding=UTF-8" />
-       <property name="username" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_USERNAME]}" />
-       <property name="password" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_PASSWORD]}" />
+       <!--<property name="url" value="jdbc:mysql://#{systemEnvironment[OPENSHIFT_MYSQL_DB_HOST]}:#{systemEnvironment[OPENSHIFT_MYSQL_DB_PORT]}/#{systemEnvironment[OPENSHIFT_APP_NAME]}?characterEncoding=UTF-8" />-->
+       <!--<property name="username" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_USERNAME]}" />-->
+       <!--<property name="password" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_PASSWORD]}" />-->
+       <property name="url" value="jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/$OPENSHIFT_APP_NAME?characterEncoding=UTF-8" />
+       <property name="username" value="$OPENSHIFT_MYSQL_DB_USERNAME" />
+       <property name="password" value="$OPENSHIFT_MYSQL_DB_PASSWORD" />
    </bean>
+    <!--user:miha pass:miha12 root_pass:miha12-->
+
+   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
+      <jdbc:script location="dbscripts/db-data.sql"/>
+   </jdbc:initialize-database>
 </beans>
