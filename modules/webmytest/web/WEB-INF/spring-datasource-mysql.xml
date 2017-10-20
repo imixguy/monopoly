@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -9,9 +9,4 @@
        <property name="username" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_USERNAME]}" />
        <property name="password" value="#{systemEnvironment[OPENSHIFT_MYSQL_DB_PASSWORD]}" />
    </bean>
-    <!--user:miha pass:miha12 root_pass:miha12-->
-
-   <!--<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">-->
-      <!--<jdbc:script location="dbscripts/db-data.sql"/>-->
-   <!--</jdbc:initialize-database>-->
 </beans>
