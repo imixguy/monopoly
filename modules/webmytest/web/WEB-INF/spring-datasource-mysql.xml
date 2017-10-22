@@ -13,7 +13,8 @@
        <property name="username" value="miha" />
        <property name="password" value="miha12" />
    </bean>
+
    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
-      <jdbc:script location="dbscripts/db-data.sql"/>
+      <jdbc:script location="/WEB-INF/dbscripts/db-data.sql"/>
    </jdbc:initialize-database>
 </beans>
