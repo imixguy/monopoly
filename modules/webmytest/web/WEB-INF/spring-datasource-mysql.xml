@@ -14,7 +14,7 @@
        <property name="password" value="miha12" />
    </bean>
 
-   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
+   <jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
       <jdbc:script location="/WEB-INF/dbscripts/db-data.sql"/>
    </jdbc:initialize-database>
 </beans>
