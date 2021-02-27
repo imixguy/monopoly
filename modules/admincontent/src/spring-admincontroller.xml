@@ -18,15 +18,15 @@
     <context:component-scan base-package="rw.gcktc.cms.userknow"/>
 
 
-    <bean id="menuService" class="rw.gcktc.cms.menu.MenuNodeServiceImpl">
+    <bean id="menuService" class="by.imix.cms.menu.MenuNodeServiceImpl">
         <constructor-arg name="nodeService" ref="nodehibservice"/>
     </bean>
-    <bean id="contentService" class="rw.gcktc.webcms.controller.ContentNodeServiceImpl">
+    <bean id="contentService" class="by.imix.webcms.controller.ContentNodeServiceImpl">
         <constructor-arg name="nodeService" ref="nodehibservice"/>
     </bean>
 
     <mvc:interceptors>
-        <bean class="rw.gcktc.cms.material.dynamiccontent.DynamicContentHandler" />
+        <bean class="by.imix.cms.material.dynamiccontent.DynamicContentHandler" />
     </mvc:interceptors>
 
     <!--Список хибернет маппингов для модуля админки-->

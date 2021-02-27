@@ -76,7 +76,7 @@
         <property name="maxUploadSize" value="104857600" />
     </bean>
 
-    <bean id="imageUploadForUser" class="rw.gcktc.image.FileUploader">
+    <bean id="imageUploadForUser" class="FileUploader">
         <property name="format">
             <list>
                 <value>application/msword</value>
@@ -90,7 +90,7 @@
         <property name="maxSize" value="3145728"/>
     </bean>
 
-    <bean id="imageUploadForAvatar" class="rw.gcktc.image.FileUploader">
+    <bean id="imageUploadForAvatar" class="FileUploader">
         <property name="format">
             <list>
                 <value>image/jpeg</value>

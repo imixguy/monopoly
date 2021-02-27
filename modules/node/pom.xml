@@ -11,7 +11,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>rw.ktc.gcktc.node</groupId>
+    <groupId>by.imix.gcktc.node</groupId>
     <artifactId>node-core</artifactId>
     <description>Node structure for universal identity objects</description>
     <version>1.1</version>

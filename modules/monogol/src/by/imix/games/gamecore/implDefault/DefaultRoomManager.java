@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import rw.gcktc.cms.usermanager.User;
-import rw.gcktc.webcms.security.UserWeb;
+import by.imix.cms.usermanager.User;
+import by.imix.webcms.security.UserWeb;
 
 import java.util.*;
 

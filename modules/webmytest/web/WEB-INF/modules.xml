@@ -26,7 +26,7 @@
     <!--Добавляем модуль сервисов работы с контактом-->
     <!--<import resource="classpath:spring-vkwork.xml"/>-->
     <!--Собираем все маппинги для в кучу-->
-    <bean id="listHibPackage" class="rw.gcktc.webcms.HibPackageScan">
+    <bean id="listHibPackage" class="by.imix.webcms.HibPackageScan">
         <constructor-arg>
             <list>
                 <!--добавляем в хиб маппинги ядра-->
@@ -61,7 +61,7 @@
 
 
     <!-- SECURYTI permission -->
-    <bean id="listCredential" class="rw.gcktc.webcms.security.CredentialBox">
+    <bean id="listCredential" class="by.imix.webcms.security.CredentialBox">
         <constructor-arg>
             <list>
                 <!--добавляем безопасность админ модуля-->

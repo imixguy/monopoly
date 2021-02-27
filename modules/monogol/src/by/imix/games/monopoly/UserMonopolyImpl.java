@@ -5,7 +5,7 @@ import by.imix.games.gamecore.card.Card;
 import by.imix.games.gamecore.implDefault.web.DefaultUserRoom;
 import by.imix.games.monopoly.web.ActionUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import rw.gcktc.cms.usermanager.User;
+import by.imix.cms.usermanager.User;
 
 import java.security.SecureRandom;
 import java.util.*;

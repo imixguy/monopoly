@@ -21,7 +21,7 @@ http://www.springframework.org/schema/jee http://www.springframework.org/schema/
 
     <!--<aop:config proxy-target-class="true"/>-->
 
-    <bean id="testConnect" class="rw.gcktc.cms.nodedata.test.TestClass">
+    <bean id="testConnect" class="by.imix.cms.nodedata.test.TestClass">
         <property name="startTest" ref="testService"/>
     </bean>
 

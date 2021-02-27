@@ -106,7 +106,7 @@
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addClasspath>true</addClasspath>
-                            <mainClass>rw.gcktc.cms.nodedata.test.TestClass</mainClass>
+                            <mainClass>by.imix.cms.nodedata.test.TestClass</mainClass>
                             <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                         <!--<manifestEntries>-->
