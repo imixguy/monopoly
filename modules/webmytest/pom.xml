@@ -22,19 +22,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>rw.ktc.gcktc.node</groupId>
-            <artifactId>node-core</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>node</artifactId>
+            <version >1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>rw.ktc.gcktc.usermanager</groupId>
+            <groupId>by.imix.usermanager</groupId>
             <artifactId>usermanager</artifactId>
             <version>${node.version}</version>
         </dependency>
         <dependency>
-            <groupId>rw.ktc.gcktc.cms</groupId>
-            <artifactId>cms-core</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>cmscore</artifactId>
+            <version >1.0.0</version>
         </dependency>
         <dependency>
             <groupId>rw.gcktc.cms.modules</groupId>
@@ -42,9 +42,9 @@
             <version>${node.version}</version>
         </dependency>
         <dependency>
-            <groupId>rw.ktc.gcktc.node.hib</groupId>
-            <artifactId>node-hibernate</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>node-hib</artifactId>
+            <version >1.0.0</version>
         </dependency>
         <dependency>
             <groupId>rw.gcktc.cms.</groupId>
@@ -179,4 +179,11 @@
             </plugin>-->
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>mvn-repository</id>
+            <url>https://github.com/imixguy/mvn_repository/raw/master</url>
+        </repository>
+    </repositories>
 </project>

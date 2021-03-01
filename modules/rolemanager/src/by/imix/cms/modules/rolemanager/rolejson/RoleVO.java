@@ -1,7 +1,7 @@
 package by.imix.cms.modules.rolemanager.rolejson;
 
+import by.imix.cms.entity.Role;
 import by.imix.cms.nodedata.NodeProperty;
-import by.imix.cms.usermanager.Role;
 
 import java.util.ArrayList;
 import java.util.List;

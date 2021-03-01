@@ -1,8 +1,9 @@
 package by.imix.cms.modules.rolemanager.servise;
 
+import by.imix.cms.entity.Role;
+import by.imix.cms.entity.User;
 import by.imix.cms.modules.rolemanager.userjson.UserVO;
-import by.imix.cms.usermanager.Role;
-import by.imix.cms.usermanager.User;
+
 
 import java.util.List;
 

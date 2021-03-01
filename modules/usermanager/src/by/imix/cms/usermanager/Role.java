@@ -2,7 +2,9 @@ package by.imix.cms.usermanager;
 
 
 import by.imix.cms.nodedata.Node;
-import org.apache.log4j.Logger;
+import by.imix.cms.nodedata.NodeImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,9 +28,10 @@ import java.io.Serializable;
         @AttributeOverride(name="datecorrect", column=@Column(name="datecorrect"))
 })
 
-public class Role extends Node implements Serializable {
+
+public class Role extends NodeImpl implements Serializable {
     @Transient
-    private static Logger log = Logger.getLogger(Role.class);
+    private static Logger logger = LoggerFactory.getLogger(Role.class);
 
     private String name;
 

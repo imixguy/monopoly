@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import by.imix.cms.nodedata.NodeProperty;
 import by.imix.cms.usermanager.Role;
 import by.imix.cms.usermanager.service.UserManagerNodeService;
-import by.imix.webcms.security.NodeServiceLayerImpl;
+
 
 import java.util.ArrayList;
 import java.util.List;

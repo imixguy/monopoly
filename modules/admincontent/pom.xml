@@ -26,9 +26,9 @@
         </dependency>
 
         <dependency>
-            <groupId>rw.ktc.gcktc.cms</groupId>
-            <artifactId>cms-core</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>cmscore</artifactId>
+            <version >1.0.0</version>
         </dependency>
 
         <dependency>
@@ -160,18 +160,11 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>libs-snapshot</name>
-            <url>http://askbd-srv:8081/artifactory/libs-snapshot-local</url>
-        </snapshotRepository>
-
+    <repositories>
         <repository>
-            <id>central</id>
-            <name>libs-release</name>
-            <url>http://askbd-srv:8081/artifactory/libs-release-local</url>
+            <id>mvn-repository</id>
+            <url>https://github.com/imixguy/mvn_repository/raw/master</url>
         </repository>
-    </distributionManagement>
+    </repositories>
 
 </project>

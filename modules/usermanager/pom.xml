@@ -11,16 +11,16 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>rw.ktc.gcktc.usermanager</groupId>
+    <groupId>by.imix</groupId>
     <artifactId>usermanager</artifactId>
     <version>1.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>rw.ktc.gcktc.node</groupId>
-            <artifactId>node-core</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>node</artifactId>
+            <version >1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -97,19 +97,11 @@
         </plugins>
     </build>
 
-    <!--store to artifactory-->
-    <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-            <!--<id>snapshots</id>-->
-            <!--<name>libs-snapshot</name>-->
-            <!--<url>http://askbd-srv:8081/artifactory/libs-snapshot-local</url>-->
-        <!--</snapshotRepository>-->
-
-        <!--<repository>-->
-            <!--<id>central</id>-->
-            <!--<name>libs-release</name>-->
-            <!--<url>http://askbd-srv:8081/artifactory/libs-release-local</url>-->
-        <!--</repository>-->
-    <!--</distributionManagement>-->
+    <repositories>
+        <repository>
+            <id>mvn-repository</id>
+            <url>https://github.com/imixguy/mvn_repository/raw/master</url>
+        </repository>
+    </repositories>
 
 </project>

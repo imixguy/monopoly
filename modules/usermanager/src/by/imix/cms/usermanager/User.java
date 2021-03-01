@@ -1,11 +1,13 @@
 package by.imix.cms.usermanager;
 
 import by.imix.cms.nodedata.HistoryNode;
+import by.imix.cms.nodedata.HistoryNodeImpl;
 import by.imix.cms.nodedata.Node;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -28,7 +30,7 @@ import java.util.Set;
 })
 
 //@DiscriminatorColumn(name="User",discriminatorType = DiscriminatorType.STRING)
-public class User extends HistoryNode implements Serializable {
+public class User extends HistoryNodeImpl implements Serializable {
     private String name;
     private String password;
 
@@ -93,8 +95,8 @@ public class User extends HistoryNode implements Serializable {
 
         User user = (User) o;
 
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (!Objects.equals(name, user.name)) return false;
+        if (!Objects.equals(password, user.password)) return false;
 
         return true;
     }

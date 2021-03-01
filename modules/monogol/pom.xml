@@ -19,9 +19,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>rw.ktc.gcktc.node.hib</groupId>
-            <artifactId>node-hibernate</artifactId>
-            <version>${node.version}</version>
+            <groupId>by.imix.cms</groupId>
+            <artifactId>node-hib</artifactId>
+            <version >1.0.0</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -155,18 +155,11 @@
         </plugins>
     </build>
 
-    <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-            <!--<id>snapshots</id>-->
-            <!--<name>libs-snapshot</name>-->
-            <!--<url>http://askbd-srv:8081/artifactory/libs-snapshot-local</url>-->
-        <!--</snapshotRepository>-->
-
-        <!--<repository>-->
-            <!--<id>central</id>-->
-            <!--<name>libs-release</name>-->
-            <!--<url>http://askbd-srv:8081/artifactory/libs-release-local</url>-->
-        <!--</repository>-->
-    <!--</distributionManagement>-->
+    <distributionManagement>
+        <repository>
+            <id>mvn-repository</id>
+            <url>https://github.com/imixguy/mvn_repository/raw/master</url>
+        </repository>
+    </distributionManagement>
 
 </project>
